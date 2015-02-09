@@ -1,7 +1,6 @@
 package hackerrank;
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 class SolveMeSecond {
 
@@ -10,7 +9,8 @@ class SolveMeSecond {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        @SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
         int t;
         int sum;
         int a,b;

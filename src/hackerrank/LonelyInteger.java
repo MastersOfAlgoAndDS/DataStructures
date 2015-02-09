@@ -1,12 +1,7 @@
 package hackerrank;
 
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
-import jdk.nashorn.internal.runtime.ListAdapter;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class LonelyInteger {
 	static int lonelyintegerNlogn(int[] a) {
@@ -43,6 +38,7 @@ public class LonelyInteger {
 		return 0;
 	}
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int res;

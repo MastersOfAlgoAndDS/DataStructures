@@ -27,9 +27,9 @@ public class Prime1 {
 		System.out.println("");
 	}
 
+	@SuppressWarnings("resource")
 	public static void main(String args[]){
 		int t;
-		Prime1 p = new Prime1();
 		Scanner s = new Scanner(System.in);
 		t = s.nextInt();
 		int [][]input = new int[t][2];
@@ -39,7 +39,7 @@ public class Prime1 {
 			}			
 		}
 		for(int i =0; i<t; i++){
-			p.primeChecker(input[i][0], input[i][1]);
+			Prime1.primeChecker(input[i][0], input[i][1]);
 		}
 	}
 }
