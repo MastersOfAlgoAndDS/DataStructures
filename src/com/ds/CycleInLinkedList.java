@@ -5,7 +5,6 @@ public class CycleInLinkedList {
 	public static Node detectLoopStart(Node head){
 		Node turtle, hare;
 		turtle = hare = head;
-		Node loopstart;
 		turtle = turtle.getNext();
 		hare = hare.getNext().getNext();
 		while(turtle!=hare){
