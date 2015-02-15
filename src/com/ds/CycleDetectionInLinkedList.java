@@ -1,6 +1,6 @@
 package com.ds;
 //check this website for a wonderful solution to this problem - http://www.quora.com/How-does-Floyds-cycle-finding-algorithm-work
-public class CycleInLinkedList {
+public class CycleDetectionInLinkedList {
 	
 	public static Node detectLoopStart(Node head){
 		Node turtle, hare;
