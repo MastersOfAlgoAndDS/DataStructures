@@ -34,7 +34,7 @@ public class TreeNode {
 		this.right = right;
 	}
 
-	void print(TreeNode root){		
+	public void print(TreeNode root){		
 		Queue<TreeNode> q1 = new Queue<TreeNode>();
 		q1.enqueue(root);
 		while(!q1.isEmpty()){
