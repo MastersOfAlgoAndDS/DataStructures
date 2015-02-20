@@ -1,4 +1,6 @@
-import java.io.Console;
+package hackerrank;
+
+import java.util.Scanner;
 
 public class MaxXor {
 	static int maxXor(int l, int r) {
@@ -12,16 +14,16 @@ public class MaxXor {
 		return res;
 	}
 
-	static void Main(String[] args) {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
 		int res;
 		int _l;
-		_l = Convert.ToInt32(Console.ReadLine());
+		_l = in.nextInt();
 
 		int _r;
-		_r = Convert.ToInt32(Console.ReadLine());
+		_r = in.nextInt();
 
 		res = maxXor(_l, _r);
-		Console.WriteLine(res);
-		Console.ReadKey();
+		System.out.println(res);
 	}
 }
