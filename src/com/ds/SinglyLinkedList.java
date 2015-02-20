@@ -15,6 +15,34 @@ public class SinglyLinkedList {
 		head = null;
 	}
 
+	public Node search(int value) {
+		Node temp = head;
+		int cnt = 1;
+		if (temp == null)
+			System.out.println("List is empty");
+		while (temp != null) {
+			if (temp.getVal() == value) {
+				System.out.println("Found " + value + " at position: " + cnt);
+				return temp;
+			}
+			cnt++;
+			temp = temp.getNext();
+		}
+	
+		System.out.println("Did not find the given value in the linked list");
+		return null;
+	}
+
+	public int length(Node head) {
+		Node temp = head;
+		int count = 0;
+		while (temp != null) {
+			temp = temp.getNext();
+			count++;
+		}
+		return count;
+	}
+
 	public void insertAtLast(int value) {
 		Node node = new Node(value);
 		Node temp = head;
@@ -92,6 +120,18 @@ public class SinglyLinkedList {
 		System.out.println();
 	}
 
+	//This is recursive method for printing the list in reverse order
+	public void printReverse(Node head) {		
+		if (head.getNext() == null)
+			System.out.print(head.getVal() + " ");
+		else {
+			int temp = head.getVal();
+	
+			printReverse(head.getNext());
+			System.out.print(temp + " ");
+		}
+	}
+
 	public void deleteFromLast() {
 		Node temp = head;
 		if (temp == null)
@@ -99,24 +139,6 @@ public class SinglyLinkedList {
 		if (temp != null) {
 
 		}
-	}
-
-	public Node search(int value) {
-		Node temp = head;
-		int cnt = 1;
-		if (temp == null)
-			System.out.println("List is empty");
-		while (temp != null) {
-			if (temp.getVal() == value) {
-				System.out.println("Found " + value + " at position: " + cnt);
-				return temp;
-			}
-			cnt++;
-			temp = temp.getNext();
-		}
-
-		System.out.println("Did not find the given value in the linked list");
-		return null;
 	}
 
 	public Node reverseInPlaceIterative(Node head) {
@@ -129,40 +151,33 @@ public class SinglyLinkedList {
 			while (temp != null) {
 				next = temp.getNext();
 				temp.setNext(prev);
-				prev=temp;
+				prev = temp;
 				temp = next;
 			}
 			head = prev;
+			this.head=prev;
 		}
 		return head;
 	}
-	
-	
-/*	public Node reverseWithRecursion(Node p){
-		if(pit.getNext()==null)
-			return head;
-		else{
-			Node temp = head;
-			Node prev = temp;
-			Node next = reverseWithRecursion(head.getNext());
-			//System.out.print(temp + " ");
-			while(temp.getNext()!=null){
-				temp=temp.getNext();
-			}
-			temp.setNext(new Node(next.val));
-			return prev;
+
+	public Node reverseWithRecursion(Node node) {
+		Node first = node;
+		Node rest = node.getNext();
+		Node returnedNode;
+		if (rest == null){
+			this.head=first;
+			return first;
 		}
-	}
-*/	
-	public void printReverse(Node head){
-		if(head.getNext()==null)
-			System.out.print(head.getVal() + " ");
-		else{
-			int temp = head.getVal();
-			
-			printReverse(head.getNext());
-			System.out.print(temp + " ");
+		else {
+
+			returnedNode = reverseWithRecursion(rest);
 		}
+
+		if (returnedNode != null) {
+			returnedNode.setNext(first);
+			first.setNext(null);
+		}
+		return first;
 	}
 
 	public static void main(String[] args) {
@@ -176,10 +191,22 @@ public class SinglyLinkedList {
 */		sll.insertAtLast(4);
 /*		sll.insertAfterElement(24, 13);
 		sll.insertAtPosition(99, 2);
-*/		Node newHead = sll.reverseInPlaceIterative(sll.getHead());
-		sll.print(newHead);
-		//newHead = sll.reverseWithRecursion(newHead);
+*/
+		System.out.println("Length of list is: " + sll.length(sll.getHead()));
+		System.out.println("Print LinkList");
+		sll.print(sll.getHead());
+/*		System.out.println("Reversing the list and print");
+		Node newHead = sll.reverseInPlaceIterative(sll.getHead());
+		sll.print(sll.getHead());
+		System.out
+				.println("Print LinkList in reverse order of the current order");
 		sll.printReverse(newHead);
+		System.out.println();
+*/
+		System.out.println("Reversing the list with recursion and print ");
+		sll.reverseWithRecursion(sll.getHead());
+		sll.print(sll.getHead());
+
 	}
 
 }
