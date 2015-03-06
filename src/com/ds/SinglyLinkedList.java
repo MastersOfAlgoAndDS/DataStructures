@@ -114,7 +114,7 @@ public class SinglyLinkedList {
 		if (temp == null)
 			System.out.println("List is empty");
 		while (temp != null) {
-			System.out.print(temp.val + " ");
+			System.out.print(temp.getVal() + " ");
 			temp = temp.getNext();
 		}
 		System.out.println();

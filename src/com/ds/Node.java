@@ -1,10 +1,10 @@
 package com.ds;
 
 public class Node {
-	int val;
-	Node next;
+	private int val;
+	private Node next;
 	
-	Node(int value){
+	public Node(int value){
 		val = value;
 		next = null;
 	}
