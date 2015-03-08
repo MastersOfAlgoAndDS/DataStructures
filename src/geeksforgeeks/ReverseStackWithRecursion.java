@@ -13,7 +13,6 @@ public class ReverseStackWithRecursion {
 			temp = input.pop();
 			output.push(temp);
 			return reverseStackWithRecursion(input,output);
-			//st.push(temp);
 		}
 	}
 
