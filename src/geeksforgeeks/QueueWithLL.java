@@ -45,11 +45,10 @@ public class QueueWithLL {
 	public void print() {
 		if (!isEmpty()) {
 			Node temp = start;
-			while (temp != end) {
+			while (temp != null) {
 				System.out.print(temp.getVal() + " ");
 				temp = temp.getNext();
 			}
-			System.out.print(temp.getVal() + " ");
 			System.out.println();
 		} else
 			System.out.println("Queue is empty");
