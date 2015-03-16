@@ -34,12 +34,15 @@ public class PalindromeLL {
 			// Then check whether list is even or odd.
 			// if fast==null that means list is odd.
 			// if fast.getNext == null that means linked list has odd elements.
-			if(fast==null){}
-			else if (fast.getNext() == null)
+			if(fast==null){}	//Even elements
+			else if (fast.getNext() == null)	//Odd elements.
 				slow=slow.getNext();
-
+			//if the elements are odd 
+			//then the slow pointer is exactly at the middle 
+			//so increment slow pointer to next element for comparing with stack.
+			
+			
 			while (slow != null) {
-				// Odd elements so pop one element.
 				if (slow.getVal() != stack.peek()) {
 					return false;
 				}
@@ -59,6 +62,7 @@ public class PalindromeLL {
 		for (int i = len; i >= 0; i--) {
 			sll.insertAtLast(i + 10);
 		}
+		//sll.insertAtLast(123);
 		System.out.println(PalindromeLL(sll.getHead()));
 	}
 
