@@ -1,5 +1,7 @@
 /**
  * Program to find intersection of 2 sorted linked lists.
+ * http://www.geeksforgeeks.org/reverse-alternate-k-nodes-in-a-singly-linked-list/
+ * 
  * Approach: Take 2 lists and traverse them and compare each node with the other lists node.
  * If at any place the node values are same, then put it in the new list and increment pointers of all 3 lists.
  * Then if pointer to list1 is smaller than pointer to list 2 then increment pointer 1 else increment pointer 2.
