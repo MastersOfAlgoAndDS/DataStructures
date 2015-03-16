@@ -11,7 +11,7 @@ public class SinglyLinkedList {
 		this.head = head;
 	}
 
-	SinglyLinkedList() {
+	public SinglyLinkedList() {
 		head = null;
 	}
 
@@ -59,7 +59,6 @@ public class SinglyLinkedList {
 
 	public void insertAtFirst(int value) {
 		Node node = new Node(value);
-		Node temp = head;
 		if (head == null)
 			head = node;
 		else {
@@ -122,13 +121,11 @@ public class SinglyLinkedList {
 
 	//This is recursive method for printing the list in reverse order
 	public void printReverse(Node head) {		
-		if (head.getNext() == null)
-			System.out.print(head.getVal() + " ");
+		if (head == null)
+			return;
 		else {
-			int temp = head.getVal();
-	
 			printReverse(head.getNext());
-			System.out.print(temp + " ");
+			System.out.print(head.getVal() + " ");
 		}
 	}
 
@@ -160,7 +157,7 @@ public class SinglyLinkedList {
 		return head;
 	}
 
-	public Node reverseWithRecursion(Node node) {
+	public Node reverseWithRecursion(Node node) {		//IMPORTANT function to check
 		Node first = node;
 		Node rest = node.getNext();
 		Node returnedNode;
@@ -200,9 +197,9 @@ public class SinglyLinkedList {
 		sll.print(sll.getHead());
 		System.out
 				.println("Print LinkList in reverse order of the current order");
-		sll.printReverse(newHead);
+*/		sll.printReverse(sll.getHead());
 		System.out.println();
-*/
+
 		System.out.println("Reversing the list with recursion and print ");
 		sll.reverseWithRecursion(sll.getHead());
 		sll.print(sll.getHead());
