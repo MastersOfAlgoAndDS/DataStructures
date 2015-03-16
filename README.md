@@ -1,2 +1,2 @@
 # DataStructures
-This repository will contain the algorithms for data structures that we implement during preparation for Coding Interviews
+This repository contains the algorithms for data structures that I implemented during preparation for Coding Interviews so far
