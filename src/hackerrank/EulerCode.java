@@ -82,4 +82,5 @@ public class EulerCode {
 
 /*
  * Input 1 4 3 7 6 2 4 8 8 5 9 3
+ * Answer: 26
  */
