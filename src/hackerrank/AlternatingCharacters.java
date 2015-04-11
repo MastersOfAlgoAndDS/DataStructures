@@ -27,6 +27,7 @@ public class AlternatingCharacters {
 			res = alternatingCharacters(val1);
 			System.out.println(res);
 		}
+		in.close();
 	}
 
 }

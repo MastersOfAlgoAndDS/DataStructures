@@ -11,26 +11,44 @@ public class DEQueue<T> {
 	DoublyEndedNode<T> front;
 	DoublyEndedNode<T> rear;
 
+	/*
+	 * Constructor
+	 * */
 	public DEQueue() {
 		front = rear = null;
 	}
 
+	/*
+	 * Get front node of the queue.
+	 * */
 	public DoublyEndedNode<T> getFront() {
 		return front;
 	}
 
+	/*
+	 * Set front node of the queue.
+	 * */
 	public void setFront(DoublyEndedNode<T> front) {
 		this.front = front;
 	}
 
+	/*
+	 * Get rear/last node of the queue.
+	 * */
 	public DoublyEndedNode<T> getRear() {
 		return rear;
 	}
 
+	/*
+	 * Set rear/last node of the queue.
+	 * */
 	public void setEnd(DoublyEndedNode<T> rear) {
 		this.rear = rear;
 	}
 
+	/*
+	 * Get front node of the queue.
+	 * */
 	public boolean isEmpty() {
 		if (front == null && rear == null) {
 			return true;
@@ -39,6 +57,7 @@ public class DEQueue<T> {
 	}
 
 	public void insertAtFront(T elem) {
+		@SuppressWarnings("unchecked")
 		DoublyEndedNode<T> nn = new DoublyEndedNode(elem);
 		if (!isEmpty()) {
 			front.setPrev(nn);
