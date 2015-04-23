@@ -9,13 +9,24 @@ namespace CodingChallengeCS
     public class SortingSolution
     {
 
-        internal object SortNumericList(List<int> nums)
+        public List<int> SortNumericList(List<int> nums)
         {
-            
-            throw new NotImplementedException();
+            for (int i = 0; i < nums.Count; i++)
+            {
+                for (int j = i + 1; j < nums.Count; j++)
+                {
+                    if (nums[i] > nums[j])
+                    {
+                        int temp = nums[i];
+                        nums[i] = nums[j];
+                        nums[j] = temp;
+                    }
+                }
+            }
+            return nums;
         }
 
-        internal void SortNumericListInPlace(List<int> nums)
+        public void SortNumericListInPlace(List<int> nums)
         {
             for (int i = 0; i < nums.Count; i++)
             {
@@ -44,5 +55,6 @@ namespace CodingChallengeCS
             }
             return result;
         }
+
     }
 }
