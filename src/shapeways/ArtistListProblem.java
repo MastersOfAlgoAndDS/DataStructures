@@ -25,9 +25,9 @@ public class ArtistListProblem {
 					}
 				}
 			}
-			for (Iterator<String, Integer> iterator : h.entrySet().iterator()) {
-				
-			}
+//			for (Iterator<String, Integer> iterator : h.entrySet().iterator()) {
+//				
+//			}
 
 			br.close();
 			fin.close();
