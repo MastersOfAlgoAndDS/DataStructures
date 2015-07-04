@@ -30,7 +30,6 @@ import java.util.Scanner;
 public class GenericBinaryTree<T> {
 	GenericBinaryTreeNode<T> root;
 
-	
 	public GenericBinaryTreeNode<T> getRoot() {
 		return root;
 	}
@@ -121,10 +120,9 @@ public class GenericBinaryTree<T> {
 	 * @return
 	 */
 	public void preOrder(GenericBinaryTreeNode<T> head) {
-		if(head==null)
+		if (head == null)
 			return;
-		else
-		{
+		else {
 			System.out.print(head.getVal());
 			preOrder(head.getLeft());
 			preOrder(head.getRight());
@@ -138,8 +136,7 @@ public class GenericBinaryTree<T> {
 	 * @return
 	 */
 	public void inOrder(GenericBinaryTreeNode<T> head) {
-		if(head!=null)
-		{
+		if (head != null) {
 			inOrder(head.getLeft());
 			System.out.print(head.getVal());
 			inOrder(head.getRight());
@@ -153,19 +150,63 @@ public class GenericBinaryTree<T> {
 	 * @return
 	 */
 	public void postOrder(GenericBinaryTreeNode<T> head) {
-		if(head!=null)
-		{
+		if (head != null) {
 			postOrder(head.getLeft());
 			postOrder(head.getRight());
 			System.out.print(head.getVal());
 		}
 	}
 
-	public int size(GenericBinaryTreeNode<T> head){
-		if(head==null)
+	/**
+	 * 
+	 * Function to calculate the size of the tree
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public int size(GenericBinaryTreeNode<T> head) {
+		if (head == null)
 			return 0;
 		else
 			return size(head.getLeft()) + 1 + size(head.getRight());
+	}
+
+	/**
+	 * 
+	 * To compare two trees given their roots. If the two trees are exactly the
+	 * same, true is returned.
+	 * 
+	 * @param head1
+	 * @param head2
+	 * @return
+	 */
+	public boolean sameTrees(GenericBinaryTreeNode<T> head1,
+			GenericBinaryTreeNode<T> head2) {
+		if (head1 == null && head2 == null)
+			return true;
+		if (head1 != null && head2 != null) {
+			return (head1.getVal() == head2.getVal()
+					&& sameTrees(head1.getLeft(), head2.getLeft()) && sameTrees(
+						head1.getRight(), head2.getRight()));
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * Function to calculate the height of the tree. I.e. maximum depth if the
+	 * tree is unbalanced.
+	 * 
+	 * @return
+	 */
+	public int height(GenericBinaryTreeNode<T> head) {
+		if(head==null)
+			return 0;
+		return Math.max(height(head.getLeft()),height(head.getRight())) + 1;
+	}
+
+	public void deleteTree(GenericBinaryTreeNode<T> head){
+		root=null;
 	}
 	
 	/**
@@ -189,5 +230,30 @@ public class GenericBinaryTree<T> {
 		tree.postOrder(tree.getRoot());
 		System.out.println();
 		System.out.println("Tree size is: " + tree.size(tree.getRoot()));
+
+		Scanner in2 = new Scanner(System.in);
+		int numberOfNodes2 = in2.nextInt();
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		for (int i = 0; i < numberOfNodes2; i++) {
+			list2.add(in2.nextInt());
+		}
+		GenericBinaryTree<Integer> tree2 = new GenericBinaryTree<Integer>(list2);
+		System.out.println(tree.sameTrees(tree.getRoot(), tree2.getRoot()));
+		
+		System.out.println("Height of the tree is: " + tree.height(tree.getRoot()));
+		GenericBinaryTree<Integer> treeRandom = new GenericBinaryTree<Integer>();
+		treeRandom.setRoot(new GenericBinaryTreeNode<Integer>(20));
+		treeRandom.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(10));
+		treeRandom.getRoot().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(30));
+		treeRandom.getRoot().getLeft().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(40));
+		treeRandom.getRoot().setRight(new GenericBinaryTreeNode<Integer>(70));
+		System.out.println(treeRandom.toString());
+		System.out.println("Height of random tree is: " + treeRandom.height(treeRandom.getRoot()));
+		
+		System.out.println("Tree before deleting: " + treeRandom);
+		treeRandom.deleteTree(treeRandom.getRoot());
+		System.out.println("Tree after deleting: " + treeRandom);
+		
+		
 	}
 }
