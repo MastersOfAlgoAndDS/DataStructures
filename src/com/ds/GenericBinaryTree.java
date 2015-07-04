@@ -4,13 +4,16 @@
  * The input needs to be a ArrayList of the data structure whose tree is to be created.
  * 
  * Includes
- * Basic Binary tree construction
- * Add node
- * Inorder tree traversal
- * Preorder tree traversal
- * Postorder tree traversal
- * Size of tree function
- * 
+ * 	Basic Binary tree construction
+ *  Add node
+ *  Inorder tree traversal
+ *  Preorder tree traversal
+ *  Postorder tree traversal
+ *  Size of tree function
+ *  Comapre identical trees
+ *  calculate height/max depth of the tree
+ *  delete tree
+ *  
  * */
 
 package com.ds;
