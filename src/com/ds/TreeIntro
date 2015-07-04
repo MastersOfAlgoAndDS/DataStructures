@@ -6,10 +6,29 @@ Studying trees from geeksforgeeks.org
 >Properties of Trees: Handshaking Lemmas
 
 	3 properties studied
-	5 more properties studied
+		1.In a k-ary tree where every node has either 0 or k children, following property is always true.
+			L = (k - 1)*I + 1
+			Where L = Number of leaf nodes
+      		I = Number of internal nodes
+      		
+      	2.In Binary tree, number of leaf nodes is always one more than nodes with two children.
+      		L = T + 1
+			Where L = Number of leaf nodes
+      		T = Number of internal nodes with two children  
+      		
+		3. The maximum number of nodes at level ‘l’ of a binary tree is 2^(l-1). Here root is the level 1.
+		
+		4. Maximum number of nodes in a binary tree of height ‘h’ is (2^h) – 1. Here height of leaf is 1.
+		
+		5. In a Binary Tree with N nodes, minimum possible height or minimum number of levels is Log_base2(N+1) 
+		
+		6. A Binary Tree with L leaves has at least Log_base2(L) + 1 levels 
 
 >Types of binary trees
-	Complete and Full
+	Full: A Binary Tree is full if every node has 0 or 2 children
+		1. In a Full Binary, number of leaf nodes is number of internal nodes plus 1
+	Complete: A Binary Tree is complete Binary Tree if all levels are completely filled except possibly the last level and the last level has all keys as left as possible
+		Example: Binary heap
 
 >Applications of trees
 
