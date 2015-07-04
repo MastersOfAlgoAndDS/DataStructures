@@ -22,6 +22,9 @@ import java.util.Scanner;
 public class GenericBinaryTree<T> {
 	GenericBinaryTreeNode<T> root;
 
+	/**
+	 * The default constructor
+	 */
 	public GenericBinaryTree() {
 		root = null;
 	}
@@ -95,6 +98,53 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * Function to print the preorder traversal of the tree output
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public void preOrder(GenericBinaryTreeNode<T> head) {
+		if(head==null)
+			return;
+		else
+		{
+			System.out.print(head.getVal());
+			preOrder(head.getLeft());
+			preOrder(head.getRight());
+		}
+	}
+
+	/**
+	 * Function to print the inorder traversal of the tree output
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public void inOrder(GenericBinaryTreeNode<T> head) {
+		if(head!=null)
+		{
+			inOrder(head.getLeft());
+			System.out.print(head.getVal());
+			inOrder(head.getRight());
+		}
+	}
+
+	/**
+	 * Function to print the postorder traversal of the tree output
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public void postOrder(GenericBinaryTreeNode<T> head) {
+		if(head!=null)
+		{
+			postOrder(head.getLeft());
+			postOrder(head.getRight());
+			System.out.print(head.getVal());
+		}
+	}
+
+	/**
 	 * Test function for testing various functions of the tree program
 	 * 
 	 * @param args
@@ -108,5 +158,10 @@ public class GenericBinaryTree<T> {
 		}
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
 		System.out.println(tree);
+		tree.preOrder(tree.root);
+		System.out.println();
+		tree.inOrder(tree.root);
+		System.out.println();
+		tree.postOrder(tree.root);
 	}
 }
