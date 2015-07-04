@@ -3,6 +3,14 @@
  * of various problems related to binary trees.
  * The input needs to be a ArrayList of the data structure whose tree is to be created.
  * 
+ * Includes
+ * Basic Binary tree construction
+ * Add node
+ * Inorder tree traversal
+ * Preorder tree traversal
+ * Postorder tree traversal
+ * Size of tree function
+ * 
  * */
 
 package com.ds;
@@ -21,6 +29,15 @@ import java.util.Scanner;
  */
 public class GenericBinaryTree<T> {
 	GenericBinaryTreeNode<T> root;
+
+	
+	public GenericBinaryTreeNode<T> getRoot() {
+		return root;
+	}
+
+	public void setRoot(GenericBinaryTreeNode<T> root) {
+		this.root = root;
+	}
 
 	/**
 	 * The default constructor
@@ -144,6 +161,13 @@ public class GenericBinaryTree<T> {
 		}
 	}
 
+	public int size(GenericBinaryTreeNode<T> head){
+		if(head==null)
+			return 0;
+		else
+			return size(head.getLeft()) + 1 + size(head.getRight());
+	}
+	
 	/**
 	 * Test function for testing various functions of the tree program
 	 * 
@@ -158,10 +182,12 @@ public class GenericBinaryTree<T> {
 		}
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
 		System.out.println(tree);
-		tree.preOrder(tree.root);
+		tree.preOrder(tree.getRoot());
 		System.out.println();
-		tree.inOrder(tree.root);
+		tree.inOrder(tree.getRoot());
 		System.out.println();
-		tree.postOrder(tree.root);
+		tree.postOrder(tree.getRoot());
+		System.out.println();
+		System.out.println("Tree size is: " + tree.size(tree.getRoot()));
 	}
 }
