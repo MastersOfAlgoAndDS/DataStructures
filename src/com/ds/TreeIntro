@@ -39,3 +39,10 @@ Studying trees from geeksforgeeks.org
 	5. Router algorithms
 	6. Form of a multi-stage decision-making (see business chess).
 
+>Combinations to construct the binary tree from other order outputs
+	Inorder and Postorder
+	Inorder and Preorder
+	Inorder and Level-order
+	SO INORDER is always required. IF Inorder traversal output is not avaiable then "NO CAN'T BE DONE!"
+	
+	
