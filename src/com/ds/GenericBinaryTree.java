@@ -203,15 +203,50 @@ public class GenericBinaryTree<T> {
 	 * @return
 	 */
 	public int height(GenericBinaryTreeNode<T> head) {
-		if(head==null)
+		if (head == null)
 			return 0;
-		return Math.max(height(head.getLeft()),height(head.getRight())) + 1;
+		return Math.max(height(head.getLeft()), height(head.getRight())) + 1;
 	}
 
-	public void deleteTree(GenericBinaryTreeNode<T> head){
-		root=null;
+	public void deleteTree(GenericBinaryTreeNode<T> head) {
+		root = null;
 	}
-	
+
+	public GenericBinaryTreeNode<T> mirrorTree(GenericBinaryTreeNode<T> head) {
+		if (head == null)
+			return null;
+		if (head.getLeft() == null && head.getRight() == null)
+			return head;
+		else {
+			mirrorTree(head.getLeft());
+			mirrorTree(head.getRight());
+			GenericBinaryTreeNode<T> temp = head.getLeft();
+			head.setLeft(head.getRight());
+			head.setRight(temp);
+			return head;
+		}
+	}
+
+	public void printPaths(GenericBinaryTreeNode<T> head, T[] path,int pathlen) {
+		if (head == null)
+			return;
+		else {
+			//path.add(head.getVal());
+			path[pathlen] = head.getVal();
+			pathlen++;
+		}
+		if (head.getLeft() == null && head.getRight() == null) {
+			// print the path from the root to the leaf
+			for (T item : path) {
+				System.out.print(item.toString());
+			}
+			System.out.println();
+		} else {
+			printPaths(head.getLeft(), path,pathlen);
+			printPaths(head.getRight(), path,pathlen);
+		}
+	}
+
 	/**
 	 * Test function for testing various functions of the tree program
 	 * 
@@ -242,21 +277,31 @@ public class GenericBinaryTree<T> {
 		}
 		GenericBinaryTree<Integer> tree2 = new GenericBinaryTree<Integer>(list2);
 		System.out.println(tree.sameTrees(tree.getRoot(), tree2.getRoot()));
-		
-		System.out.println("Height of the tree is: " + tree.height(tree.getRoot()));
+
+		System.out.println("Height of the tree is: "
+				+ tree.height(tree.getRoot()));
 		GenericBinaryTree<Integer> treeRandom = new GenericBinaryTree<Integer>();
 		treeRandom.setRoot(new GenericBinaryTreeNode<Integer>(20));
 		treeRandom.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(10));
-		treeRandom.getRoot().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(30));
-		treeRandom.getRoot().getLeft().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(40));
+		treeRandom.getRoot().getLeft()
+				.setLeft(new GenericBinaryTreeNode<Integer>(30));
+		treeRandom.getRoot().getLeft().getLeft()
+				.setLeft(new GenericBinaryTreeNode<Integer>(40));
 		treeRandom.getRoot().setRight(new GenericBinaryTreeNode<Integer>(70));
 		System.out.println(treeRandom.toString());
-		System.out.println("Height of random tree is: " + treeRandom.height(treeRandom.getRoot()));
-		
+		System.out.println("Height of random tree is: "
+				+ treeRandom.height(treeRandom.getRoot()));
+
 		System.out.println("Tree before deleting: " + treeRandom);
 		treeRandom.deleteTree(treeRandom.getRoot());
 		System.out.println("Tree after deleting: " + treeRandom);
-		
-		
+
+		System.out.println("Before mirroring the tree: ");
+		System.out.println(tree.getRoot());
+		System.out.println("After mirroring the tree: ");
+		System.out.println(tree.mirrorTree(tree.getRoot()));
+
+//		Object[] a = new Object[1000];
+//		tree.printPaths(tree.getRoot(),(Integer[]) a,0);
 	}
 }
