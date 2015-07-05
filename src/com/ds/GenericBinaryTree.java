@@ -20,6 +20,7 @@ package com.ds;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -160,6 +161,28 @@ public class GenericBinaryTree<T> {
 		}
 	}
 
+	/**
+	 * 
+	 * Function to print the tree in level order (level-by-level)
+	 * @param head
+	 */
+	public void levelOrder(GenericBinaryTreeNode<T> head){
+		if(head!=null){
+			Queue<GenericBinaryTreeNode<T>> q = new LinkedList<GenericBinaryTreeNode<T>>();
+			q.add(head);
+			while(!q.isEmpty()){
+				GenericBinaryTreeNode<T> temp = q.remove();
+				System.out.print(temp.getVal());
+				if(temp.getRight()!=null)
+					q.add(temp.getRight());
+				if(temp.getLeft()!=null)
+					q.add(temp.getLeft());
+			}
+		}
+		
+	}
+	
+	
 	/**
 	 * 
 	 * Function to calculate the size of the tree
@@ -303,5 +326,7 @@ public class GenericBinaryTree<T> {
 
 //		Object[] a = new Object[1000];
 //		tree.printPaths(tree.getRoot(),(Integer[]) a,0);
+		
+		tree.levelOrder(tree.getRoot());
 	}
 }
