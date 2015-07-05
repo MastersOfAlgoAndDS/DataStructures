@@ -9,10 +9,15 @@
  *  Inorder tree traversal
  *  Preorder tree traversal
  *  Postorder tree traversal
+ *  Levelorder tree traversal
  *  Size of tree function
  *  Comapre identical trees
  *  calculate height/max depth of the tree
  *  delete tree
+ *  mirror the tree in place
+ *  print the paths of the tree from root to each of the leaves. - NOT Complete yet.
+ *  getting the leaf count
+ *  Level order traversal in spiral form - [using two stacks]
  *  
  * */
 
@@ -22,6 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * @author Milind This program is specially written for easier and quicker test
@@ -164,25 +170,25 @@ public class GenericBinaryTree<T> {
 	/**
 	 * 
 	 * Function to print the tree in level order (level-by-level)
+	 * 
 	 * @param head
 	 */
-	public void levelOrder(GenericBinaryTreeNode<T> head){
-		if(head!=null){
+	public void levelOrder(GenericBinaryTreeNode<T> head) {
+		if (head != null) {
 			Queue<GenericBinaryTreeNode<T>> q = new LinkedList<GenericBinaryTreeNode<T>>();
 			q.add(head);
-			while(!q.isEmpty()){
+			while (!q.isEmpty()) {
 				GenericBinaryTreeNode<T> temp = q.remove();
 				System.out.print(temp.getVal());
-				if(temp.getRight()!=null)
+				if (temp.getRight() != null)
 					q.add(temp.getRight());
-				if(temp.getLeft()!=null)
+				if (temp.getLeft() != null)
 					q.add(temp.getLeft());
 			}
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * 
 	 * Function to calculate the size of the tree
@@ -250,11 +256,11 @@ public class GenericBinaryTree<T> {
 		}
 	}
 
-	public void printPaths(GenericBinaryTreeNode<T> head, T[] path,int pathlen) {
+	public void printPaths(GenericBinaryTreeNode<T> head, T[] path, int pathlen) {
 		if (head == null)
 			return;
 		else {
-			//path.add(head.getVal());
+			// path.add(head.getVal());
 			path[pathlen] = head.getVal();
 			pathlen++;
 		}
@@ -265,20 +271,54 @@ public class GenericBinaryTree<T> {
 			}
 			System.out.println();
 		} else {
-			printPaths(head.getLeft(), path,pathlen);
-			printPaths(head.getRight(), path,pathlen);
+			printPaths(head.getLeft(), path, pathlen);
+			printPaths(head.getRight(), path, pathlen);
 		}
 	}
 
-	public int getLeafCount(GenericBinaryTreeNode<T> head){
-		if(head==null)
+	public int getLeafCount(GenericBinaryTreeNode<T> head) {
+		if (head == null)
 			return 0;
-		else if(head.getLeft()==null && head.getRight()==null)
+		else if (head.getLeft() == null && head.getRight() == null)
 			return 1;
 		else
 			return getLeafCount(head.getLeft()) + getLeafCount(head.getRight());
 	}
-	
+
+	/**
+	 * Function to print tree in levelorder, however spirally. i.e. print L>R
+	 * and R>L at alternate levels
+	 * 
+	 * @param head
+	 */
+	public void levelOrderSpiral(GenericBinaryTreeNode<T> head) {
+		Stack<GenericBinaryTreeNode<T>> s1 = new Stack<GenericBinaryTreeNode<T>>();
+		Stack<GenericBinaryTreeNode<T>> s2 = new Stack<GenericBinaryTreeNode<T>>();
+		if (head != null) {
+			s1.push(head);
+			while (!s1.isEmpty() || !s2.isEmpty()) {
+				while (!s1.isEmpty()) {
+					GenericBinaryTreeNode<T> temp = s1.pop();
+					System.out.print(temp.getVal());
+					if (temp.getLeft() != null)
+						s2.push(temp.getLeft());
+					if (temp.getRight() != null)
+						s2.push(temp.getRight());
+				}
+				System.out.println();
+				while (!s2.isEmpty()) {
+					GenericBinaryTreeNode<T> temp = s2.pop();
+					System.out.print(temp.getVal());
+					if (temp.getRight() != null)
+						s1.push(temp.getRight());
+					if (temp.getLeft() != null)
+						s1.push(temp.getLeft());
+				}
+				System.out.println();
+			}
+		}
+	}
+
 	/**
 	 * Test function for testing various functions of the tree program
 	 * 
@@ -332,12 +372,15 @@ public class GenericBinaryTree<T> {
 		System.out.println(tree.getRoot());
 		System.out.println("After mirroring the tree: ");
 		System.out.println(tree.mirrorTree(tree.getRoot()));
-
-//		Object[] a = new Object[1000];
-//		tree.printPaths(tree.getRoot(),(Integer[]) a,0);
+		tree.mirrorTree(tree.getRoot());
+		// Object[] a = new Object[1000];
+		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
 		System.out.println();
 		tree.levelOrder(tree.getRoot());
-		System.out.println("Number of leaf nodes is: " + tree.getLeafCount(tree.getRoot()));
-		
+		System.out.println("Number of leaf nodes is: "
+				+ tree.getLeafCount(tree.getRoot()));
+
+		tree.levelOrderSpiral(tree.getRoot());
+
 	}
 }
