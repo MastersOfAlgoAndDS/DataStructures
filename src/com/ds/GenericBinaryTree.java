@@ -270,6 +270,15 @@ public class GenericBinaryTree<T> {
 		}
 	}
 
+	public int getLeafCount(GenericBinaryTreeNode<T> head){
+		if(head==null)
+			return 0;
+		else if(head.getLeft()==null && head.getRight()==null)
+			return 1;
+		else
+			return getLeafCount(head.getLeft()) + getLeafCount(head.getRight());
+	}
+	
 	/**
 	 * Test function for testing various functions of the tree program
 	 * 
@@ -326,7 +335,9 @@ public class GenericBinaryTree<T> {
 
 //		Object[] a = new Object[1000];
 //		tree.printPaths(tree.getRoot(),(Integer[]) a,0);
-		
+		System.out.println();
 		tree.levelOrder(tree.getRoot());
+		System.out.println("Number of leaf nodes is: " + tree.getLeafCount(tree.getRoot()));
+		
 	}
 }
