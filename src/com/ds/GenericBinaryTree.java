@@ -18,6 +18,7 @@
  *  print the paths of the tree from root to each of the leaves. - NOT Complete yet.
  *  getting the leaf count
  *  Level order traversal in spiral form - [using two stacks]
+ *  Check whether tree conserves the children sum property
  *  
  * */
 
@@ -320,6 +321,28 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * 
+	 * This function returns true only if the tree is empty, leaf node or the
+	 * property of children sum is valid for all subtrees. Else it returns
+	 * false.
+	 * 
+	 * @param head
+	 * @return
+	 */
+	public boolean isChildrenSumPropertyValid(
+			GenericBinaryTreeNode<Integer> head) {
+		if (head == null || (head.getLeft() == null && head.getRight() == null))
+			return true;
+		if (head.getVal() == ((head.getLeft() == null ? 0 : head.getLeft()
+				.getVal()) + (head.getRight() == null ? 0 : head.getRight()
+				.getVal())))
+			return isChildrenSumPropertyValid(head.getLeft())
+					&& isChildrenSumPropertyValid(head.getRight());
+		else
+			return false;
+	}
+
+	/**
 	 * Test function for testing various functions of the tree program
 	 * 
 	 * @param args
@@ -381,6 +404,17 @@ public class GenericBinaryTree<T> {
 				+ tree.getLeafCount(tree.getRoot()));
 
 		tree.levelOrderSpiral(tree.getRoot());
+
+		ArrayList<Integer> list3 = new ArrayList<Integer>();
+		list3.add(10);
+		list3.add(8);
+		list3.add(2);
+		list3.add(3);
+		list3.add(5);
+		list3.add(2);
+
+		GenericBinaryTree<Integer> tree3 = new GenericBinaryTree<Integer>(list3);
+		System.out.println(tree3.isChildrenSumPropertyValid(tree3.getRoot()));
 
 	}
 }
