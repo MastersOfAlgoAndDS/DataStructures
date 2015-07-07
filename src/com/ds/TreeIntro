@@ -44,5 +44,12 @@ Studying trees from geeksforgeeks.org
 	Inorder and Preorder
 	Inorder and Level-order
 	SO INORDER is always required. IF Inorder traversal output is not avaiable then "NO CAN'T BE DONE!"
+
 	
-	
+===========================================================================================
+
+Some tricky and difficult problems
+
+1. Check for the children sum property in a binary tree
+2. Convert an arbitrary Binary Tree to a tree that holds Children Sum Property
+3. 
