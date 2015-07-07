@@ -39,7 +39,7 @@ import java.util.Stack;
  * @param <T>
  */
 public class GenericBinaryTree<T> {
-	GenericBinaryTreeNode<T> root;
+	private GenericBinaryTreeNode<T> root;
 
 	public GenericBinaryTreeNode<T> getRoot() {
 		return root;
