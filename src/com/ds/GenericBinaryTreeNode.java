@@ -9,9 +9,9 @@ package com.ds;
 
 public class GenericBinaryTreeNode<T> {
 
-	T val;
-	GenericBinaryTreeNode<T> left;
-	GenericBinaryTreeNode<T> right;
+	private T val;
+	private GenericBinaryTreeNode<T> left;
+	private GenericBinaryTreeNode<T> right;
 	
 	/**
 	 * @param t
