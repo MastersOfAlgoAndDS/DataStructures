@@ -19,6 +19,7 @@
  *  getting the leaf count
  *  Level order traversal in spiral form - [using two stacks]
  *  Check whether tree conserves the children sum property
+ *  Diameter of a tree
  *  
  * */
 
@@ -341,6 +342,26 @@ public class GenericBinaryTree<T> {
 		else
 			return false;
 	}
+	
+	
+	/**
+	 * Function to calculate the diameter of a tree.
+	 * Diameter is the longest path from any of the leaf to another leaf in the tree.
+	 * This diameter may or may not pass via the root.
+	 * Basically diameter is the max of the following 3
+	 * 		max height on left subtree + max height on right subtree + 1
+	 * 		longest diameter in the left subtree
+	 * 		longest diameter in the right subtree
+	 * @param head
+	 */
+	public int diameter(GenericBinaryTreeNode<T> head){
+		if (head==null)
+			return 0;
+		int leftHt=0, rightHt=0;
+		leftHt = height(head.getLeft());
+		rightHt = height(head.getRight());
+		return Math.max(leftHt + rightHt + 1,Math.max(diameter(head.getLeft()), diameter(head.getRight())));
+	}
 
 	/**
 	 * Test function for testing various functions of the tree program
@@ -348,73 +369,83 @@ public class GenericBinaryTree<T> {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int numberOfNodes = in.nextInt();
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for (int i = 0; i < numberOfNodes; i++) {
-			list.add(in.nextInt());
-		}
-		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
-		System.out.println(tree);
-		tree.preOrder(tree.getRoot());
-		System.out.println();
-		tree.inOrder(tree.getRoot());
-		System.out.println();
-		tree.postOrder(tree.getRoot());
-		System.out.println();
-		System.out.println("Tree size is: " + tree.size(tree.getRoot()));
+//		Scanner in = new Scanner(System.in);
+//		int numberOfNodes = in.nextInt();
+//		ArrayList<Integer> list = new ArrayList<Integer>();
+//		for (int i = 0; i < numberOfNodes; i++) {
+//			list.add(in.nextInt());
+//		}
+//		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+//		System.out.println(tree);
+//		tree.preOrder(tree.getRoot());
+//		System.out.println();
+//		tree.inOrder(tree.getRoot());
+//		System.out.println();
+//		tree.postOrder(tree.getRoot());
+//		System.out.println();
+//		System.out.println("Tree size is: " + tree.size(tree.getRoot()));
+//
+//		Scanner in2 = new Scanner(System.in);
+//		int numberOfNodes2 = in2.nextInt();
+//		ArrayList<Integer> list2 = new ArrayList<Integer>();
+//		for (int i = 0; i < numberOfNodes2; i++) {
+//			list2.add(in2.nextInt());
+//		}
+//		GenericBinaryTree<Integer> tree2 = new GenericBinaryTree<Integer>(list2);
+//		System.out.println(tree.sameTrees(tree.getRoot(), tree2.getRoot()));
+//
+//		System.out.println("Height of the tree is: "
+//				+ tree.height(tree.getRoot()));
+//		GenericBinaryTree<Integer> treeRandom = new GenericBinaryTree<Integer>();
+//		treeRandom.setRoot(new GenericBinaryTreeNode<Integer>(20));
+//		treeRandom.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(10));
+//		treeRandom.getRoot().getLeft()
+//				.setLeft(new GenericBinaryTreeNode<Integer>(30));
+//		treeRandom.getRoot().getLeft().getLeft()
+//				.setLeft(new GenericBinaryTreeNode<Integer>(40));
+//		treeRandom.getRoot().setRight(new GenericBinaryTreeNode<Integer>(70));
+//		System.out.println(treeRandom.toString());
+//		System.out.println("Height of random tree is: "
+//				+ treeRandom.height(treeRandom.getRoot()));
+//
+//		System.out.println("Tree before deleting: " + treeRandom);
+//		treeRandom.deleteTree(treeRandom.getRoot());
+//		System.out.println("Tree after deleting: " + treeRandom);
+//
+//		System.out.println("Before mirroring the tree: ");
+//		System.out.println(tree.getRoot());
+//		System.out.println("After mirroring the tree: ");
+//		System.out.println(tree.mirrorTree(tree.getRoot()));
+//		tree.mirrorTree(tree.getRoot());
+//		// Object[] a = new Object[1000];
+//		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
+//		System.out.println();
+//		tree.levelOrder(tree.getRoot());
+//		System.out.println("Number of leaf nodes is: "
+//				+ tree.getLeafCount(tree.getRoot()));
+//
+//		tree.levelOrderSpiral(tree.getRoot());
+//
+//		ArrayList<Integer> list3 = new ArrayList<Integer>();
+//		list3.add(10);
+//		list3.add(8);
+//		list3.add(2);
+//		list3.add(3);
+//		list3.add(5);
+//		list3.add(2);
+//
+//		GenericBinaryTree<Integer> tree3 = new GenericBinaryTree<Integer>(list3);
+//		System.out.println(tree3.isChildrenSumPropertyValid(tree3.getRoot()));
 
-		Scanner in2 = new Scanner(System.in);
-		int numberOfNodes2 = in2.nextInt();
-		ArrayList<Integer> list2 = new ArrayList<Integer>();
-		for (int i = 0; i < numberOfNodes2; i++) {
-			list2.add(in2.nextInt());
-		}
-		GenericBinaryTree<Integer> tree2 = new GenericBinaryTree<Integer>(list2);
-		System.out.println(tree.sameTrees(tree.getRoot(), tree2.getRoot()));
-
-		System.out.println("Height of the tree is: "
-				+ tree.height(tree.getRoot()));
-		GenericBinaryTree<Integer> treeRandom = new GenericBinaryTree<Integer>();
-		treeRandom.setRoot(new GenericBinaryTreeNode<Integer>(20));
-		treeRandom.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(10));
-		treeRandom.getRoot().getLeft()
-				.setLeft(new GenericBinaryTreeNode<Integer>(30));
-		treeRandom.getRoot().getLeft().getLeft()
-				.setLeft(new GenericBinaryTreeNode<Integer>(40));
-		treeRandom.getRoot().setRight(new GenericBinaryTreeNode<Integer>(70));
-		System.out.println(treeRandom.toString());
-		System.out.println("Height of random tree is: "
-				+ treeRandom.height(treeRandom.getRoot()));
-
-		System.out.println("Tree before deleting: " + treeRandom);
-		treeRandom.deleteTree(treeRandom.getRoot());
-		System.out.println("Tree after deleting: " + treeRandom);
-
-		System.out.println("Before mirroring the tree: ");
-		System.out.println(tree.getRoot());
-		System.out.println("After mirroring the tree: ");
-		System.out.println(tree.mirrorTree(tree.getRoot()));
-		tree.mirrorTree(tree.getRoot());
-		// Object[] a = new Object[1000];
-		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
-		System.out.println();
-		tree.levelOrder(tree.getRoot());
-		System.out.println("Number of leaf nodes is: "
-				+ tree.getLeafCount(tree.getRoot()));
-
-		tree.levelOrderSpiral(tree.getRoot());
-
-		ArrayList<Integer> list3 = new ArrayList<Integer>();
-		list3.add(10);
-		list3.add(8);
-		list3.add(2);
-		list3.add(3);
-		list3.add(5);
-		list3.add(2);
-
-		GenericBinaryTree<Integer> tree3 = new GenericBinaryTree<Integer>(list3);
-		System.out.println(tree3.isChildrenSumPropertyValid(tree3.getRoot()));
-
+		//diameter test
+		ArrayList<Integer> list4 = new ArrayList<Integer>();
+		list4.add(1);
+		list4.add(2);
+		list4.add(3);
+		list4.add(4);
+		list4.add(5);
+		GenericBinaryTree<Integer> tree4 = new GenericBinaryTree<Integer>(list4);
+		System.out.println("Diameter of tree4 is:" + tree4.diameter(tree4.getRoot()));
+		
 	}
 }
