@@ -15,6 +15,7 @@
  *  Size of tree function
  *  Comapre identical trees
  *  calculate height/max depth of the tree
+ *  isTheTreeHeightBalanced
  *  delete tree
  *  mirror the tree in place
  *  print the paths of the tree from root to each of the leaves. - NOT Complete yet.
@@ -249,6 +250,30 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * Here we consider the balancing scheme where following conditions should
+	 * be checked to determine if a binary tree is balanced. An empty tree is
+	 * height-balanced. A non-empty binary tree T is balanced if: 1) Left
+	 * subtree of T is balanced 2) Right subtree of T is balanced 3) The
+	 * difference between heights of left subtree and right subtree is not more
+	 * than 1.
+	 * 
+	 * @param head
+	 * @return boolean
+	 */
+	public boolean isTreeHeightBalanced(GenericBinaryTreeNode head) {
+		if (head == null)
+			return true;
+		int leftHt = 0, rightHt = 0;
+		leftHt = height(head.getLeft());
+		rightHt = height(head.getRight());
+		if ((Math.abs(leftHt - rightHt) <= 1)
+				&& isTreeHeightBalanced(head.getLeft())
+				&& isTreeHeightBalanced(head.getRight()))
+			return true;
+		return false;
+	}
+
+	/**
 	 * Function to delete a tree
 	 * 
 	 * @param head
@@ -438,6 +463,8 @@ public class GenericBinaryTree<T> {
 		time = System.currentTimeMillis() - start;
 		System.out
 				.println("Time required for this function: " + time + " secs");
+
+		testIsTreeHeightBalanced();
 
 	}
 
@@ -678,6 +705,32 @@ public class GenericBinaryTree<T> {
 	public static void testDiameterImproved(GenericBinaryTree tree) {
 		System.out.println("Diameter of tree with improved algorithm is:"
 				+ tree.diameterImproved(tree.getRoot(), new int[] { 0 }));
+	}
+
+	public static void testIsTreeHeightBalanced() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		// list4.add(1);
+		// list4.add(2);
+		// list4.add(3);
+		// list4.add(4);
+		// list4.add(5);
+
+		list.add(10);
+		list.add(15);
+		list.add(5);
+		list.add(7);
+		list.add(4);
+		list.add(3);
+		list.add(12);
+		list.add(6);
+		list.add(17);
+		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+		// Code to add extra leaf node in the left subtree so that the tree is
+		// imbalanced and test fails.
+		// tree.getRoot().getLeft().getLeft().getLeft().setLeft(new
+		// GenericBinaryTreeNode<Integer>(100));
+		System.out.println("Tree Created: " + tree);
+		System.out.println(tree.isTreeHeightBalanced(tree.getRoot()));
 	}
 
 }
