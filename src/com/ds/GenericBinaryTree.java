@@ -139,7 +139,7 @@ public class GenericBinaryTree<T> {
 	 * @param head
 	 * @return void
 	 */
-	public void preOrder(GenericBinaryTreeNode<T> head) {
+	public static void preOrder(GenericBinaryTreeNode head) {
 		if (head == null)
 			return;
 		else {
@@ -191,10 +191,10 @@ public class GenericBinaryTree<T> {
 			while (!q.isEmpty()) {
 				GenericBinaryTreeNode<T> temp = q.remove();
 				System.out.print(temp.getVal());
-				if (temp.getRight() != null)
-					q.add(temp.getRight());
 				if (temp.getLeft() != null)
 					q.add(temp.getLeft());
+				if (temp.getRight() != null)
+					q.add(temp.getRight());
 			}
 		}
 
@@ -451,6 +451,7 @@ public class GenericBinaryTree<T> {
 	public static void main(String[] args) {
 		// Object[] a = new Object[1000];
 		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
+		testTreeTraversals(createSampleTree());
 		GenericBinaryTree<Integer> tree = createSampleTree(999999);
 		long start = System.currentTimeMillis();
 		testDiameter(tree);
