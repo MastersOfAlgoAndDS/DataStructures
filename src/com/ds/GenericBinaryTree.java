@@ -135,44 +135,44 @@ public class GenericBinaryTree<T> {
 
 	/**
 	 * Function to print the preorder traversal of the tree output
-	 * 
+	 * This function uses recursive strategy
 	 * @param head
 	 * @return void
 	 */
-	public static void preOrder(GenericBinaryTreeNode head) {
+	public static void preOrderRecur(GenericBinaryTreeNode head) {
 		if (head == null)
 			return;
 		else {
 			System.out.print(head.getVal());
-			preOrder(head.getLeft());
-			preOrder(head.getRight());
+			preOrderRecur(head.getLeft());
+			preOrderRecur(head.getRight());
 		}
 	}
 
 	/**
 	 * Function to print the inorder traversal of the tree output
-	 * 
+	 * This function uses recursive strategy
 	 * @param head
 	 * @return void
 	 */
-	public void inOrder(GenericBinaryTreeNode<T> head) {
+	public void inOrderRecur(GenericBinaryTreeNode<T> head) {
 		if (head != null) {
-			inOrder(head.getLeft());
+			inOrderRecur(head.getLeft());
 			System.out.print(head.getVal());
-			inOrder(head.getRight());
+			inOrderRecur(head.getRight());
 		}
 	}
 
 	/**
 	 * Function to print the postorder traversal of the tree output
-	 * 
+	 * This function uses recursive strategy
 	 * @param head
 	 * @return void
 	 */
-	public void postOrder(GenericBinaryTreeNode<T> head) {
+	public void postOrderRecur(GenericBinaryTreeNode<T> head) {
 		if (head != null) {
-			postOrder(head.getLeft());
-			postOrder(head.getRight());
+			postOrderRecur(head.getLeft());
+			postOrderRecur(head.getRight());
 			System.out.print(head.getVal());
 		}
 	}
@@ -256,6 +256,10 @@ public class GenericBinaryTree<T> {
 	 * subtree of T is balanced 2) Right subtree of T is balanced 3) The
 	 * difference between heights of left subtree and right subtree is not more
 	 * than 1.
+	 * 
+	 * This function can also be optimized by calculating height along with the
+	 * recursion instead of calling height for every node. (Similar to how it is
+	 * done in the diameterOptimization function)
 	 * 
 	 * @param head
 	 * @return boolean
@@ -495,11 +499,11 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void testTreeTraversals(GenericBinaryTree tree) {
-		tree.preOrder(tree.getRoot());
+		tree.preOrderRecur(tree.getRoot());
 		System.out.println();
-		tree.inOrder(tree.getRoot());
+		tree.inOrderRecur(tree.getRoot());
 		System.out.println();
-		tree.postOrder(tree.getRoot());
+		tree.postOrderRecur(tree.getRoot());
 		System.out.println();
 		tree.levelOrder(tree.getRoot());
 		System.out.println();
