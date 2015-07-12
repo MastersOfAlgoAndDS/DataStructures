@@ -725,11 +725,21 @@ public class GenericBinaryTree<T> {
 		list.add(6);
 		list.add(17);
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+		System.out.println("Tree Created: " + tree);
 		// Code to add extra leaf node in the left subtree so that the tree is
 		// imbalanced and test fails.
-		// tree.getRoot().getLeft().getLeft().getLeft().setLeft(new
-		// GenericBinaryTreeNode<Integer>(100));
-		System.out.println("Tree Created: " + tree);
+		// tree.getRoot().getLeft().getLeft().getLeft()
+		// .setLeft(new GenericBinaryTreeNode<Integer>(100));
+		// System.out.println("One more leaf added: " + tree);
+
+		// Code to remove some child nodes from the left subtree to actually
+		// make only the left subtree of the root imbalanced in height. The code
+		// should give false output.
+		// tree.getRoot().getLeft().setRight(null);
+
+		System.out
+				.println("The tree after impairing right child of the left subtree: ");
+		System.out.println(tree);
 		System.out.println(tree.isTreeHeightBalanced(tree.getRoot()));
 	}
 
