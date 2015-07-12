@@ -22,7 +22,10 @@
  *  Level order traversal in spiral form - [using two stacks]
  *  Check whether tree conserves the children sum property
  *  Diameter of a tree
- *  
+ *  Diameter of a tree - 	Optimized. Here the height of the tree is being calculated in the same recursion when the diameter is being calculated. 
+ *  						So complexity is O(n) instead of O(n^2) in the simple approach.
+ *  						Also another thing noticed was in C program there were pointers to pass the height as a parameter along. However in Java we don;t have pointers, 
+ *  						so when the the Simple LinkedList Node was used as a pointer structure, the performance surprisingly degraded instead of improving. Hence the second parameter of the optimized function was changed to a single element array. 
  * */
 
 package com.ds;
@@ -398,22 +401,20 @@ public class GenericBinaryTree<T> {
 				Math.max(diameter(head.getLeft()), diameter(head.getRight())));
 	}
 
-	public int diameterImproved(GenericBinaryTreeNode<T> head,
-			GenericNode<Integer> height) {
+	public int diameterImproved(GenericBinaryTreeNode<T> head, int[] height) {
 		if (head == null) {
-			height.setVal(0);
+			height[0] = 0;
 			return 0;
 		}
-		GenericNode<Integer> leftHt = new GenericNode<Integer>(0);
-		GenericNode<Integer> rightHt = new GenericNode<Integer>(0);
+		int[] leftHt = { 0 };
+		int[] rightHt = { 0 };
 
 		int lDiam = 0, rDiam = 0;
 		lDiam = diameterImproved(head.getLeft(), leftHt);
 		rDiam = diameterImproved(head.getRight(), rightHt);
 
-		height.setVal(Math.max(leftHt.getVal(), rightHt.getVal()) + 1);
-		return Math.max(leftHt.getVal() + rightHt.getVal() + 1,
-				Math.max(lDiam, rDiam));
+		height[0] = Math.max(leftHt[0], rightHt[0]) + 1;
+		return Math.max(leftHt[0] + rightHt[0] + 1, Math.max(lDiam, rDiam));
 	}
 
 	/**
@@ -426,16 +427,18 @@ public class GenericBinaryTree<T> {
 		// Object[] a = new Object[1000];
 		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
 		GenericBinaryTree<Integer> tree = createSampleTree(999999);
-		long start=System.currentTimeMillis();
-		testDiameterImproved(tree);
-		long time = System.currentTimeMillis()-start;
-		System.out.println("Time required for this function: " + time + " secs");
-		
-		start=System.currentTimeMillis();
+		long start = System.currentTimeMillis();
 		testDiameter(tree);
-		time = System.currentTimeMillis()-start;
-		System.out.println("Time required for this function: " + time + " secs");
-		
+		long time = System.currentTimeMillis() - start;
+		System.out
+				.println("Time required for this function: " + time + " secs");
+
+		start = System.currentTimeMillis();
+		testDiameterImproved(tree);
+		time = System.currentTimeMillis() - start;
+		System.out
+				.println("Time required for this function: " + time + " secs");
+
 	}
 
 	/**
@@ -547,12 +550,13 @@ public class GenericBinaryTree<T> {
 	/**
 	 * Function to create a sample tree for testing given input number of nodes
 	 * in the tree. This is the function mostly changed for any test performed.
+	 * 
 	 * @param int numOfNodes
 	 * @return tree
 	 */
 	public static GenericBinaryTree createSampleTree(int numOfNodes) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		for(int i=1; i<=numOfNodes; i++){
+		for (int i = 1; i <= numOfNodes; i++) {
 			list.add(i);
 		}
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
@@ -661,8 +665,7 @@ public class GenericBinaryTree<T> {
 
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
 		System.out.println("Diameter of tree with improved algorithm is:"
-				+ tree.diameterImproved(tree.getRoot(),
-						new GenericNode<Integer>(0)));
+				+ tree.diameterImproved(tree.getRoot(), new int[] { 0 }));
 	}
 
 	/**
@@ -674,8 +677,7 @@ public class GenericBinaryTree<T> {
 	 */
 	public static void testDiameterImproved(GenericBinaryTree tree) {
 		System.out.println("Diameter of tree with improved algorithm is:"
-				+ tree.diameterImproved(tree.getRoot(),
-						new GenericNode<Integer>(0)));
+				+ tree.diameterImproved(tree.getRoot(), new int[] { 0 }));
 	}
 
 }
