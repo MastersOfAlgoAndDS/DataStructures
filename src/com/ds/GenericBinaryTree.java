@@ -8,10 +8,12 @@
  * 	Includes
  * 	Basic Binary tree construction
  *  Add node
- *  Inorder tree traversal
- *  Preorder tree traversal
- *  Postorder tree traversal
- *  Levelorder tree traversal
+ *  Inorder tree traversal - Recursive Strategy
+ *  Preorder tree traversal - Recursive Strategy
+ *  Inorder tree traversal - Iterative Strategy
+ *  Preorder tree traversal - Iterative Strategy
+ *  Postorder tree traversal - Recursive Strategy
+ *  Levelorder tree traversal - Iterative Strategy
  *  Size of tree function
  *  Comapre identical trees
  *  calculate height/max depth of the tree
@@ -134,8 +136,9 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
-	 * Function to print the preorder traversal of the tree output
-	 * This function uses recursive strategy
+	 * Function to print the preorder traversal of the tree output This function
+	 * uses recursive strategy
+	 * 
 	 * @param head
 	 * @return void
 	 */
@@ -150,8 +153,9 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
-	 * Function to print the inorder traversal of the tree output
-	 * This function uses recursive strategy
+	 * Function to print the inorder traversal of the tree output This function
+	 * uses recursive strategy
+	 * 
 	 * @param head
 	 * @return void
 	 */
@@ -164,8 +168,9 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
-	 * Function to print the postorder traversal of the tree output
-	 * This function uses recursive strategy
+	 * Function to print the postorder traversal of the tree output This
+	 * function uses recursive strategy
+	 * 
 	 * @param head
 	 * @return void
 	 */
@@ -174,6 +179,60 @@ public class GenericBinaryTree<T> {
 			postOrderRecur(head.getLeft());
 			postOrderRecur(head.getRight());
 			System.out.print(head.getVal());
+		}
+	}
+
+	/**
+	 * Function to print the postorder traversal of the tree output This
+	 * function uses iterative strategy
+	 * 
+	 * @param head
+	 * @return void
+	 */
+	public void preOrder(GenericBinaryTree<T> tree) {
+		if (tree != null) {
+			Stack st = new Stack<GenericBinaryTreeNode>();
+			GenericBinaryTreeNode curr = tree.getRoot();
+
+			while (curr != null || !st.isEmpty()) {
+
+				if (curr != null) {
+					System.out.print(curr.getVal());
+					st.push(curr);
+					curr = curr.getLeft();
+				} else if (!st.isEmpty()) {
+					curr = (GenericBinaryTreeNode) st.pop();
+					curr = curr.getRight();
+				}
+			}
+
+		}
+	}
+
+	/**
+	 * Function to print the postorder traversal of the tree output This
+	 * function uses iterative strategy
+	 * 
+	 * @param head
+	 * @return void
+	 */
+	public void inOrder(GenericBinaryTree<T> tree) {
+		if (tree != null) {
+			Stack st = new Stack<GenericBinaryTreeNode>();
+			GenericBinaryTreeNode curr = tree.getRoot();
+
+			while (curr != null || !st.isEmpty()) {
+
+				if (curr != null) {
+					st.push(curr);
+					curr = curr.getLeft();
+				} else if (!st.isEmpty()) {
+					curr = (GenericBinaryTreeNode) st.pop();
+					System.out.print(curr.getVal());
+					curr = curr.getRight();
+				}
+			}
+
 		}
 	}
 
@@ -456,20 +515,20 @@ public class GenericBinaryTree<T> {
 		// Object[] a = new Object[1000];
 		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
 		testTreeTraversals(createSampleTree());
-		GenericBinaryTree<Integer> tree = createSampleTree(999999);
-		long start = System.currentTimeMillis();
-		testDiameter(tree);
-		long time = System.currentTimeMillis() - start;
-		System.out
-				.println("Time required for this function: " + time + " secs");
-
-		start = System.currentTimeMillis();
-		testDiameterImproved(tree);
-		time = System.currentTimeMillis() - start;
-		System.out
-				.println("Time required for this function: " + time + " secs");
-
-		testIsTreeHeightBalanced();
+		// GenericBinaryTree<Integer> tree = createSampleTree(999999);
+		// long start = System.currentTimeMillis();
+		// testDiameter(tree);
+		// long time = System.currentTimeMillis() - start;
+		// System.out
+		// .println("Time required for this function: " + time + " secs");
+		//
+		// start = System.currentTimeMillis();
+		// testDiameterImproved(tree);
+		// time = System.currentTimeMillis() - start;
+		// System.out
+		// .println("Time required for this function: " + time + " secs");
+		//
+		// testIsTreeHeightBalanced();
 
 	}
 
@@ -501,7 +560,11 @@ public class GenericBinaryTree<T> {
 	public static void testTreeTraversals(GenericBinaryTree tree) {
 		tree.preOrderRecur(tree.getRoot());
 		System.out.println();
+		tree.preOrder(tree);
+		System.out.println();
 		tree.inOrderRecur(tree.getRoot());
+		System.out.println();
+		tree.inOrder(tree);
 		System.out.println();
 		tree.postOrderRecur(tree.getRoot());
 		System.out.println();
