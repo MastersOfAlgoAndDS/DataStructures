@@ -9,12 +9,12 @@ public class MoveZeroesToFront {
 		for(int i : array)
 			System.out.print(i + " ");
 		System.out.println();
-		int[] arr = MoveZeroesToFront(array);
+		int[] arr = MoveZeroesToFront_N(array);
 		for(int i : arr)
 			System.out.print(i + " ");
 	}
 
-	private static int[] MoveZeroesToFront(int[] array) {
+	private static int[] MoveZeroesToFront_NSquare(int[] array) {
 		
 		int count = 0;
 		int k=0;
@@ -38,6 +38,23 @@ public class MoveZeroesToFront {
 		
 	}
 	
-	
+	public static int[] MoveZeroesToFront_N(int[] arr){
+		
+		int len = arr.length -1 ;
+		
+		
+		for(int i = arr.length - 1 ; i >= 0; i-- ){
+			System.out.println("iteration: " + i);
+			if(arr[i]!=0){
+				arr[len--] = arr[i];
+			}
+		}
+		while(len>=0){
+			arr[len--] = 0;
+		}
+		
+		return arr;
+		
+	}
 	
 }
