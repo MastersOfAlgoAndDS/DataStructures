@@ -18,7 +18,7 @@ public class NextPowerOf2 {
 	 * to get the next power of two for the number.
 	 * 
 	 * @param num
-	 * @return
+	 * @return int
 	 */
 	public static int NextPowerOf2_bitMethod(int num){
 		int count=0;
