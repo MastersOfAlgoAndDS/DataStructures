@@ -20,11 +20,46 @@ public class Utilities {
 		return result;
 	}
 	
+	public static int getIntValue(char c) throws Exception{
+		if(c>='0' && c <='9')
+			return c - 48;
+		else
+			throw new Exception("Not an integer");
+	}
+	
+	public static int getAsciiValue(char c){
+		return c;
+	}
+	
 	public static void main(String[] args) {
 		int num = 64;
 		System.out.println(decToBin(124>>3));
 		System.out.println(binToDec("0110010"));
 
+		for(char i=65; i<=90; i++){
+			System.out.println(i + ": " + binToDec(decToBin(i)));
+		}
+		System.out.println();
+		for(char i=97; i<=122; i++){
+			System.out.println(i + ": " + binToDec(decToBin(i)));
+		}
+		
+		for(char i='0'; i<='9'; i++){
+			System.out.println(i);
+		}
+		
+		System.out.println(decToBin('H'));
+		
+		System.out.println(getAsciiValue('0'));
+		System.out.println(getAsciiValue('A'));
+		System.out.println(getAsciiValue('a'));
+		try {
+			System.out.println(getIntValue('8'));
+			System.out.println(getIntValue('A'));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
