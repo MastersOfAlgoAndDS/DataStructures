@@ -1,3 +1,7 @@
+/**
+ * Problem 5.4 : Design an ecient algorithm for computing the GCD of two numbers
+ * without using multiplication, division or the modulus operators.
+ * */
 package EPI;
 
 public class Problem_5_4 {
