@@ -1,5 +1,5 @@
 /**
- * Implement string/integer inter-conversion functions. Use the following
+ * Problem 5.3 : Implement string/integer inter-conversion functions. Use the following
  * function signatures: String intToString(int x) and int stringToInt(String s).
  * 
  * */
