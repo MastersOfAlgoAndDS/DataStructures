@@ -1,5 +1,8 @@
 package EPI;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Utilities {
 
 	public static String decToBin(int n){
@@ -29,6 +32,11 @@ public class Utilities {
 	
 	public static int getAsciiValue(char c){
 		return c;
+	}
+	
+	public static LinkedList<String> getLinkedListFromArray(String[] array){
+		LinkedList<String> ll = new LinkedList<String> (Arrays.asList(array));
+		return ll;
 	}
 	
 	public static void main(String[] args) {
