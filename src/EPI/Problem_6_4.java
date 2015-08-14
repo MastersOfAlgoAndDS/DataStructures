@@ -7,6 +7,10 @@
  * 1. Reverse the complete line 
  * 2. Traverse again and reverse each word as it comes along.
  * 
+ * This problem can be done using a string or character array. 
+ * Its better to do it with character array - 
+ * TripAdvisor internship test was character array based.
+ * 
  * */
 
 package EPI;
