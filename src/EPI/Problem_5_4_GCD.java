@@ -4,7 +4,7 @@
  * */
 package EPI;
 
-public class Problem_5_4 {
+public class Problem_5_4_GCD {
 
 	/**
 	 * 
@@ -35,7 +35,7 @@ public class Problem_5_4 {
 	}
 
 	public static void main(String[] args) {
-		Problem_5_4 p = new Problem_5_4();
+		Problem_5_4_GCD p = new Problem_5_4_GCD();
 		System.out.println(p.simpleGCD(1, 32));
 	}
 

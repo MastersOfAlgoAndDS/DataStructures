@@ -15,7 +15,7 @@
 
 package EPI;
 
-public class Problem_6_4 {
+public class Problem_6_4_TripAdvisor_ReverseWordsinLine {
 
 	String reverseWords(String input) {
 		// first reverse the complete input string
@@ -52,7 +52,7 @@ public class Problem_6_4 {
 
 	public static void main(String[] args) {
 		String input = "Hello World is here";
-		Problem_6_4 p = new Problem_6_4();
+		Problem_6_4_TripAdvisor_ReverseWordsinLine p = new Problem_6_4_TripAdvisor_ReverseWordsinLine();
 		System.out.println(p.reverseWords(input));
 	}
 

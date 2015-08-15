@@ -23,7 +23,7 @@
 
 package EPI;
 
-public class Problem_6_5 {
+public class Problem_6_5_RegularExpression {
 
 	public boolean isMatch(String r, String s) {
 		if (r.startsWith("^")) {
@@ -77,7 +77,7 @@ public class Problem_6_5 {
 		String s = "aaaajaaW9aW";
 		System.out
 				.println("This program checks whether string S matches with string r");
-		Problem_6_5 p = new Problem_6_5();
+		Problem_6_5_RegularExpression p = new Problem_6_5_RegularExpression();
 		System.out.println("r is: " + r);
 		System.out.println("s is: " + s);
 		System.out.println(p.isMatch(r, s));

@@ -7,7 +7,7 @@
 
 package EPI;
 
-public class Problem_6_1 {
+public class Problem_6_1_Pivot {
 
 	public static void ourPivotAlgo(int[] arr, int index) {
 		int[] array = arr;

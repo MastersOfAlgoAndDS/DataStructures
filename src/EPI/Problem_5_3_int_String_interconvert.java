@@ -6,7 +6,7 @@
 
 package EPI;
 
-public class Problem_5_3 {
+public class Problem_5_3_int_String_interconvert {
 
 	public String intToString(int x) {
 		String result = "";
@@ -68,7 +68,7 @@ public class Problem_5_3 {
 	}
 
 	public static void main(String[] args) {
-		Problem_5_3 p = new Problem_5_3();
+		Problem_5_3_int_String_interconvert p = new Problem_5_3_int_String_interconvert();
 		String answer = p.intToString(-123);
 		System.out.println(answer);
 		try {

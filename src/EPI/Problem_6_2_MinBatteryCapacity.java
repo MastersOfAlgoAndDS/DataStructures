@@ -6,12 +6,12 @@
 
 package EPI;
 
-public class Problem_6_2 {
+public class Problem_6_2_MinBatteryCapacity {
 
 	public static void main(String[] args) {
 		// Take the input of the sequence of coordinates
 		int[][] coords = { { 1, 2, 3 }, { 2, 3, 4 }, { 3, 4, 5 }, { 4, 5, 6 } };
-		Problem_6_2 p = new Problem_6_2();
+		Problem_6_2_MinBatteryCapacity p = new Problem_6_2_MinBatteryCapacity();
 		System.out
 				.println("Minimum battery capacity required to complete this path: "
 						+ p.findCapacity(coords));

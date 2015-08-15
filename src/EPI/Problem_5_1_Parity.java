@@ -15,7 +15,7 @@ package EPI;
  * @author Milind
  *
  */
-public class Problem_5_1 {
+public class Problem_5_1_Parity {
 
 	/**
 	 * 	basically we're shifting 1 bit right each time 
