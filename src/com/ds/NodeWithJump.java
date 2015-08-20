@@ -53,4 +53,11 @@ public class NodeWithJump {
 		System.out.println();
 	}
 
+	@Override
+	public String toString() {
+		return "NodeWithJump [val=" + val + ", next="
+				+ (next == null ? null : next.getVal()) + ", jump="
+				+ (jump == null ? null : jump.getVal()) + "]";
+	}
+
 }

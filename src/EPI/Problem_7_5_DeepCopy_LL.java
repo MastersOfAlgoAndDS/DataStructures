@@ -53,6 +53,7 @@ public class Problem_7_5_DeepCopy_LL {
 			trav = trav.getNext().getNext();
 		}
 
+		// Step 3
 		trav = head;
 		while (trav != null && trav.getNext() != null
 				&& trav.getNext().getNext() != null) {
