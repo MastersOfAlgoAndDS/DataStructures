@@ -33,14 +33,47 @@ public class Problem_7_5_DeepCopy_LL {
 		if (head == null)
 			return null;
 		// Step 1
-		return null;
+		NodeWithJump trav = head;
+		NodeWithJump newTrav = new NodeWithJump(head.getVal());
+		NodeWithJump newHead = newTrav;
+		newTrav.setNext(head.getNext());
+		head.setNext(newTrav);
+		trav = newTrav.getNext();
+		while (trav != null) {
+			newTrav = new NodeWithJump(trav.getVal());
+			newTrav.setNext(trav.getNext());
+			trav.setNext(newTrav);
+			trav = newTrav.getNext();
+		}
+
+		// Step 2
+		trav = head;
+		while (trav != null && trav.getNext() != null) {
+			trav.getNext().setJump(trav.getJump().getNext());
+			trav = trav.getNext().getNext();
+		}
+
+		trav = head;
+		while (trav != null && trav.getNext() != null
+				&& trav.getNext().getNext() != null) {
+			newTrav = trav.getNext();
+			trav.setNext(newTrav.getNext());
+			newTrav.setNext(trav.getNext().getNext());
+			trav = trav.getNext();
+		}
+
+		// fix the last node of the old list.
+		newTrav = trav.getNext();
+		trav.setNext(newTrav.getNext());
+
+		return newHead;
 	}
 
 	public static void main(String[] args) {
 		NodeWithJump ll = new NodeWithJump(20);
 		NodeWithJump trav = ll;
 		for (int i = 0; i <= 2; i++) {
-			trav.setNext(new NodeWithJump((int) Math.ceil(Math.random() * 10)));
+			trav.setNext(new NodeWithJump((int) Math.ceil(Math.random() * 100)));
 			trav = trav.getNext();
 		}
 		ll.printNodeWithJump();
@@ -52,6 +85,10 @@ public class Problem_7_5_DeepCopy_LL {
 				.setJump(ll.getNext().getNext().getNext());
 		ll.printNodeWithJump();
 
+		Problem_7_5_DeepCopy_LL p = new Problem_7_5_DeepCopy_LL();
+		NodeWithJump newLL = p.deepCopy(ll);
+		ll.printNodeWithJump();
+		newLL.printNodeWithJump();
 	}
 
 }
