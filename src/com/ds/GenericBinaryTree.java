@@ -381,7 +381,7 @@ public class GenericBinaryTree<T> {
 	 * 
 	 * @param head
 	 * @param path
-	 * @param pathlen
+	 * @param pathlen pathlen is 0 when the program begins
 	 * @return void
 	 */
 	public void printPaths(GenericBinaryTreeNode<T> head, T[] path, int pathlen) {
