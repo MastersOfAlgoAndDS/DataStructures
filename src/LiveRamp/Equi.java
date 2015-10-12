@@ -12,7 +12,7 @@ package LiveRamp;
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
 
-class Solution {
+class Equi {
 	/**
 	 * 
 	 * O(n^2) solution
@@ -71,7 +71,7 @@ class Solution {
 	}
 
 	public static void main(String[] args) {
-		Solution S = new Solution();
+		Equi S = new Equi();
 		int[] A = { -1, 3, -4, 5, 1, -6, 2, 1 };
 		System.out.println(S.CoolSolution(A));
 	}
