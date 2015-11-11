@@ -20,7 +20,7 @@
  *  isTheTreeHeightBalanced
  *  delete tree
  *  mirror the tree in place
- *  print the paths of the tree from root to each of the leaves. - NOT Complete yet.
+ *  print the paths of the tree from root to each of the leaves.
  *  getting the leaf count
  *  Level order traversal in spiral form - [using two stacks]
  *  Check whether tree conserves the children sum property
@@ -146,7 +146,7 @@ public class GenericBinaryTree<T> {
 		if (head == null)
 			return;
 		else {
-			System.out.print(head.getVal());
+			System.out.print(head.getVal() + " ");
 			preOrderRecur(head.getLeft());
 			preOrderRecur(head.getRight());
 		}
@@ -162,7 +162,7 @@ public class GenericBinaryTree<T> {
 	public void inOrderRecur(GenericBinaryTreeNode<T> head) {
 		if (head != null) {
 			inOrderRecur(head.getLeft());
-			System.out.print(head.getVal());
+			System.out.print(head.getVal() + " ");
 			inOrderRecur(head.getRight());
 		}
 	}
@@ -178,7 +178,7 @@ public class GenericBinaryTree<T> {
 		if (head != null) {
 			postOrderRecur(head.getLeft());
 			postOrderRecur(head.getRight());
-			System.out.print(head.getVal());
+			System.out.print(head.getVal() + " ");
 		}
 	}
 
@@ -197,7 +197,7 @@ public class GenericBinaryTree<T> {
 			while (curr != null || !st.isEmpty()) {
 
 				if (curr != null) {
-					System.out.print(curr.getVal());
+					System.out.print(curr.getVal() + " ");
 					st.push(curr);
 					curr = curr.getLeft();
 				} else if (!st.isEmpty()) {
@@ -236,7 +236,7 @@ public class GenericBinaryTree<T> {
 					curr = curr.getLeft();
 				} else if (!st.isEmpty()) {
 					curr = (GenericBinaryTreeNode) st.pop();
-					System.out.print(curr.getVal());
+					System.out.print(curr.getVal() + " ");
 					curr = curr.getRight();
 				}
 			}
@@ -257,7 +257,7 @@ public class GenericBinaryTree<T> {
 			q.add(head);
 			while (!q.isEmpty()) {
 				GenericBinaryTreeNode<T> temp = q.remove();
-				System.out.print(temp.getVal());
+				System.out.print(temp.getVal() + " ");
 				if (temp.getLeft() != null)
 					q.add(temp.getLeft());
 				if (temp.getRight() != null)
@@ -381,27 +381,17 @@ public class GenericBinaryTree<T> {
 	 * 
 	 * @param head
 	 * @param path
-	 * @param pathlen
-	 *            pathlen is 0 when the program begins
+	 *            [path in string till now]
 	 * @return void
 	 */
-	public void printPaths(GenericBinaryTreeNode<T> head, T[] path, int pathlen) {
-		if (head == null)
-			return;
-		else {
-			// path.add(head.getVal());
-			path[pathlen] = head.getVal();
-			pathlen++;
-		}
-		if (head.getLeft() == null && head.getRight() == null) {
-			// print the path from the root to the leaf
-			for (T item : path) {
-				System.out.print(item.toString());
-			}
-			System.out.println();
+	public void printRootToLeafPaths(GenericBinaryTreeNode<T> head, String path) {
+		if (head == null) {
+			// System.out.println(path);
+		} else if (head.getLeft() == null && head.getRight() == null) {
+			System.out.println(path + " " + head.getVal());
 		} else {
-			printPaths(head.getLeft(), path, pathlen);
-			printPaths(head.getRight(), path, pathlen);
+			printRootToLeafPaths(head.getLeft(), path + " " + head.getVal());
+			printRootToLeafPaths(head.getRight(), path + " " + head.getVal());
 		}
 	}
 
@@ -521,11 +511,10 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree1 = createSampleTree(17);
-		GenericBinaryTree<Integer> tree2 = createSampleTree(32);
-		System.out.println("Height of tree1: " + tree1.height(tree1.getRoot()));
-		System.out.println("Height of tree2: " + tree2.height(tree2.getRoot()));
-
+		GenericBinaryTree<Integer> tree1 = createSampleTree(8);
+		tree1.preOrder(tree1);
+		System.out.println();
+		tree1.printRootToLeafPaths(tree1.getRoot(), "");
 	}
 
 	/**
