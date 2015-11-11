@@ -269,6 +269,36 @@ public class GenericBinaryTree<T> {
 
 	/**
 	 * 
+	 * Function to print the tree in level order (level-by-level)
+	 * 
+	 * @param head
+	 * @return void
+	 */
+	public void levelOrderLevelwisePrint(GenericBinaryTreeNode<T> head) {
+		int countSentinels = 1;
+		if (head != null) {
+			Queue<GenericBinaryTreeNode<T>> q = new LinkedList<GenericBinaryTreeNode<T>>();
+			q.add(head);
+			q.add(null);
+			while (q.size() > 1) {
+				GenericBinaryTreeNode<T> temp = q.remove();
+				if (temp == null) {
+					System.out.print("\n");
+					q.add(null);
+				} else {
+					System.out.print(temp.getVal() + " ");
+					if (temp.getLeft() != null)
+						q.add(temp.getLeft());
+					if (temp.getRight() != null)
+						q.add(temp.getRight());
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * 
 	 * Function to calculate the size of the tree
 	 * 
 	 * @param head
@@ -514,7 +544,9 @@ public class GenericBinaryTree<T> {
 		GenericBinaryTree<Integer> tree1 = createSampleTree(8);
 		tree1.preOrder(tree1);
 		System.out.println();
-		tree1.printRootToLeafPaths(tree1.getRoot(), "");
+		tree1.levelOrder(tree1.getRoot());
+		System.out.println();
+		tree1.levelOrderLevelwisePrint(tree1.getRoot());
 	}
 
 	/**
