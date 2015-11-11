@@ -381,7 +381,8 @@ public class GenericBinaryTree<T> {
 	 * 
 	 * @param head
 	 * @param path
-	 * @param pathlen pathlen is 0 when the program begins
+	 * @param pathlen
+	 *            pathlen is 0 when the program begins
 	 * @return void
 	 */
 	public void printPaths(GenericBinaryTreeNode<T> head, T[] path, int pathlen) {
@@ -520,23 +521,10 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		// Object[] a = new Object[1000];
-		// tree.printPaths(tree.getRoot(),(Integer[]) a,0);
-		testTreeTraversals(createSampleTree());
-		// GenericBinaryTree<Integer> tree = createSampleTree(999999);
-		// long start = System.currentTimeMillis();
-		// testDiameter(tree);
-		// long time = System.currentTimeMillis() - start;
-		// System.out
-		// .println("Time required for this function: " + time + " secs");
-		//
-		// start = System.currentTimeMillis();
-		// testDiameterImproved(tree);
-		// time = System.currentTimeMillis() - start;
-		// System.out
-		// .println("Time required for this function: " + time + " secs");
-		//
-		// testIsTreeHeightBalanced();
+		GenericBinaryTree<Integer> tree1 = createSampleTree(17);
+		GenericBinaryTree<Integer> tree2 = createSampleTree(32);
+		System.out.println("Height of tree1: " + tree1.height(tree1.getRoot()));
+		System.out.println("Height of tree2: " + tree2.height(tree2.getRoot()));
 
 	}
 
