@@ -14,8 +14,9 @@
  *  Preorder tree traversal - Iterative Strategy
  *  Postorder tree traversal - Recursive Strategy
  *  Levelorder tree traversal - Iterative Strategy
+ *  Levelorder tree traversal with levelwise printing - Google Question!!
  *  Size of tree function
- *  Comapre identical trees
+ *  Compare identical trees
  *  calculate height/max depth of the tree
  *  isTheTreeHeightBalanced
  *  delete tree
@@ -275,7 +276,6 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public void levelOrderLevelwisePrint(GenericBinaryTreeNode<T> head) {
-		int countSentinels = 1;
 		if (head != null) {
 			Queue<GenericBinaryTreeNode<T>> q = new LinkedList<GenericBinaryTreeNode<T>>();
 			q.add(head);
@@ -455,7 +455,7 @@ public class GenericBinaryTree<T> {
 			while (!s1.isEmpty() || !s2.isEmpty()) {
 				while (!s1.isEmpty()) {
 					GenericBinaryTreeNode<T> temp = s1.pop();
-					System.out.print(temp.getVal());
+					System.out.print(temp.getVal() + " ");
 					if (temp.getLeft() != null)
 						s2.push(temp.getLeft());
 					if (temp.getRight() != null)
@@ -464,7 +464,7 @@ public class GenericBinaryTree<T> {
 				System.out.println();
 				while (!s2.isEmpty()) {
 					GenericBinaryTreeNode<T> temp = s2.pop();
-					System.out.print(temp.getVal());
+					System.out.print(temp.getVal() + " ");
 					if (temp.getRight() != null)
 						s1.push(temp.getRight());
 					if (temp.getLeft() != null)
@@ -541,12 +541,19 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree1 = createSampleTree(8);
+		GenericBinaryTree<Integer> tree1 = createSampleTree(18);
+		System.out.println("Preorder printing");
 		tree1.preOrder(tree1);
 		System.out.println();
+		System.out.println("Level order printing");
 		tree1.levelOrder(tree1.getRoot());
 		System.out.println();
+		System.out.println("Level order levelwise print");
 		tree1.levelOrderLevelwisePrint(tree1.getRoot());
+		System.out.println();
+		System.out.println("Level order levelwise print spirally");
+		tree1.levelOrderSpiral(tree1.getRoot());
+
 	}
 
 	/**
