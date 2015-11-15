@@ -29,11 +29,13 @@
  *  Diameter of a tree - 	Optimized. Here the height of the tree is being calculated in the same recursion when the diameter is being calculated. 
  *  						So complexity is O(n) instead of O(n^2) in the simple approach.
  *  						Also another thing noticed was in C program there were pointers to pass the height as a parameter along. However in Java we don;t have pointers, 
- *  						so when the the Simple LinkedList Node was used as a pointer structure, the performance surprisingly degraded instead of improving. Hence the second parameter of the optimized function was changed to a single element array. 
+ *  						so when the the Simple LinkedList Node was used as a pointer structure, the performance surprisingly degraded instead of improving. Hence the second parameter of the optimized function was changed to a single element array.
+ *  To determine if a binary tree is height balanced 
  * */
 
 package com.ds;
 
+import java.awt.image.SampleModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -377,6 +379,33 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * 
+	 * Not optimized yet. Trying to optimize this execution of tree height
+	 * balance checker by trying to avoid the height calculation everytime.
+	 * 
+	 * 
+	 * @param head
+	 * @param height
+	 * @return
+	 */
+	public boolean isTreeHeightBalancedOptimized(GenericBinaryTreeNode head,
+			int[] height) {
+		int[] leftHt = new int[] { 0 }, rightHt = new int[] { 0 };
+		if (head == null)
+			return true;
+		boolean leftBalance = true;
+		leftBalance = isTreeHeightBalanced(head.getLeft());
+		boolean rightBalance = true;
+		rightBalance = isTreeHeightBalanced(head.getRight());
+
+		height[0] = Math.max(leftHt[0], rightHt[0]) + 1;
+		if ((Math.abs(leftHt[0] - rightHt[0]) <= 1) && leftBalance
+				&& rightBalance)
+			return true;
+		return false;
+	}
+
+	/**
 	 * Function to delete a tree
 	 * 
 	 * @param head
@@ -561,6 +590,23 @@ public class GenericBinaryTree<T> {
 				Math.max(diameter(head.getLeft()), diameter(head.getRight())));
 	}
 
+	/**
+	 * Function to calculate the diameter of a tree. Diameter is the longest
+	 * path from any of the leaf to another leaf in the tree. This diameter may
+	 * or may not pass via the root. Basically diameter is the max of the
+	 * following 3 max height on left subtree + max height on right subtree + 1
+	 * longest diameter in the left subtree longest diameter in the right
+	 * subtree
+	 * 
+	 * In this function along with the tree head, the height array is also
+	 * passed in recursion to calculate height as we go down the tree. Array is
+	 * the main reason since array is pass by value, i.e. as we go down the tree
+	 * the value stored in array is saved in array and continue downwards.
+	 * 
+	 * @param head
+	 * @param height
+	 * @return
+	 */
 	public int diameterImproved(GenericBinaryTreeNode<T> head, int[] height) {
 		if (head == null) {
 			height[0] = 0;
@@ -584,8 +630,31 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree = createSampleTree(new int[] { 50, 7,
-				2, 3, 5, 1, 30 });
+		GenericBinaryTree<Integer> tree1 = createSampleTree(8);
+		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>();
+		tree.setRoot(new GenericBinaryTreeNode<Integer>(1));
+		tree.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(2));
+		tree.getRoot().setRight(new GenericBinaryTreeNode<Integer>(3));
+		tree.getRoot().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(4));
+		tree.getRoot().getLeft()
+				.setRight(new GenericBinaryTreeNode<Integer>(5));
+		tree.getRoot().getLeft().getRight()
+				.setLeft(new GenericBinaryTreeNode<Integer>(6));
+		tree.getRoot().getLeft().getRight()
+				.setRight(new GenericBinaryTreeNode<Integer>(7));
+		tree.getRoot().getRight()
+				.setRight(new GenericBinaryTreeNode<Integer>(8));
+		tree.getRoot().getRight().getRight()
+				.setRight(new GenericBinaryTreeNode<Integer>(9));
+		tree.getRoot().getRight().getRight().getRight()
+				.setLeft(new GenericBinaryTreeNode<Integer>(10));
+		tree.getRoot().getRight().getRight().getRight()
+				.setRight(new GenericBinaryTreeNode<Integer>(11));
+		tree.getRoot().getRight().getRight().getRight().getLeft()
+				.setLeft(new GenericBinaryTreeNode<Integer>(12));
+		tree.getRoot().getRight().getRight().getRight().getLeft()
+				.setRight(new GenericBinaryTreeNode<Integer>(13));
+
 		System.out.println(tree);
 		tree.levelOrderLevelwisePrint(tree.getRoot());
 		System.out.println();
@@ -593,6 +662,16 @@ public class GenericBinaryTree<T> {
 		tree.convertBinTreeToChildrenSumProperty(tree.getRoot());
 		tree.levelOrderLevelwisePrint(tree.getRoot());
 		System.out.println();
+		System.out.println("Leaf Node Count: "
+				+ tree.getLeafCount(tree.getRoot()));
+		System.out.println("Tree Diameter: " + tree.diameter(tree.getRoot()));
+		System.out.println("Tree Diameter: "
+				+ tree.diameterImproved(tree.getRoot(), new int[] { 0 }));
+		System.out.println("Is tree height balanced?: "
+				+ tree1.isTreeHeightBalanced(tree1.getRoot()));
+		System.out.println("Is tree height balanced?: "
+				+ tree.isTreeHeightBalancedOptimized(tree1.getRoot(),
+						new int[] { 0 }));
 	}
 
 	/**
