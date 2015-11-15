@@ -7,57 +7,56 @@
 
 package com.ds;
 
-
 public class GenericBinaryTreeNode<T> {
 
 	private T val;
 	private GenericBinaryTreeNode<T> left;
 	private GenericBinaryTreeNode<T> right;
-	
+
 	/**
 	 * @param t
 	 */
 	public GenericBinaryTreeNode(T t) {
 		val = t;
-		left=null;
-		right=null;
+		left = null;
+		right = null;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public T getVal() {
 		return val;
 	}
-	
+
 	/**
 	 * @param val
 	 */
-	public void setVal(T val) {
-		this.val = val;
+	public void setVal(Integer val) {
+		this.val = (T) val;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public GenericBinaryTreeNode<T> getLeft() {
 		return left;
 	}
-	
+
 	/**
 	 * @param left
 	 */
 	public void setLeft(GenericBinaryTreeNode<T> left) {
 		this.left = left;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public GenericBinaryTreeNode<T> getRight() {
 		return right;
 	}
-	
+
 	/**
 	 * @param right
 	 */
@@ -67,14 +66,9 @@ public class GenericBinaryTreeNode<T> {
 
 	@Override
 	public String toString() {
-//		return "GenericBinaryTreeNode [val=" + val + ", left=" + left
-//				+ ", right=" + right + "]";
-		return "[" + val + ", " + left
-				+ ", " + right + "]";
+		// return "GenericBinaryTreeNode [val=" + val + ", left=" + left
+		// + ", right=" + right + "]";
+		return "[" + val + ", " + left + ", " + right + "]";
 	}
-	
-	
-	
-	
-	
+
 }

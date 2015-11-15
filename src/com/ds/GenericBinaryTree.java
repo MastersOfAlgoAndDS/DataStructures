@@ -35,6 +35,8 @@
 package com.ds;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -498,6 +500,47 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * Convert Arbitrary Binary Tree to null
+	 * 
+	 * @param root
+	 */
+	public void convertBinTreeToChildrenSumProperty(
+			GenericBinaryTreeNode<T> root) {
+		if (root == null)
+			return;
+		else if (root.getLeft() == null && root.getRight() == null)
+			return;
+		else {
+			convertBinTreeToChildrenSumProperty(root.getLeft());
+			convertBinTreeToChildrenSumProperty(root.getRight());
+			int leftVal = (Integer) (root.getLeft() == null ? 0 : root
+					.getLeft().getVal());
+			int rightVal = (Integer) (root.getRight() == null ? 0 : root
+					.getRight().getVal());
+			int diff = leftVal + rightVal - (Integer) root.getVal();
+			if (diff == 0)
+				return;
+			else if (diff > 0) {
+				root.setVal(Integer.valueOf(root.getVal().toString()) + diff);
+			} else if (diff < 0) {
+				if (root.getLeft() != null) {
+					root.getLeft().setVal(
+							Integer.valueOf(root.getLeft().getVal().toString())
+									- diff);
+					convertBinTreeToChildrenSumProperty(root.getLeft());
+				} else {
+					root.getRight()
+							.setVal(Integer.valueOf(root.getRight().getVal()
+									.toString())
+									- diff);
+					convertBinTreeToChildrenSumProperty(root.getRight());
+
+				}
+			}
+		}
+	}
+
+	/**
 	 * Function to calculate the diameter of a tree. Diameter is the longest
 	 * path from any of the leaf to another leaf in the tree. This diameter may
 	 * or may not pass via the root. Basically diameter is the max of the
@@ -541,19 +584,15 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree1 = createSampleTree(18);
-		System.out.println("Preorder printing");
-		tree1.preOrder(tree1);
+		GenericBinaryTree<Integer> tree = createSampleTree(new int[] { 50, 7,
+				2, 3, 5, 1, 30 });
+		System.out.println(tree);
+		tree.levelOrderLevelwisePrint(tree.getRoot());
 		System.out.println();
-		System.out.println("Level order printing");
-		tree1.levelOrder(tree1.getRoot());
+		System.out.println(tree.isChildrenSumPropertyValid(tree.getRoot()));
+		tree.convertBinTreeToChildrenSumProperty(tree.getRoot());
+		tree.levelOrderLevelwisePrint(tree.getRoot());
 		System.out.println();
-		System.out.println("Level order levelwise print");
-		tree1.levelOrderLevelwisePrint(tree1.getRoot());
-		System.out.println();
-		System.out.println("Level order levelwise print spirally");
-		tree1.levelOrderSpiral(tree1.getRoot());
-
 	}
 
 	/**
@@ -677,6 +716,21 @@ public class GenericBinaryTree<T> {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (int i = 1; i <= numOfNodes; i++) {
 			list.add(i);
+		}
+		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+		return tree;
+	}
+
+	/**
+	 * Function to create a sample tree for testing. This is the function mostly
+	 * changed for any test performed.
+	 * 
+	 * @return tree
+	 */
+	public static GenericBinaryTree createSampleTree(int[] array) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < array.length; i++) {
+			list.add(array[i]);
 		}
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
 		return tree;
