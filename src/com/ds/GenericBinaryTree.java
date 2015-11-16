@@ -18,7 +18,7 @@
  *  Size of tree function
  *  Compare identical trees
  *  calculate height/max depth of the tree
- *  isTheTreeHeightBalanced
+ *  isTheTreeHeightBalanced - To determine if a binary tree is height balanced
  *  delete tree
  *  mirror the tree in place
  *  print the paths of the tree from root to each of the leaves.
@@ -30,7 +30,7 @@
  *  						So complexity is O(n) instead of O(n^2) in the simple approach.
  *  						Also another thing noticed was in C program there were pointers to pass the height as a parameter along. However in Java we don;t have pointers, 
  *  						so when the the Simple LinkedList Node was used as a pointer structure, the performance surprisingly degraded instead of improving. Hence the second parameter of the optimized function was changed to a single element array.
- *  To determine if a binary tree is height balanced 
+ *  To determine if there exists a path - (Root to leaf path) sum equal to a given number or not 
  * */
 
 package com.ds;
@@ -624,54 +624,45 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * This method determines if there exists a path - (Root to leaf path) sum
+	 * equal to a given number or not
+	 * 
+	 * 
+	 * @param root
+	 * @param sum
+	 * @param given
+	 * @return
+	 */
+	public boolean rootLeafPathSumCompare(GenericBinaryTreeNode<T> root,
+			int sum, int given) {
+		if (root == null)
+			return false;
+		if (root.getLeft() == null && root.getRight() == null) {
+			if (given == (sum + Integer.valueOf(root.getVal().toString())))
+				return true;
+			return false;
+		} else {
+			return rootLeafPathSumCompare(root.getLeft(),
+					sum + Integer.valueOf(root.getVal().toString()), given)
+					|| rootLeafPathSumCompare(root.getRight(),
+							sum + Integer.valueOf(root.getVal().toString()),
+							given);
+		}
+	}
+
+	/**
 	 * Main Test Client for testing various functions of the tree program
 	 * 
 	 * @param args
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree1 = createSampleTree(8);
-		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>();
-		tree.setRoot(new GenericBinaryTreeNode<Integer>(1));
-		tree.getRoot().setLeft(new GenericBinaryTreeNode<Integer>(2));
-		tree.getRoot().setRight(new GenericBinaryTreeNode<Integer>(3));
-		tree.getRoot().getLeft().setLeft(new GenericBinaryTreeNode<Integer>(4));
-		tree.getRoot().getLeft()
-				.setRight(new GenericBinaryTreeNode<Integer>(5));
-		tree.getRoot().getLeft().getRight()
-				.setLeft(new GenericBinaryTreeNode<Integer>(6));
-		tree.getRoot().getLeft().getRight()
-				.setRight(new GenericBinaryTreeNode<Integer>(7));
-		tree.getRoot().getRight()
-				.setRight(new GenericBinaryTreeNode<Integer>(8));
-		tree.getRoot().getRight().getRight()
-				.setRight(new GenericBinaryTreeNode<Integer>(9));
-		tree.getRoot().getRight().getRight().getRight()
-				.setLeft(new GenericBinaryTreeNode<Integer>(10));
-		tree.getRoot().getRight().getRight().getRight()
-				.setRight(new GenericBinaryTreeNode<Integer>(11));
-		tree.getRoot().getRight().getRight().getRight().getLeft()
-				.setLeft(new GenericBinaryTreeNode<Integer>(12));
-		tree.getRoot().getRight().getRight().getRight().getLeft()
-				.setRight(new GenericBinaryTreeNode<Integer>(13));
-
-		System.out.println(tree);
+		GenericBinaryTree<Integer> tree = createSampleTree(new int[] { 10, 8,
+				2, 3, 5, 2 });
 		tree.levelOrderLevelwisePrint(tree.getRoot());
 		System.out.println();
-		System.out.println(tree.isChildrenSumPropertyValid(tree.getRoot()));
-		tree.convertBinTreeToChildrenSumProperty(tree.getRoot());
-		tree.levelOrderLevelwisePrint(tree.getRoot());
-		System.out.println();
-		System.out.println("Leaf Node Count: "
-				+ tree.getLeafCount(tree.getRoot()));
-		System.out.println("Tree Diameter: " + tree.diameter(tree.getRoot()));
-		System.out.println("Tree Diameter: "
-				+ tree.diameterImproved(tree.getRoot(), new int[] { 0 }));
-		System.out.println("Is tree height balanced?: "
-				+ tree1.isTreeHeightBalanced(tree1.getRoot()));
-		System.out.println("Is tree height balanced?: "
-				+ tree.isTreeHeightBalancedOptimized(tree1.getRoot(),
-						new int[] { 0 }));
+		System.out.println(tree.rootLeafPathSumCompare(tree.getRoot(), 0, 14));
+		System.out.println(tree.rootLeafPathSumCompare(tree.getRoot(), 0, 15));
 	}
 
 	/**
