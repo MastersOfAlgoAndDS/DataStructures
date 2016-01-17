@@ -22,11 +22,11 @@ DONE	Diameter of a Binary Tree
 DONE	How to determine if a binary tree is height-balanced?
 DONE	Inorder Tree Traversal without Recursion
 Inorder Tree Traversal without recursion and without stack!
-	Root to leaf path sum equal to a given number
-	Construct Tree from given Inorder and Preorder traversals
-Given a binary tree, print all root-to-leaf paths
-Double Tree
-Maximum width of a binary tree
+DONE	Root to leaf path sum equal to a given number
+DONE	Construct Tree from given Inorder and Preorder traversals
+DONE	Given a binary tree, print all root-to-leaf paths
+DONE	Double Tree
+DONE	Maximum width of a binary tree
 Foldable Binary Trees
 Print nodes at k distance from root
 Get Level of a node in a Binary Tree

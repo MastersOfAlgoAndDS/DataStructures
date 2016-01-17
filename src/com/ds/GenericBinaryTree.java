@@ -30,15 +30,17 @@
  *  						So complexity is O(n) instead of O(n^2) in the simple approach.
  *  						Also another thing noticed was in C program there were pointers to pass the height as a parameter along. However in Java we don;t have pointers, 
  *  						so when the the Simple LinkedList Node was used as a pointer structure, the performance surprisingly degraded instead of improving. Hence the second parameter of the optimized function was changed to a single element array.
- *  To determine if there exists a path - (Root to leaf path) sum equal to a given number or not 
+ *  To determine if there exists a path - (Root to leaf path) sum equal to a given number or not
+ *  Construct Tree from given Inorder and Preorder traversals
+ *  PrintAll root to leaf paths
+ *  Double Tree - program that converts a given tree to its Double tree. To create Double tree of the given tree, create a new duplicate for each node, and insert the duplicate as the left child of the original node.
+ *  
  * */
 
 package com.ds;
 
-import java.awt.image.SampleModel;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -633,20 +635,93 @@ public class GenericBinaryTree<T> {
 	 * @param given
 	 * @return
 	 */
-	public boolean rootLeafPathSumCompare(GenericBinaryTreeNode<T> root,
+	private boolean rootLeafPathSumCompare(GenericBinaryTreeNode<T> root,
 			int sum, int given) {
-		if (root == null)
-			return false;
-		if (root.getLeft() == null && root.getRight() == null) {
-			if (given == (sum + Integer.valueOf(root.getVal().toString())))
+		if (root == null) {
+			if (given == sum)
 				return true;
 			return false;
 		} else {
-			return rootLeafPathSumCompare(root.getLeft(),
-					sum + Integer.valueOf(root.getVal().toString()), given)
-					|| rootLeafPathSumCompare(root.getRight(),
-							sum + Integer.valueOf(root.getVal().toString()),
-							given);
+			sum += Integer.valueOf(root.getVal().toString());
+			return rootLeafPathSumCompare(root.getLeft(), sum, given)
+					|| rootLeafPathSumCompare(root.getRight(), sum, given);
+		}
+	}
+
+	public boolean rootLeafPathSumCompare(GenericBinaryTreeNode<T> root,
+			int given) {
+		if (root == null && given == 0)
+			return true;
+		else
+			return rootLeafPathSumCompare(root, 0, given);
+	}
+
+	public GenericBinaryTreeNode<Integer> constructFromInPre(
+			ArrayList<Integer> preorder, ArrayList<Integer> inorder,
+			GenericBinaryTreeNode<Integer> root) {
+
+		ArrayList<Integer> inleft = new ArrayList<Integer>();
+		ArrayList<Integer> inright = new ArrayList<Integer>();
+		ArrayList<Integer> preleft = new ArrayList<Integer>();
+		ArrayList<Integer> preright = new ArrayList<Integer>();
+
+		if (preorder.size() > 0) {
+			// get the root current from the preorder string
+			root = new GenericBinaryTreeNode<Integer>(preorder.get(0));
+			preorder.remove(0);
+
+			// set left and right parts of the sub problem based on root
+			// position in inorder string
+			boolean flag = false;
+			HashMap<Integer, Boolean> ignoreList = new HashMap<Integer, Boolean>();
+			int i = 0;
+
+			while (i < inorder.size()) {
+				// if root is found in inorder string then set flag
+				if (inorder.get(i) == root.getVal()) {
+					flag = true;
+				} else if (flag == false) {
+					inleft.add(inorder.get(i));
+					ignoreList.put(inorder.get(i), true);
+				} else {
+					inright.add(inorder.get(i));
+				}
+				i++;
+			}
+
+			// prepare new preorder strings for subproblems
+			i = 0;
+			while (i < preorder.size()) {
+				if (ignoreList.containsKey(preorder.get(i))) {
+					preleft.add(preorder.get(i));
+				} else {
+					preright.add(preorder.get(i));
+				}
+				i++;
+			}
+			root.setLeft(constructFromInPre(preleft, inleft, root.getLeft()));
+			root.setRight(constructFromInPre(preright, inright, root.getRight()));
+		}
+		return root;
+
+	}
+
+	/**
+	 * 
+	 * program that converts a given tree to its Double tree. To create Double
+	 * tree of the given tree, create a new duplicate for each node, and insert
+	 * the duplicate as the left child of the original node.
+	 * 
+	 * @param root
+	 */
+	public void doubleTree(GenericBinaryTreeNode<T> root) {
+		if (root != null) {
+			GenericBinaryTreeNode<T> newNode = new GenericBinaryTreeNode<T>(
+					root.getVal());
+			newNode.setLeft(root.getLeft());
+			root.setLeft(newNode);
+			doubleTree(newNode.getLeft());
+			doubleTree(root.getRight());
 		}
 	}
 
@@ -657,12 +732,51 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		GenericBinaryTree<Integer> tree = createSampleTree(new int[] { 10, 8,
-				2, 3, 5, 2 });
-		tree.levelOrderLevelwisePrint(tree.getRoot());
+
+		ArrayList<Integer> inorder = new ArrayList<>();
+		inorder.add(4);
+		inorder.add(2);
+		inorder.add(5);
+		inorder.add(1);
+		inorder.add(6);
+		inorder.add(7);
+		inorder.add(3);
+		inorder.add(8);
+
+		ArrayList<Integer> preorder = new ArrayList<Integer>();
+		preorder.add(1);
+		preorder.add(2);
+		preorder.add(4);
+		preorder.add(5);
+		preorder.add(3);
+		preorder.add(7);
+		preorder.add(6);
+		preorder.add(8);
+
+		GenericBinaryTreeNode<Integer> constructedTreeRoot = null;
+		GenericBinaryTree<Integer> constructedTree = new GenericBinaryTree<Integer>();
+		try {
+			constructedTreeRoot = constructedTree.constructFromInPre(preorder,
+					inorder, new GenericBinaryTreeNode<Integer>(null));
+		} catch (Exception e) {
+			e.printStackTrace();
+			constructedTree.levelOrderLevelwisePrint(constructedTreeRoot);
+		}
+		constructedTree.setRoot(constructedTreeRoot);
+		constructedTree.levelOrderLevelwisePrint(constructedTreeRoot);
 		System.out.println();
-		System.out.println(tree.rootLeafPathSumCompare(tree.getRoot(), 0, 14));
-		System.out.println(tree.rootLeafPathSumCompare(tree.getRoot(), 0, 15));
+		constructedTree.inOrder(constructedTree);
+		System.out.println();
+
+		// Test Double Tree
+		GenericBinaryTree<Integer> tree = createSampleTree(5);
+		constructedTree.doubleTree(constructedTreeRoot);
+		constructedTree.preOrder(constructedTree);
+		System.out.println();
+		tree.doubleTree(tree.getRoot());
+		tree.preOrder(tree);
+		System.out.println();
+		tree.levelOrderLevelwisePrint(tree.getRoot());
 	}
 
 	/**
