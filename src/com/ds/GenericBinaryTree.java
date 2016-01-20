@@ -34,7 +34,7 @@
  *  Construct Tree from given Inorder and Preorder traversals
  *  PrintAll root to leaf paths
  *  Double Tree - program that converts a given tree to its Double tree. To create Double tree of the given tree, create a new duplicate for each node, and insert the duplicate as the left child of the original node.
- *  
+ *  Foldable Binary Tree - Given a binary tree, find out if the tree can be folded or not.
  * */
 
 package com.ds;
@@ -98,10 +98,16 @@ public class GenericBinaryTree<T> {
 					nextListItem);
 			GenericBinaryTreeNode<T> currQueueItem = queue.peek();
 			if (!isTreeNodeRipe(currQueueItem)) {
-				if (currQueueItem.getLeft() == null)
-					currQueueItem.setLeft(nextTreeNode);
-				else if (currQueueItem.getRight() == null) {
-					currQueueItem.setRight(nextTreeNode);
+				if (currQueueItem.getLeft() == null) {
+					if (nextTreeNode.getVal() == null)
+						currQueueItem.setLeft(null);
+					else
+						currQueueItem.setLeft(nextTreeNode);
+				} else if (currQueueItem.getRight() == null) {
+					if (nextTreeNode.getVal() == null)
+						currQueueItem.setRight(null);
+					else
+						currQueueItem.setRight(nextTreeNode);
 					queue.remove();
 				}
 			}
@@ -725,6 +731,67 @@ public class GenericBinaryTree<T> {
 		}
 	}
 
+	public boolean isFoldable(GenericBinaryTree<T> tree) {
+		if (tree.getRoot() == null || tree == null)
+			return true;
+		else
+			return isStructurallyMirror(tree.getRoot().getLeft(), tree
+					.getRoot().getRight());
+	}
+
+	private boolean isStructurallyMirror(GenericBinaryTreeNode<T> left,
+			GenericBinaryTreeNode<T> right) {
+		if (left == null && right == null)
+			return true;
+		else if ((left != null && right == null)
+				|| (left == null && right != null))
+			return false;
+		return isStructurallyMirror(left.getLeft(), right.getRight())
+				&& isStructurallyMirror(left.getRight(), right.getLeft());
+	}
+
+	public boolean isLeaf(GenericBinaryTreeNode<T> node) {
+		if (node.getLeft() == null && node.getRight() == null)
+			return true;
+		return false;
+	}
+
+	public boolean isSumTree(GenericBinaryTreeNode<T> root) {
+		int leftSum;
+		int rightSum;
+		// if root is null or leaf node, then it is a sumTree
+		if (root == null || (root.getLeft() == null && root.getRight() == null)) {
+			return true;
+		}
+		if (isSumTree(root.getLeft()) && isSumTree(root.getRight())) {
+			if (root.getLeft() == null)
+				leftSum = 0;
+			else if (root.getLeft().getLeft() == null
+					&& root.getLeft().getRight() == null) {
+				leftSum = Integer.valueOf(root.getLeft().getVal().toString());
+			} else {
+				leftSum = 2 * Integer.valueOf(root.getLeft().getVal()
+						.toString());
+			}
+
+			if (root.getRight() == null)
+				rightSum = 0;
+			else if (root.getRight().getLeft() == null
+					&& root.getRight().getRight() == null) {
+				rightSum = Integer.valueOf(root.getRight().getVal().toString());
+			} else {
+				rightSum = 2 * Integer.valueOf(root.getRight().getVal()
+						.toString());
+			}
+
+			if (Integer.valueOf(root.getVal().toString()) == leftSum + rightSum) {
+				return true;
+			} else
+				return false;
+		}
+		return false;
+	}
+
 	/**
 	 * Main Test Client for testing various functions of the tree program
 	 * 
@@ -732,51 +799,6 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-
-		ArrayList<Integer> inorder = new ArrayList<>();
-		inorder.add(4);
-		inorder.add(2);
-		inorder.add(5);
-		inorder.add(1);
-		inorder.add(6);
-		inorder.add(7);
-		inorder.add(3);
-		inorder.add(8);
-
-		ArrayList<Integer> preorder = new ArrayList<Integer>();
-		preorder.add(1);
-		preorder.add(2);
-		preorder.add(4);
-		preorder.add(5);
-		preorder.add(3);
-		preorder.add(7);
-		preorder.add(6);
-		preorder.add(8);
-
-		GenericBinaryTreeNode<Integer> constructedTreeRoot = null;
-		GenericBinaryTree<Integer> constructedTree = new GenericBinaryTree<Integer>();
-		try {
-			constructedTreeRoot = constructedTree.constructFromInPre(preorder,
-					inorder, new GenericBinaryTreeNode<Integer>(null));
-		} catch (Exception e) {
-			e.printStackTrace();
-			constructedTree.levelOrderLevelwisePrint(constructedTreeRoot);
-		}
-		constructedTree.setRoot(constructedTreeRoot);
-		constructedTree.levelOrderLevelwisePrint(constructedTreeRoot);
-		System.out.println();
-		constructedTree.inOrder(constructedTree);
-		System.out.println();
-
-		// Test Double Tree
-		GenericBinaryTree<Integer> tree = createSampleTree(5);
-		constructedTree.doubleTree(constructedTreeRoot);
-		constructedTree.preOrder(constructedTree);
-		System.out.println();
-		tree.doubleTree(tree.getRoot());
-		tree.preOrder(tree);
-		System.out.println();
-		tree.levelOrderLevelwisePrint(tree.getRoot());
 	}
 
 	/**
