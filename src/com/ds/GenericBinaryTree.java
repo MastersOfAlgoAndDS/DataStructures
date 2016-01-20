@@ -35,6 +35,8 @@
  *  PrintAll root to leaf paths
  *  Double Tree - program that converts a given tree to its Double tree. To create Double tree of the given tree, create a new duplicate for each node, and insert the duplicate as the left child of the original node.
  *  Foldable Binary Tree - Given a binary tree, find out if the tree can be folded or not.
+ *  isSumTree - A SumTree is a Binary Tree where the value of a node is equal to sum of the nodes present in its left subtree and right subtree. An empty tree is SumTree and sum of an empty tree can be considered as 0. A leaf node is also considered as SumTree.
+ *  
  * */
 
 package com.ds;
@@ -756,6 +758,12 @@ public class GenericBinaryTree<T> {
 		return false;
 	}
 
+	/**
+	 * returns true if the given Binary Tree is SumTree else false
+	 * 
+	 * @param root
+	 * @return
+	 */
 	public boolean isSumTree(GenericBinaryTreeNode<T> root) {
 		int leftSum;
 		int rightSum;

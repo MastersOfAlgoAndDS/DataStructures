@@ -27,12 +27,12 @@ DONE	Construct Tree from given Inorder and Preorder traversals
 DONE	Given a binary tree, print all root-to-leaf paths
 DONE	Double Tree
 DONE	Maximum width of a binary tree
-Foldable Binary Trees
-Print nodes at k distance from root
-Get Level of a node in a Binary Tree
-Print Ancestors of a given node in Binary Tree
-Check if a given Binary Tree is SumTree
-Check if a binary tree is subtree of another binary tree
+DONE	Foldable Binary Trees
+DONE	Print nodes at k distance from root
+DONE	Get Level of a node in a Binary Tree
+DONE	Print Ancestors of a given node in Binary Tree
+DONE	Check if a given Binary Tree is SumTree
+	Check if a binary tree is subtree of another binary tree
 Connect nodes at same level
 Connect nodes at same level using constant extra space
 Populate Inorder Successor for all nodes
