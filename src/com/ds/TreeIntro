@@ -1,0 +1,58 @@
+Studying trees from geeksforgeeks.org
+
+
+#### Binary Trees Introduction #####  
+
+>Properties of Trees: Handshaking Lemmas
+
+	3 properties studied
+		1.In a k-ary tree where every node has either 0 or k children, following property is always true.
+			L = (k - 1)*I + 1
+			Where L = Number of leaf nodes
+      		I = Number of internal nodes
+      		
+      	2.In Binary tree, number of leaf nodes is always one more than nodes with two children.
+      		L = T + 1
+			Where L = Number of leaf nodes
+      		T = Number of internal nodes with two children  
+      		
+		3. The maximum number of nodes at level ‘l’ of a binary tree is 2^(l-1). Here root is the level 1.
+		
+		4. Maximum number of nodes in a binary tree of height ‘h’ is (2^h) – 1. Here height of leaf is 1.
+		
+		5. In a Binary Tree with N nodes, minimum possible height or minimum number of levels is Log_base2(N+1) 
+		
+		6. A Binary Tree with L leaves has at least Log_base2(L) + 1 levels 
+
+>Types of binary trees
+	Full: A Binary Tree is full if every node has 0 or 2 children
+		1. In a Full Binary, number of leaf nodes is number of internal nodes plus 1
+	Complete: A Binary Tree is complete Binary Tree if all levels are completely filled except possibly the last level and the last level has all keys as left as possible
+		Example: Binary heap
+
+>Applications of trees
+
+	1. Manipulate hierarchical data.
+	2. Make information easy to search (see tree traversal).
+	3. Manipulate sorted lists of data.
+	4. As a workflow for compositing digital images for visual effects.
+	5. Router algorithms
+	6. Form of a multi-stage decision-making (see business chess).
+
+>Combinations to construct the binary tree from other order outputs
+	Inorder and Postorder
+	Inorder and Preorder
+	Inorder and Level-order
+	SO INORDER is always required. IF Inorder traversal output is not avaiable then "NO CAN'T BE DONE!"
+
+	
+===========================================================================================
+
+Some tricky and difficult problems
+
+1. Check for the children sum property in a binary tree
+2. Convert an arbitrary Binary Tree to a tree that holds Children Sum Property
+3. Diameter of a binary tree [optimization!!]
+4. Iterative inOrder and preOrder tree traversal algorithm based on stack
+5. Threaded binary tree and Inorder Tree Traversal without recursion and without stack!
+6. 

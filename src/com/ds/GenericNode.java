@@ -11,6 +11,16 @@ public class GenericNode<T> {
 
 	T val;
 	GenericNode<T> next;
+	
+	public GenericNode(){
+		val = null;
+		next = null;
+	}
+	
+	public GenericNode(T t){
+		val = t;
+	}
+	
 	public T getVal() {
 		return val;
 	}
@@ -23,7 +33,5 @@ public class GenericNode<T> {
 	public void setNext(GenericNode<T> next) {
 		this.next = next;
 	}
-	
-	
 	
 }
