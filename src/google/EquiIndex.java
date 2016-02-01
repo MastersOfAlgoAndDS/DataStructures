@@ -1,7 +1,9 @@
+package google;
+
 /**
- * To find EquillibriumIndex. i.e. index in array for which the sum of all
- * elements before the index = sum of all elements after the index. There can be
- * multiple equillibrium index.
+ * @Problem: To find EquillibriumIndex. i.e. index in array for which the sum of
+ *           all elements before the index = sum of all elements after the
+ *           index. There can be multiple equillibrium index.
  * 
  * @author Milind
  *
