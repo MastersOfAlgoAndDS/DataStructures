@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 import java.util.HashSet;
 import java.util.Set;

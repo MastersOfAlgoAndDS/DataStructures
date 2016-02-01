@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 /**
  * @Problem_1_2 Implement a function void reverse(char* str) in C or C++ which

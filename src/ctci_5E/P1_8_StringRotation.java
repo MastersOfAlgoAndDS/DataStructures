@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 /**
  * @Problem_1_8 Assume you have a method isSubstring which checks if one word is

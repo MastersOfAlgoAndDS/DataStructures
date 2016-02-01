@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 /**
  * @Problem_1_6 Given an image represented by an NxN matrix, where each pixel in

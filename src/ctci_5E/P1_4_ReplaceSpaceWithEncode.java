@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 /**
  * @Problem_1_4 Write a method to replace all spaces in a string with'%20'. You

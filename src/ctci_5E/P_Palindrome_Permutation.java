@@ -1,4 +1,4 @@
-package crackingthecodinginterview;
+package ctci_5E;
 
 public class P_Palindrome_Permutation {
 
