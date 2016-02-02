@@ -1,10 +1,10 @@
 package ctci_5E;
 
-public class P_Palindrome_Permutation {
+public class P_1_Palindrome_Permutation {
 
 	public static void main(String[] args) {
 		String input = "Tact Coa";
-		P_Palindrome_Permutation s = new P_Palindrome_Permutation();
+		P_1_Palindrome_Permutation s = new P_1_Palindrome_Permutation();
 		System.out.println(s.isPalindromePermutation(input));
 	}
 

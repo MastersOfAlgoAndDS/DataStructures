@@ -27,8 +27,7 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node [val=" + val + ", next="
-				+ (next == null ? null : next.getVal()) + "]";
+		return "Node [val=" + val + ", next=" + next + "]";
 	}
 
 	public void printNode() {
