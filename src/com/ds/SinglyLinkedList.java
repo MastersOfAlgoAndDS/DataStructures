@@ -59,7 +59,7 @@ public class SinglyLinkedList {
 			}
 			temp.setNext(node);
 		}
-		print(head);
+		// print(head);
 	}
 
 	public void insertAtFirst(int value) {

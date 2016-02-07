@@ -3,6 +3,22 @@ package ctci_5E;
 import com.ds.Node;
 import com.ds.SinglyLinkedList;
 
+/**
+ * 
+ * @Problem_2_3 Implement an algorithm to delete a node in the middle of a
+ *              singly linked list, given only access to that node.
+ * 
+ *              EXAMPLE
+ * 
+ *              Input: the node c from the linked list a->b->c->d->e
+ * 
+ *              Result: nothing is returned, but the new linked list looks like
+ *              a- >b- >d->e
+ * 
+ * 
+ * @author Milind
+ *
+ */
 public class P_2_3_DeleteFromMiddle {
 
 	public static void main(String[] args) {
