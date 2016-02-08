@@ -1,6 +1,8 @@
 package snapchat;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -27,45 +29,50 @@ public class DictionaryProblem {
 		int N = in.nextInt();
 
 		// Each line is a word
-		ArrayList<String> dictionary = new ArrayList<String>();
+		ArrayList<String> inputWordList = new ArrayList<String>();
 		for (int i = 0; i < N; i++) {
 			String word = in.next();
-			dictionary.add(word);
+			inputWordList.add(word);
 		}
-		ArrayList<String> answer = getSolution(dictionary);
+		ArrayList<String> answer = getSolution(inputWordList);
 		answer.forEach(word -> System.out.println(word));
 	}
 
-	private static ArrayList<String> getSolution(ArrayList<String> wordList) {
+	private static ArrayList<String> getSolution(ArrayList<String> inputWordList) {
 		ArrayList<String> answer = new ArrayList<String>();
 
-		wordList.forEach(word -> {
-			System.out.println("current word is: " + word);
-			Set<String> dictionary = new HashSet<String>();
-			wordList.forEach(p -> {
-				if (!p.equals(word))
-					dictionary.add(p);
-			});
-			boolean val = wordBreak(word, dictionary);
-			System.out.println("value is: " + val);
-			if (val == false) {
-				answer.add(word);
+		Set<String> dictionary = new HashSet<String>();
+		dictionary.addAll(inputWordList);
+		for (int i = 0; i < inputWordList.size(); i++) {
+
+			dictionary.remove(inputWordList.get(i));
+			if (!wordBreak(inputWordList.get(i), dictionary)) {
+				answer.add(inputWordList.get(i));
 			}
-		});
+			dictionary.add(inputWordList.get(i));
+		}
 		return answer;
 
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * @param word
+	 * @param dictionary
+	 * @return
+	 */
 	public static boolean wordBreak(String word, Set<String> dictionary) {
 		if (word.length() == 0)
 			return true;
-		for (int i = 0; i < word.length(); i++) {
+		for (int i = 1; i <= word.length(); i++) {
 			if (dictionary.contains(word.substring(0, i))
-					&& wordBreak(word.substring(i, word.length() - 1),
-							dictionary)) {
+					&& wordBreak(word.substring(i, word.length()), dictionary)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 }
