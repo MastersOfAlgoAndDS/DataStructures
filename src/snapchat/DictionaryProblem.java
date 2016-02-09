@@ -1,8 +1,6 @@
 package snapchat;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -16,7 +14,10 @@ import java.util.Set;
  * 
  *           chat ever snapchat snap salesperson per person sales son whatsoever
  *           what so
- * 
+ * @Solution: Referred the word break problem was used to find the answer for
+ *            this.
+ *            http://www.geeksforgeeks.org/dynamic-programming-set-32-word-
+ *            break-problem/
  * 
  * @author Milind
  *
