@@ -19,10 +19,10 @@ import com.ds.SinglyLinkedList;
  * @author Milind
  *
  */
-public class P_2_3_DeleteFromMiddle {
+public class P2_3_DeleteFromMiddle {
 
 	public static void main(String[] args) {
-		P_2_3_DeleteFromMiddle s = new P_2_3_DeleteFromMiddle();
+		P2_3_DeleteFromMiddle s = new P2_3_DeleteFromMiddle();
 		SinglyLinkedList ll = new SinglyLinkedList();
 		ll.insertAtLast(3);
 		ll.insertAtLast(5);

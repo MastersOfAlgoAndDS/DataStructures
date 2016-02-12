@@ -17,10 +17,10 @@ import com.ds.SinglyLinkedList;
  * @author Milind
  *
  */
-public class P_2_1_RemoveDuplicates {
+public class P2_1_RemoveDuplicates {
 
 	public static void main(String[] args) {
-		P_2_1_RemoveDuplicates s = new P_2_1_RemoveDuplicates();
+		P2_1_RemoveDuplicates s = new P2_1_RemoveDuplicates();
 		SinglyLinkedList ll = new SinglyLinkedList();
 		ll.insertAtLast(3);
 		ll.insertAtLast(5);

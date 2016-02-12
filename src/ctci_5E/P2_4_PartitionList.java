@@ -14,10 +14,10 @@ import com.ds.SinglyLinkedList;
  * @author Milind
  *
  */
-public class P_2_4_PartitionList {
+public class P2_4_PartitionList {
 
 	public static void main(String[] args) {
-		P_2_4_PartitionList s = new P_2_4_PartitionList();
+		P2_4_PartitionList s = new P2_4_PartitionList();
 		SinglyLinkedList ll = new SinglyLinkedList();
 		ll.insertAtLast(13);
 		ll.insertAtLast(5);

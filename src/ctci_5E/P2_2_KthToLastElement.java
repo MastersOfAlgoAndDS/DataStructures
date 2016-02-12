@@ -11,10 +11,10 @@ import com.ds.SinglyLinkedList;
  * @author Milind
  *
  */
-public class P_2_2_KthToLastElement {
+public class P2_2_KthToLastElement {
 
 	public static void main(String[] args) {
-		P_2_2_KthToLastElement s = new P_2_2_KthToLastElement();
+		P2_2_KthToLastElement s = new P2_2_KthToLastElement();
 		SinglyLinkedList ll = new SinglyLinkedList();
 		ll.insertAtLast(3);
 		ll.insertAtLast(5);
