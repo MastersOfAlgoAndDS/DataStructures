@@ -1,10 +1,29 @@
 package google;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Milind
+ * @Problem: Given a 2D matrix of integers, sort it such that:
+ * 
+ *           - every row is sorted in ascending order from left to right - every
+ *           column is sorted in ascending order from top to down - all items in
+ *           the same row are unique
+ * 
+ *           You may assume the input matrix is always valid, meaning that such
+ *           a sort is always possible.
+ * 
+ *           For example: for input matrix</p>
+ *
+ * @Solution: First take the 2D array into a list and sort the list. Then fill
+ *            the output matrix starting from top left in a diagonal fashion
+ *            from top right to bottom left. So the index order will be
+ *
+ *            00,01,10,20,11,02,12,21,22
+ *
+ */
 public class MatrixRowColSort {
 
 	public static void rowColSort(int[][] input) {
@@ -46,7 +65,8 @@ public class MatrixRowColSort {
 	}
 
 	public static void main(String[] args) {
-		int[][] input = { { 3, 4, 6 }, { 1, 6, 9 }, { 7, 7, 5 } };
+		// int[][] input = { { 3, 4, 6 }, { 1, 6, 9 }, { 7, 7, 5 } };
+		int[][] input = { { 1, 3, 5 }, { 3, 2, 4 } };
 		for (int[] is : input) {
 			for (int i : is) {
 				System.out.print(i + " ");
