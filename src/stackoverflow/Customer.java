@@ -1,43 +1,44 @@
 package stackoverflow;
 
+import java.util.*;
+import java.text.DecimalFormat;
+
 public class Customer {
+	private long acctNum;
+	private String name;
+	private double balance = 0;
 
-	public String customerName;
-	public String telePhone;
+	DecimalFormat df = new DecimalFormat("$0.00");
 
-	public Customer(String customerName, String telePhone) {
-		setCustomerName(customerName);
-		setTelePhone(telePhone);
+	public Customer(long acctNum, String name) {
+		this.acctNum = acctNum;
+		this.name = name;
+		this.balance = 0.00;
 	}
 
-	public String getCustomerName() {
-		return customerName;
+	public void deposit(double in) {
+		this.balance = this.balance + in;
 	}
 
-	public void setCustomerName(String customerName) {
-		// Make the user input lowercase
-		customerName = customerName.toLowerCase();
-		if (customerName.equals("")) {
-			System.out
-					.println("You did not enter a name. Did not create new  customer.");
-		} else if (customerName.length() > 25) {
-			this.customerName = customerName.substring(0, 25);
+	public void withdraw(double out) {
+		if ((this.balance - out) < 0.0) {
+			System.out.println("Invalid amount to withdraw.");
 		} else {
-			this.customerName = customerName;
-		}
-
-	}
-
-	public String getTelePhone() {
-		return telePhone;
-	}
-
-	public void setTelePhone(String telePhone) {
-		if (telePhone.equals("")) {
-			System.out
-					.println("You did not enter a telephone number. Did not create new customer.");
-		} else {
-			this.telePhone = telePhone;
+			this.balance = this.balance - out;
 		}
 	}
+
+	public void calcInterest() {
+		if (this.balance <= 0.0) {
+			System.out.println("No interest added to an empty account.");
+		} else {
+			this.balance = (this.balance) * 1.03;
+		}
+	}
+
+	public double getBalance() {
+
+		return Double.valueOf(this.balance);
+	}
+
 }

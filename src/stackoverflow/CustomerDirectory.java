@@ -7,7 +7,7 @@ public class CustomerDirectory {
 	// Shorten Scanner
 	static Scanner keyboard = new Scanner(System.in);
 
-	static ArrayList<Customer> customers = new ArrayList<Customer>();
+	static ArrayList<CustomerOld> customerOlds = new ArrayList<CustomerOld>();
 
 	public static void main(String[] args) {
 	}
@@ -20,8 +20,8 @@ public class CustomerDirectory {
 		System.out.print("Enter new phone number: ");
 		String number = keyboard.nextLine();
 
-		Customer newCustomer = new Customer(name, number);
-		customers.add(newCustomer);
+		CustomerOld newCustomer = new CustomerOld(name, number);
+		customerOlds.add(newCustomer);
 
 	}
 
@@ -32,7 +32,7 @@ public class CustomerDirectory {
 		if (findName.equals(" ")) {
 			System.out.println("You did not enter a name.");
 		} else {
-			for (Customer c : customers) {
+			for (CustomerOld c : customerOlds) {
 				if (c.getCustomerName().contains(findName)) {
 					System.out.println(c.getCustomerName());
 				}
