@@ -20,9 +20,6 @@ public class MazePath {
 		if (maze[x][y] == 0) {
 			return false;
 		}
-		if (maze[x][y] == 1) {
-			return true;
-		}
 		if (findThePath(x - 1, y) == true)
 			return true;
 		if (findThePath(x, y + 1) == true)
@@ -31,6 +28,9 @@ public class MazePath {
 			return true;
 		if (findThePath(x, y - 1) == true)
 			return true;
+		if (maze[x][y] == 1) {
+			return true;
+		}
 		return false;
 	}
 
@@ -39,8 +39,10 @@ public class MazePath {
 	}
 
 	public static void main(String args[]) {
-		int[][] matrix = { { 1, 1, 1 }, { 9, 1, 1 }, { 0, 1, 0 } };
-		// int[][] matrix = { { 1, 0, 0 }, { 9, 1, 1 }, { 0, 1, 1 }};
+		// int[][] matrix = { { 1, 1, 1 }, { 9, 1, 1 }, { 0, 1, 0 } };
+		// int[][] matrix = { { 1, 0, 0 }, { 9, 1, 1 }, { 0, 1, 1 } };
+		int[][] matrix = { { 1, 0, 0 }, { 1, 0, 9 }, { 0, 0, 1 } };
+		// int[][] matrix = { { 1, 0, 0 }, { 9, 1, 1 }, { 0, 1, 1 } };
 
 		m = matrix.length;
 		n = matrix[0].length;
