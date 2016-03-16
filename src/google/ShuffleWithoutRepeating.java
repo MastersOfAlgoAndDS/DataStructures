@@ -12,7 +12,7 @@ public class ShuffleWithoutRepeating {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String input = "aaaabbccc";
+		String input = "aaaaaabbccc";
 		boolean ans = isPossible(input);
 		System.out.println(ans);
 

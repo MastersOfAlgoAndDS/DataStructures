@@ -7,6 +7,11 @@ import java.util.Arrays;
  * P < Q < N
  * 
  * @author Milind
+ * @Problem: To count the number of pairs contained in the array with A[P] =
+ *           A[Q] and 0 <= P < Q < N
+ * 
+ * @Solution: First of all sort the numbers. Then the numbers with same value
+ *            will
  *
  */
 class PairCount {
@@ -39,7 +44,7 @@ class PairCount {
 	}
 
 	public static void main(String[] args) {
-		int[] A = { 3, 3, 3, 3, 3, 3 };
+		int[] A = { 33, 13, 93, 93, 93, 3 };
 		PairCount s = new PairCount();
 		System.out.println(s.solution(A));
 	}

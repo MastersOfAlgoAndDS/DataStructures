@@ -101,7 +101,7 @@ public class LargestImageFilePath {
 	}
 
 	public static void main(String[] args) {
-		String X = "dir1\n dir11\n dir12\n  picture.jpeg\n  dir121\n  file1.txt\ndir2\n file2.gif";
+		String X = "dir1\n dir11\n dir12\n  picture.txt\n  picture.jpeg\n  dir121\n  file1.txt\ndir2\n file2.gif";
 		LargestImageFilePath s = new LargestImageFilePath();
 		System.out.println(s.solution(X));
 

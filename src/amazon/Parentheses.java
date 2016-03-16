@@ -1,4 +1,5 @@
 package amazon;
+
 //Asked in amazon test of akshay
 
 import java.util.Stack;
@@ -19,7 +20,7 @@ public class Parentheses {
 				st.push(c);
 				break;
 			case ')':
-				if(st.isEmpty() || st.pop() != '(')
+				if (st.isEmpty() || st.pop() != '(')
 					return -1;
 				else
 					count++;
@@ -29,16 +30,21 @@ public class Parentheses {
 
 			}
 		}
-		if(st.isEmpty())
+		if (st.isEmpty())
 			return count++;
 		else
 			return -1;
 	}
 
 	public static void main(String[] args) {
-		String input1 = "(())()";
+		String input1 = "()()";
 		String input2 = "";
-		System.out.println(validateParentheses(input2));
+		int answer = validateParentheses(input1);
+		if (answer > 0) {
+			System.out.println(true);
+		} else
+			System.out.println(false);
+		System.out.println(answer);
 
 	}
 }
