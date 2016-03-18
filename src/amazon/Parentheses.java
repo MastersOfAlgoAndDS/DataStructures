@@ -31,13 +31,13 @@ public class Parentheses {
 			}
 		}
 		if (st.isEmpty())
-			return count++;
+			return ++count;
 		else
 			return -1;
 	}
 
 	public static void main(String[] args) {
-		String input1 = "()()";
+		String input1 = "(())";
 		String input2 = "";
 		int answer = validateParentheses(input1);
 		if (answer > 0) {
