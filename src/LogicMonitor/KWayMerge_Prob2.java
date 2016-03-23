@@ -92,15 +92,24 @@ public class KWayMerge_Prob2 {
 		list3.insertAtLast(12);
 		list3.insertAtLast(13);
 
-		Node[] lists = new Node[3];
+		// Make linkedList 4
+		SinglyLinkedList list4 = new SinglyLinkedList();
+		list4.insertAtLast(111);
+		list4.insertAtLast(112);
+		list4.insertAtLast(131);
+
+		Node[] lists = new Node[4];
 		lists[0] = list1.getHead();
 		lists[1] = list2.getHead();
 		lists[2] = list3.getHead();
+		lists[3] = list4.getHead();
 
+		System.out.println("Input Lists:");
 		for (Node node : lists) {
 			list1.print(node);
 		}
 
+		System.out.println("Output merged list:");
 		Node resultHead = mergeKLists(lists);
 		list1.print(resultHead);
 	}
