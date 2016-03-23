@@ -33,12 +33,48 @@ import java.util.HashMap;
 public class Prob1 {
 
 	public static void main(String[] args) {
-		String input = "abcdacefghdz";
+		// String input = "ccaccaa";
+		// String input = "abaababaababacaba";
+		String input = "abccba";
 		System.out.println(longestSubNoRep(input));
 		System.out.println(longestSubNoRepLinearTime(input));
 		// input = "abcabcdc";
 		// System.out.println(longestSubNoRep(input));
 		// System.out.println(longestSubNoRepLinearTime(input));
+	}
+
+	/**
+	 * @param str
+	 * @return
+	 * @Runtime: O(n)
+	 * 
+	 * 
+	 */
+	public static int longestSubNoRepLinearTime(String str) {
+		int maxLen = 0;
+		int nonRepSubStringStart = 0;
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+		int i = 0;
+		for (i = 0; i < str.length(); i++) {
+			char currChar = str.charAt(i);
+			if (map.containsKey(currChar)) {
+				if (maxLen < (i - nonRepSubStringStart)) {
+					maxLen = i - nonRepSubStringStart;
+				}
+				nonRepSubStringStart = Math.max(nonRepSubStringStart,
+						map.get(currChar) + 1);
+				map.put(currChar, i);
+			} else {
+				map.put(currChar, i);
+			}
+		}
+		if (i == str.length()) {
+			if (maxLen < (str.length() - nonRepSubStringStart)) {
+				maxLen = str.length() - nonRepSubStringStart;
+			}
+		}
+
+		return maxLen;
 	}
 
 	/**
@@ -67,32 +103,6 @@ public class Prob1 {
 				maxLen = j - i;
 			}
 		}
-		return maxLen;
-	}
-
-	public static int longestSubNoRepLinearTime(String str) {
-		int maxLen = 0;
-		int nonRepSubStringStart = 0;
-		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-		int i = 0;
-		for (i = 0; i < str.length(); i++) {
-			char currChar = str.charAt(i);
-			if (map.containsKey(currChar)) {
-				if (maxLen < (i - nonRepSubStringStart)) {
-					maxLen = i - nonRepSubStringStart;
-				}
-				nonRepSubStringStart = map.get(currChar) + 1;
-				map.put(currChar, i);
-			} else {
-				map.put(currChar, i);
-			}
-		}
-		if (i == str.length()) {
-			if (maxLen < (str.length() - nonRepSubStringStart)) {
-				maxLen = str.length() - nonRepSubStringStart;
-			}
-		}
-
 		return maxLen;
 	}
 
