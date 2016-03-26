@@ -6,7 +6,38 @@
 
 package EPI;
 
+/**
+ * @author Milind
+ * @Problem: Implement string/integer inter-conversion functions. Use the
+ *           following function signatures: String intToString(int x) and int
+ *           stringToInt(String s).
+ * 
+ * @solution: For intToString get last digit i.e. remainder of number with 10
+ *            and prepend it to string. Keep prepending each number until input
+ *            is > 0. Finally the string is answer
+ * 
+ *            For stringToInt Keep cutting the first digit from left to right.
+ *            and multiply by 10 and add next digit each time. Here we are
+ *            working with character array so we subtract 48 from the each digit
+ *            we get to work with the proper corresponding integer value
+ * 
+ * 
+ *            Don't forget about negative numbers and consider the - sign during
+ *            the operation.
+ */
 public class Problem_5_3_int_String_interconvert {
+
+	/**
+	 * For intToString get last digit i.e. remainder of number with 10 and
+	 * prepend it to string. Keep prepending each number until input is > 0.
+	 * Finally the string is answer
+	 * 
+	 * @param x
+	 * @return
+	 * @Runtime: O(n) where n is the number of digits in the input number .
+	 * 
+	 * 
+	 */
 
 	public String intToString(int x) {
 		String result = "";
@@ -28,6 +59,17 @@ public class Problem_5_3_int_String_interconvert {
 		return result;
 	}
 
+	/**
+	 * Keep cutting the first digit from left to right. and multiply by 10 and
+	 * add next digit each time. Here we are working with character array so we
+	 * subtract 48 from the each digit we get to work with the proper
+	 * corresponding integer value
+	 * 
+	 * @param str
+	 * @return
+	 * @throws Exception
+	 * @Runtime: O(n) where n is the number of characters in the string.
+	 */
 	public int stringToInt(String str) throws Exception {
 		int result = 0;
 		if (str == "-")

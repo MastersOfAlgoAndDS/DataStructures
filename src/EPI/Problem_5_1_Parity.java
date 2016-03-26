@@ -25,8 +25,8 @@ package EPI;
 public class Problem_5_1_Parity {
 
 	/**
-	 * basically we're shifting 1 bit right each time and checking whether the
-	 * rightmost bit of the binary number is 1 or 0 and we make use of the
+	 * basically we're checking whether the rightmost bit of the binary number
+	 * is 1 or 0 each time and then shifting 1 bit right and we make use of the
 	 * following properties of XOR (i.e. ^) 1 XOR 1 = 0 1 XOR 0 = 1 So if there
 	 * are even 1s, the XOR and hence the parity becomes 0 automatically
 	 * 
