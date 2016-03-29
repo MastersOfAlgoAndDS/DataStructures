@@ -5,6 +5,20 @@
  * space, beyond what is required for the elements themselves.
  * 
  * 
+ * Solution: We solve this problem by using 2 stacks.
+ * 
+ * MaxOperation: 	2 stacks will be 1 called mail stack and other maxStack. 
+ * 					maxStack will always store the current max element in the mainStack.
+ * 					While pushing in mainStack, peek and check in the maxStack and if we
+ * 					have a new max element being pushed in the main stack, then push it 
+ * 					in maxStack as well. Similarly while popping, if the max element is 
+ * 					popped from the main stack, then we also pop it from the maxStack.
+ * 
+ * 					!!!Here the tricky part is the condition of the maxStack while pushing.
+ * 					If the element being pushed in the mainStack is <= (don't miss the =)
+ * 					Because we want to maintain the max element in the maxStack even when the 
+ * 					same maxElement is added inthe main stack repeatedly.
+ * 
  * */
 
 package EPI;
@@ -24,7 +38,7 @@ public class Problem_8_1_MaxStack {
 	public void push(int item) {
 		mainStack.push(item);
 		if (!max.empty()) {
-			if (max.peek() < item) {
+			if (max.peek() <= item) {
 				max.push(item);
 			}
 		} else
@@ -54,7 +68,7 @@ public class Problem_8_1_MaxStack {
 		System.out.println(m);
 		m.push(20);
 		m.push(21);
-		m.push(10);
+		m.push(21);
 		m.push(100);
 		m.push(-10);
 		System.out.println(m);

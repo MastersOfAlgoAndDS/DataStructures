@@ -4,6 +4,23 @@
  * */
 package EPI;
 
+/**
+ * @author Milind
+ * @Problem: TO find GCD of 2 numbers
+ * @Solution:
+ * 
+ *            Here we have an even odd logic. If any of the number is even
+ *            divide that number by 2. by bit operations. And make a recursive
+ *            call with new number and other number.
+ * 
+ *            If both the numbers are odd then make a recursive call by passing
+ *            difference as the larger argument.
+ * 
+ *            If both the numbers are even, then divide both numbers by 2 and
+ *            return the answer multiplied by 2 recursively.
+ * 
+ *
+ */
 public class Problem_5_4_GCD {
 
 	/**
@@ -40,8 +57,13 @@ public class Problem_5_4_GCD {
 	/**
 	 * Here we have an even odd logic. If any of the number is even divide that
 	 * number by 2. by bit operations. And make a recursive call with new number
-	 * and other number. If both the numbers are odd then make a recursive call
-	 * by passing difference as the larger argument.
+	 * and other number.
+	 * 
+	 * If both the numbers are odd then make a recursive call by passing
+	 * difference as the larger argument.
+	 * 
+	 * If both the numbers are even, then divide both numbers by 2 and return
+	 * the answer multiplied by 2 recursively.
 	 * 
 	 * @param x
 	 * @param y

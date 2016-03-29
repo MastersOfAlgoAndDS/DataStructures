@@ -32,7 +32,7 @@ public class Problem_7_5_DeepCopy_LL {
 	public NodeWithJump deepCopy(NodeWithJump head) {
 		if (head == null)
 			return null;
-		// Step 1
+		// Step 1 Copy the nodes from original list
 		NodeWithJump trav = head;
 		NodeWithJump newTrav = new NodeWithJump(head.getVal());
 		NodeWithJump newHead = newTrav;
@@ -46,14 +46,14 @@ public class Problem_7_5_DeepCopy_LL {
 			trav = newTrav.getNext();
 		}
 
-		// Step 2
+		// Step 2 update the jump field of new list.
 		trav = head;
 		while (trav != null && trav.getNext() != null) {
 			trav.getNext().setJump(trav.getJump().getNext());
 			trav = trav.getNext().getNext();
 		}
 
-		// Step 3
+		// Step 3 restore the next field of all the nodes.
 		trav = head;
 		while (trav != null && trav.getNext() != null
 				&& trav.getNext().getNext() != null) {
