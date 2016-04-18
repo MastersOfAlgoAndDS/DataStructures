@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
 public class Solution {
 
@@ -77,24 +75,41 @@ public class Solution {
 	}
 
 	public static void main(String[] args) {
-		// Scanner sc = new Scanner(System.in);
-		// String A = sc.next();
-		// String B = sc.next();
-		// boolean ret = isAnagram(A, B);
-		// if (ret)
-		// System.out.println("Anagrams");
-		// else
-		// System.out.println("Not Anagrams");
-
-		ArrayList<String> input = new ArrayList<String>();
-		input.add("pot");
-		input.add("poter");
-		input.add("top");
-		boolean ans = isAnagramList(input);
-		if (ans)
-			System.out.println("true");
-		else
-			System.out.println("false");
-
 	}
+
+	public int solution(int[] a) {
+		int n = a.length;
+		if (n < 1)
+			return -1;
+
+		int max = 0;
+		int ans = 0;
+
+		for (int i = n - 1; i >= 0; --i) {
+			if (a[i] > max)
+				max = a[i];
+
+			int temp = max - a[i];
+			if (temp > ans)
+				ans = temp;
+		}
+
+		return ans;
+	}
+
+	static long kSub(int k, int[] nums) {
+		int[] cntMod = new int[nums.length];
+		cntMod[0] = 1;
+		int prefSum = 0;
+		for (int elem : nums) {
+			prefSum += elem;
+			prefSum %= k;
+			cntMod[prefSum]++;
+		}
+		long res = 0;
+		for (int mod = 0; mod < k; mod++)
+			res += (long) cntMod[mod] * (cntMod[mod] - 1) / 2;
+		return res;
+	}
+
 }
