@@ -1,6 +1,13 @@
-import java.util.LinkedList;
+/**
+ * To find the element in a binary tree.
+ * 
+ * 
+ * */
 
-import programcreek.*;
+package programcreek.Tree;
+
+import programcreek.Queue;
+import programcreek.TreeNode;
 
 public class BinaryTreeSearch {
 
@@ -18,6 +25,14 @@ public class BinaryTreeSearch {
 			insert(node, root.getLeft());
 	}
 
+	/**
+	 * Look for the element in the current node. Look for the element in the
+	 * left node. Look for the element in the right node.
+	 * 
+	 * @param root
+	 * @param data
+	 * @return
+	 */
 	public static boolean searchRecursive(TreeNode root, int data) {
 		boolean temp;
 		if (root == null)
@@ -34,29 +49,38 @@ public class BinaryTreeSearch {
 			}
 		}
 	}
-	
-	
-	public static boolean searchIterative(TreeNode root,int data){
+
+	/**
+	 * 
+	 * Put root in queue. Then one by one, pick each node from queue and enqueue
+	 * left and right node of each of the dequeued node from queue and check the
+	 * node's data with element every time.
+	 * 
+	 * @param root
+	 * @param data
+	 * @return
+	 */
+	public static boolean searchIterative(TreeNode root, int data) {
 		Queue<TreeNode> queue = new Queue<TreeNode>();
 		TreeNode temp = root;
-		if(root.getVal()==data){
+		if (root == null)
+			return false;
+		if (root.getVal() == data) {
 			return true;
-		}else{
-			while(!queue.isEmpty()){
-				if (temp.getLeft()!=null)
-					queue.enqueue(temp.getLeft());
-				if (temp.getRight()!=null)
-					queue.enqueue(temp.getRight());
-				temp=queue.dequeue();
-				if(temp.getVal()==data)
+		} else {
+			if (root.getLeft() != null)
+				queue.enqueue(root.getLeft());
+			if (root.getRight() != null)
+				queue.enqueue(root.getRight());
+			while (!queue.isEmpty()) {
+				temp = queue.dequeue();
+				if (temp.getVal() == data)
 					return true;
 			}
-			//temp=queue.dequeue();
-			
 		}
-		
+
 		return false;
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -66,9 +90,11 @@ public class BinaryTreeSearch {
 		insert(new TreeNode(2), root);
 		insert(new TreeNode(5), root);
 		root.print(root);
+		System.out.println();
 		// Tree is ready
 
-		System.out.println(searchIterative(root, 7));
+		System.out.println(searchIterative(root, 8));
+		System.out.println(searchRecursive(root, 8));
 
 	}
 }

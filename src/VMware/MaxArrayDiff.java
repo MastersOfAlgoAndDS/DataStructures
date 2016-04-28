@@ -1,6 +1,6 @@
 /**
  * To find the difference between A[x] and A[y] such that x<y and A[x] < A[y]
- * 
+ * http://www.geeksforgeeks.org/maximum-difference-between-two-elements
  * 
  * */
 
