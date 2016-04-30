@@ -1,4 +1,4 @@
-package amazon;
+package amazon.amazonfullfilment;
 
 import java.io.IOException;
 import java.util.ArrayList;
