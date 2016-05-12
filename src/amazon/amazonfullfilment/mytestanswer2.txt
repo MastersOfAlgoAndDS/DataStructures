@@ -1,0 +1,89 @@
+>Test Case 1:
+1
+12-02-2016 Migo
+
+Output: 0
+
+
+>Test Case 2:
+0
+
+Output: 0
+
+
+>Test Case 3:
+2
+12-12-2016 
+12-02-2016 Migo
+
+Output: 0
+
+
+>Test Case 4:
+2
+12-02-2016 Migo
+12-12-2016 Migo
+
+Output: 1
+
+
+>Test Case 5:
+3
+12-02-2016 Migo
+11-12-2016 Marsh
+01-04-2016 Renu
+
+Output: 0
+
+
+>Test Case 6:
+9
+12-02-2016 Migo
+11-12-2016 Marsh
+01-04-2016 Migo
+04-10-2016 Marsh
+18-04-2016 Tejas
+09-06-2015 Marsh
+07-09-2016 Renu
+11-12-2016 Marsh
+01-04-2016 Migo
+
+Output: 2
+1
+
+
+##########
+
+
+Average Time Complexity: Theta(n) where n is number of log entries.
+I run a 2 for loops in the function: First to setup my map based on which I will check the user's visit date counts and Second to iterate throught the map and get the user which has visited on more than 1 dates.
+So I have to iterate max through all the user log entries. As the numebr of log entries increase, my calculation time will increase by a factor of input size (n).
+
+
+Average Space Complexity: O(n) where n is number of log entries.
+I have used HashMap and Set as part of my code to calculate the answer for the given problem. As the number of log entries increase, the amount of space used for storing the log user and date will also increase by a factor of input (n).
+
+
+
+################################################################################################################
+
+
+Worst Case Runtime: O(n*m) ~ O(n^2)
+n = number of log entries
+m = number of unique users
+
+We use a hashmap, which has constant access time. But it is the ammortized cost of access. Theta(n) , where n is the number of elements in the hashmap.
+
+However, there can be collision in the hashmap since multiple values can be calculated by hash function into the same bucket. In such cases, due to collision, the value is stored in the form of a linked list in hashmaps internally.
+
+So in worst case, if internally in hashmap there is a collision for different users into the same bucket, then those entries will be stored in a linked list in the hashmap.
+Example: internally Bob's entries and Andrew's entries will be mapped to the same bucket in the hashmap. And then to access Andrew's entries in the same bucket, will take linear time in worst case. O(m) where m is the number of users.
+
+Thus even if the average case run time for the code is Theta(n), where n is the number of log entries. since we require to use a Map, which can have worst case time complexity of O(n). Hence the run time will become O(n) * O(m) = O(m*n).
+n = number of log entries
+
+
+Worst Case Space Complexity: O(n) where n is the number of log entries.
+
+
+

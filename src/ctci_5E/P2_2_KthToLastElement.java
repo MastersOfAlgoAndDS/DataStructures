@@ -21,7 +21,7 @@ public class P2_2_KthToLastElement {
 		ll.insertAtLast(4);
 		ll.insertAtLast(3);
 		ll.print(ll.getHead());
-		Node elem = s.kthToLastElement(ll, 10);
+		Node elem = s.kthToLastElement(ll, 2);
 		if (elem != null) {
 			System.out.println(elem.getVal());
 		}

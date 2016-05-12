@@ -7,6 +7,15 @@ import java.util.Map.Entry;
  * @Problem_1_3 Given two strings, write a method to decide if one is a
  *              permutation of the other.
  * 
+ * 
+ *              1. Sort both the strings and then compare them. If sorted
+ *              strings are same then permutation is true.
+ * 
+ *              2. Put each character from first string in to the hashmap. and
+ *              increase count for repeat characters. On iterating second string
+ *              keep removing characters from the hashmap. If the hashmap is
+ *              empty at the end, and the string is completely traversed, we
+ *              found the permutation. other wise NO permutation.
  * @author Milind
  *
  */

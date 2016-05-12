@@ -54,14 +54,14 @@ public class LRUCacheJava {
 	public void remove(LRUNode n) {
 		if (n.pre != null) {
 			n.pre.next = n.next;
-		} else {
+		} else { // n is currently head
 			head = n.next;
 			head.pre = null;
 		}
 
 		if (n.next != null) {
 			n.next.pre = n.pre;
-		} else {
+		} else { // n is currently end
 			end = n.pre;
 		}
 	}

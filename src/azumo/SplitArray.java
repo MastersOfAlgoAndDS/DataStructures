@@ -8,6 +8,16 @@ import java.util.Arrays;
  * 
  * @author Milind
  *
+ * @Solution: 1. First count the total number of instances of the given number X
+ *            in the array.
+ * 
+ *            2. Then keep 2 counts, leftCount to count number of Xs in left
+ *            array and rightCount to count number of elements not equal to X in
+ *            the right array.
+ * 
+ *            3. As you traverse through the array again, update these counts on
+ *            the conditions and then get the answer
+ *
  */
 class SplitArray {
 
@@ -21,6 +31,7 @@ class SplitArray {
 				totalXCnt += 1;
 		}
 
+		// MAIN LOGIC
 		rightCnt = A.length - totalXCnt;
 		for (int i = 0; i < A.length; i++) {
 			if (leftCnt == rightCnt) {

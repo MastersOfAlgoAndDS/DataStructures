@@ -34,7 +34,7 @@ public class MaximizeProfit_Prob3 {
 		idx[0] = -1;
 		idx[1] = -1;
 
-		double minElem = prices[0];
+		double minElem = Integer.MAX_VALUE;
 		double maxDiff = 0;
 		int currStartIndex = -1;
 		int currEndIndex = -1;
@@ -57,13 +57,19 @@ public class MaximizeProfit_Prob3 {
 	}
 
 	public static void main(String[] args) {
-		double[] prices = { 20, 40, 52, 15, 30, 50, 10, 25 };
+		double[] prices = { 20, 40, 50, 15, 30, 50, 10, 25 };
 		for (double d : prices) {
 			System.out.print(d + " ");
 		}
 		System.out.println();
-		for (int i : maximumProfit(prices)) {
+		int[] answer = maximumProfit(prices);
+		for (int i : answer) {
 			System.out.print(i + " ");
+		}
+		System.out.println();
+		if (answer[0] >= 0 && answer[1] >= 0) {
+			System.out.println("Profit = "
+					+ (prices[answer[1]] - prices[answer[0]]));
 		}
 
 	}

@@ -89,12 +89,10 @@ public class LargestImageFilePath {
 					maxImageFilePath = absPath.length();
 			} else {
 				// make entry in the hashmap of stacks.
-				if (dirMap.containsKey(spaceCnt)) {
-					dirMap.get(spaceCnt).push(line.trim());
-				} else {
+				if (!dirMap.containsKey(spaceCnt)) {
 					dirMap.put(spaceCnt, new Stack<String>());
-					dirMap.get(spaceCnt).push(line.trim());
 				}
+				dirMap.get(spaceCnt).push(line.trim());
 			}
 		}
 		return maxImageFilePath;

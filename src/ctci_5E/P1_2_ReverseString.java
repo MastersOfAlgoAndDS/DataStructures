@@ -9,6 +9,10 @@ package ctci_5E;
  *              String primitive datatype in java since primitive data types are
  *              pass by value in java so after reversing the string we cannot
  *              assign the input string again.
+ * 
+ *              !!! Another approach can be to put two pointers at the start and
+ *              end of the string and keep swapping until smaller pointer is
+ *              less than the larger pointer.
  * @author Milind
  *
  */

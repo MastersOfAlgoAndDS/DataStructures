@@ -30,7 +30,7 @@ public class P1_8_StringRotation {
 	 * @return
 	 */
 	private boolean isRotation(String s1, String s2) {
-		return isSubstring(s1 + s1, s2) && s1.length() == s2.length();
+		return (s1.length() == s2.length()) && isSubstring(s1 + s1, s2);
 	}
 
 	private boolean isSubstring(String s1, String s2) {

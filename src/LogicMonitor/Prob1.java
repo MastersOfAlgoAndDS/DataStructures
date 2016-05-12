@@ -1,6 +1,8 @@
 package LogicMonitor;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Milind
@@ -34,8 +36,8 @@ public class Prob1 {
 
 	public static void main(String[] args) {
 		// String input = "ccaccaa";
-		// String input = "abaababaababacaba";
-		String input = "abccba";
+		String input = "abaababaababacaba";
+		// String input = "abccba";
 		System.out.println(longestSubNoRep(input));
 		System.out.println(longestSubNoRepLinearTime(input));
 		// input = "abcabcdc";
@@ -61,6 +63,11 @@ public class Prob1 {
 				if (maxLen < (i - nonRepSubStringStart)) {
 					maxLen = i - nonRepSubStringStart;
 				}
+
+				// We do this because we want to find the lastest index of the
+				// non-repeating substring start. and sometimes, you can get a
+				// repeating character later, i.e. it is before the existing
+				// non-repreating substring start index.
 				nonRepSubStringStart = Math.max(nonRepSubStringStart,
 						map.get(currChar) + 1);
 				map.put(currChar, i);
@@ -91,12 +98,12 @@ public class Prob1 {
 		int maxLen = 0;
 		int j = 0;
 		for (int i = 0; i < str.length(); i++) {
-			HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+			Set<Character> set = new HashSet<Character>();
 			for (j = i; j < str.length(); j++) {
-				if (map.containsKey(str.charAt(j)))
+				if (set.contains(str.charAt(j)))
 					break;
 				else {
-					map.put(str.charAt(j), 1);
+					set.add(str.charAt(j));
 				}
 			}
 			if (maxLen < j - i) {

@@ -27,7 +27,7 @@ public class P2_1_RemoveDuplicates {
 		ll.insertAtLast(4);
 		ll.insertAtLast(3);
 		ll.print(ll.getHead());
-		s.removeDuplicates(ll);
+		s.removeDuplicatesWithoutBuff(ll);
 		ll.print(ll.getHead());
 	}
 
@@ -45,6 +45,28 @@ public class P2_1_RemoveDuplicates {
 				ll.delete(node);
 			else
 				unique.add(node.getVal());
+		}
+	}
+
+	/**
+	 * @Solution: Using a set.
+	 * @Runtime: O(n^2)
+	 * @Space: O(1)
+	 * 
+	 * @param ll
+	 */
+	private void removeDuplicatesWithoutBuff(SinglyLinkedList ll) {
+		Node current = ll.getHead();
+		while (current != null) {
+			Node runner = current;
+			while (runner.getNext() != null) {
+				if (runner.getNext().getVal() == current.getVal()) {
+					runner.setNext(runner.getNext().getNext());
+				} else {
+					runner = runner.getNext();
+				}
+			}
+			current = current.getNext();
 		}
 	}
 }

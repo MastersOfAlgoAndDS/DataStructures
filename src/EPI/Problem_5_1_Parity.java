@@ -11,10 +11,11 @@ package EPI;
  * @author Milind
  * 
  * @Problem 5.1 : How would you go about computing the parity of a very large
- *          number of 64-bit nonnegative integers? Parity is number of 1s in the
- *          binary representation of a number. If there are even number of 1s
- *          then the parity is 0 If there are odd number of 1s then the parity
- *          is 1
+ *          number of 64-bit nonnegative integers?
+ * 
+ *          Parity is number of 1s in the binary representation of a number. If
+ *          there are even number of 1s then the parity is 0 If there are odd
+ *          number of 1s then the parity is 1
  * 
  * @Ans : pg 112 basically we're shifting 1 bit right each time and checking
  *      whether the rightmost bit of the binary number is 1 or 0 and we make use
@@ -25,6 +26,11 @@ package EPI;
 public class Problem_5_1_Parity {
 
 	/**
+	 * 
+	 * constant time: O(1)
+	 * 
+	 * Since the number of bits in the numbers is constant. i.e. 64
+	 * 
 	 * basically we're checking whether the rightmost bit of the binary number
 	 * is 1 or 0 each time and then shifting 1 bit right and we make use of the
 	 * following properties of XOR (i.e. ^) 1 XOR 1 = 0 1 XOR 0 = 1 So if there

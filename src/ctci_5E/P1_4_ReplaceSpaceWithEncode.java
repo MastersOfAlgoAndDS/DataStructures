@@ -12,6 +12,10 @@ package ctci_5E;
  *              Here we assume specifically that we have sufficient space to
  *              incorporate the characters %20 so as to do it in-place
  * 
+ *              !! In this case start from the end. First count spaces, and
+ *              create a new array of the sufficient size. ! Then start copying
+ *              the old array into the new array from the last index.
+ * 
  * @author Milind
  *
  */

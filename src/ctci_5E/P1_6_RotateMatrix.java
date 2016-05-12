@@ -7,6 +7,10 @@ package ctci_5E;
  * 
  *              Runtime: O(n^2) Space: O(n^2)
  * 
+ * 
+ *              We can first flip horizontal or vertical and then flip across
+ *              diagonal i.e. transpose to get the answer
+ * 
  * @author Milind
  *
  */

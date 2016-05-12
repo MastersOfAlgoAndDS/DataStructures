@@ -46,7 +46,7 @@ import com.ds.SinglyLinkedList;
 public class P2_5_LL_NumAdd_Reverse_Order {
 
 	public static void main(String[] args) {
-		int number1 = 617;
+		int number1 = 61711;
 		int number2 = 295;
 		P2_5_LL_NumAdd_Reverse_Order s = new P2_5_LL_NumAdd_Reverse_Order();
 		SinglyLinkedList num1 = s.createLLFromNumReverse(number1);
@@ -93,41 +93,45 @@ public class P2_5_LL_NumAdd_Reverse_Order {
 			trav2 = trav2.getNext();
 		}
 		if (trav1 != null) {
-			int numAdd = trav1.getVal() + carry;
-			if (numAdd > 9) {
-				carry = numAdd / 10;
-				numAdd = numAdd % 10;
-			} else {
-				carry = 0;
+			while (trav1 != null) {
+				int numAdd = trav1.getVal() + carry;
+				if (numAdd > 9) {
+					carry = numAdd / 10;
+					numAdd = numAdd % 10;
+				} else {
+					carry = 0;
+				}
+				Node item = new Node(numAdd);
+				if (ans.getHead() == null) {
+					trav3 = item;
+					ans.setHead(trav3);
+				} else {
+					trav3.setNext(item);
+					trav3 = trav3.getNext();
+				}
+				trav1 = trav1.getNext();
 			}
-			Node item = new Node(numAdd);
-			if (ans.getHead() == null) {
-				trav3 = item;
-				ans.setHead(trav3);
-			} else {
-				trav3.setNext(item);
-				trav3 = trav3.getNext();
-			}
-			trav1 = trav1.getNext();
 		}
 
 		if (trav2 != null) {
-			int numAdd = trav2.getVal() + carry;
-			if (numAdd > 9) {
-				carry = numAdd / 10;
-				numAdd = numAdd % 10;
-			} else {
-				carry = 0;
+			while (trav2 != null) {
+				int numAdd = trav2.getVal() + carry;
+				if (numAdd > 9) {
+					carry = numAdd / 10;
+					numAdd = numAdd % 10;
+				} else {
+					carry = 0;
+				}
+				Node item = new Node(numAdd);
+				if (ans.getHead() == null) {
+					trav3 = item;
+					ans.setHead(trav3);
+				} else {
+					trav3.setNext(item);
+					trav3 = trav3.getNext();
+				}
+				trav2 = trav2.getNext();
 			}
-			Node item = new Node(numAdd);
-			if (ans.getHead() == null) {
-				trav3 = item;
-				ans.setHead(trav3);
-			} else {
-				trav3.setNext(item);
-				trav3 = trav3.getNext();
-			}
-			trav2 = trav2.getNext();
 		}
 
 		return ans;

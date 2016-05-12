@@ -55,7 +55,8 @@ public class MazePath {
 		// int[][] matrix = { { 1, 0, 0 }, { 1, 0, 9 }, { 0, 0, 1 } };
 		// int[][] matrix = { { 1, 0, 0 }, { 9, 1, 1 }, { 0, 1, 1 } }; // true
 		// int[][] matrix = { { 1, 0, 1 }, { 0, 0, 1 }, { 1, 9, 1 } }; // false
-		int[][] matrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 9 } }; // true
+		// int[][] matrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 9 } }; // true
+		int[][] matrix = { { 1, 1, 1 }, { 1, 0, 0 }, { 1, 0, 9 } }; // false
 
 		m = matrix.length;
 		n = matrix[0].length;

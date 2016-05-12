@@ -34,11 +34,18 @@ public class WordBreakProblem {
 	}
 
 	public boolean isWord(String word) {
-		if (dictionary.contains(word.toLowerCase()))
-			return true;
-		return false;
+		return dictionary.contains(word.toLowerCase());
 	}
 
+	/**
+	 * This can be done by recursion, by checking at each index starting from 1,
+	 * can we get left and right parts as words from dictionary.
+	 * 
+	 * However due to recursion the run time will be bad.!!!
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public boolean wordBreak(String str) {
 		int size = str.length();
 
@@ -64,10 +71,29 @@ public class WordBreakProblem {
 		return output;
 	}
 
+	/**
+	 * This can be done by recursion, by checking at each index starting from 1,
+	 * can we get left and right parts as words from dictionary.
+	 * 
+	 * However due to recursion the run time will be bad.!!! So we go with DP
+	 * approach, which is basically checking all the combinations in the problem
+	 * search space however using the already calculated things to reduce the
+	 * run time. [MEMOIZATION of some form]
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public boolean wordBreakDP(String str) {
 		int size = str.length();
-		boolean[] wb = new boolean[size + 1];
+		boolean[] wb = new boolean[size + 1]; // This is the boolean array we
+												// use for memoization i.e. for
+												// storing the parts of the
+												// answer as true of false.
 		for (int i = 1; i <= size; i++) {
+
+			// At every step from index=1,check whether the words till index
+			// form a word from the dictionary and only then do further
+			// calculation, otherwise continue
 			if (wb[i] == false && isWord(str.substring(0, i)))
 				wb[i] = true;
 
@@ -75,6 +101,9 @@ public class WordBreakProblem {
 				if (i == size)
 					return true;
 
+				// If we see that words before index form some dictionary words,
+				// proceed and solve the sub problems in the remaining string
+				// calculation, otherwise continue
 				for (int j = i + 1; j <= size; j++) {
 					if (wb[j] == false && isWord(str.substring(j, size)))
 						wb[j] = true;

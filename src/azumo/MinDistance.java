@@ -11,8 +11,12 @@ import java.util.Arrays;
 class MinDistance {
 
 	public int solution(int[] A) {
-		Arrays.sort(A);
-		return A[1] - A[0];
+
+		if (A.length > 1) {
+			Arrays.sort(A);
+			return A[1] - A[0];
+		}
+		return 0;
 	}
 
 	public static void main(String[] args) {

@@ -6,6 +6,17 @@ package google;
  *           index. There can be multiple equillibrium index.
  * 
  * @author Milind
+ * 
+ * @Solution:
+ * 
+ *            1. O(n^2) For each index in the given array, run a for loop to
+ *            check whether the sum of elements before the index = sum of
+ *            elements after the index.
+ *
+ *            2. First run 1 loop and find total sum of elements. Assign it to
+ *            the rightSum var. Then keep on iterating and keep track of leftSum
+ *            and rightSum and keep updating as you go. When you find
+ *            leftSum=rightSum, not the index and return.
  *
  */
 public class EquiIndex {
