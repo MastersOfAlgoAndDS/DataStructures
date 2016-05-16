@@ -9,13 +9,13 @@ import java.util.Map.Entry;
  * 
  * 
  *              1. Sort both the strings and then compare them. If sorted
- *              strings are same then permutation is true.
+ *              strings are same then permutation is true. O(nlogn)
  * 
  *              2. Put each character from first string in to the hashmap. and
  *              increase count for repeat characters. On iterating second string
  *              keep removing characters from the hashmap. If the hashmap is
  *              empty at the end, and the string is completely traversed, we
- *              found the permutation. other wise NO permutation.
+ *              found the permutation. other wise NO permutation. O(n)
  * @author Milind
  *
  */

@@ -49,7 +49,7 @@ public class P2_1_RemoveDuplicates {
 	}
 
 	/**
-	 * @Solution: Using a set.
+	 * @Solution: Using a current and runner pointers.
 	 * @Runtime: O(n^2)
 	 * @Space: O(1)
 	 * 

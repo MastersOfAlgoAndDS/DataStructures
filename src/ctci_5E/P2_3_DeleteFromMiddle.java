@@ -15,6 +15,12 @@ import com.ds.SinglyLinkedList;
  *              Result: nothing is returned, but the new linked list looks like
  *              a- >b- >d->e
  * 
+ * @Solution: Here the trick - if the current element is to be deleted, then
+ *            copy the next element value into current element and delete the
+ *            next element.
+ * 
+ * @Runtime: Constant, O(1) since it does not depend on the size of the linked
+ *           list.
  * 
  * @author Milind
  *
@@ -33,6 +39,13 @@ public class P2_3_DeleteFromMiddle {
 		ll.print(ll.getHead());
 	}
 
+	/**
+	 * O(n) because we need to traverse and get the pointer to the element to be
+	 * deleted. But if the pointer is known then it should be constant time.
+	 * 
+	 * @param ll
+	 * @param i
+	 */
 	private void delete(SinglyLinkedList ll, int i) {
 		Node temp = ll.getHead();
 		Node prev = null;

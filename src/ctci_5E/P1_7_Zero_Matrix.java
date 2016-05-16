@@ -7,6 +7,18 @@ import java.util.Set;
  * @Problem_1_7 Write an algorithm such that if an element in an MxN matrix is
  *              0, its entire row and column are set to 0.
  * 
+ * @Solution: Make a set of all the rows and columns which are zero and capture
+ *            all the rows and columns containing the zero element. Then for
+ *            every row in row numbers set and every column in column numbers
+ *            set, make all the elements as zero.
+ * 
+ * @Runtime: O(m*n) since we traverse at least once through each element to get
+ *           the zero rows and columns numbers. where m are rows and n are
+ *           columns.
+ * 
+ *           TO improve the space efficiency we can use bit vector instead of
+ *           sets.
+ * 
  * @author Milind
  *
  */

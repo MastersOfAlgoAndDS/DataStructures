@@ -9,7 +9,11 @@ import com.ds.SinglyLinkedList;
  *              equal to x.
  * 
  * @Solution: Make 3 lists - for less than, equal to and greater than elements
- *            and later join these 3 lists in order.
+ *            and later join these 3 lists in order. Make each of these lists
+ *            using a pointer and keep adding new elements to their head.
+ * 
+ * @Runtime: O(n)
+ *
  * 
  * @author Milind
  *
@@ -32,6 +36,13 @@ public class P2_4_PartitionList {
 		ll.print(ll.getHead());
 	}
 
+	/**
+	 * Runtime: O(n)
+	 * 
+	 * 
+	 * @param ll
+	 * @param i
+	 */
 	private void partition(SinglyLinkedList ll, int i) {
 		// make list 1 of smaller elements
 		SinglyLinkedList llSmall = new SinglyLinkedList();

@@ -28,12 +28,37 @@ public class P1_2_ReverseString {
 		this.input = input;
 	}
 
+	/**
+	 * 
+	 * Runtime: O(n)
+	 * 
+	 * @param obj
+	 */
 	public void reverse(P1_2_ReverseString obj) {
 		String output = "";
 		for (int i = obj.getInput().length() - 1; i > -1; i--) {
 			output += obj.getInput().charAt(i);
 		}
 		obj.setInput(output);
+	}
+
+	/**
+	 * 
+	 * O(n/2) = O(n)
+	 * 
+	 * @param obj
+	 */
+	public void reverseInPlace(P1_2_ReverseString obj) {
+		char[] input = obj.getInput().toCharArray();
+		int i = 0, j = input.length - 1;
+		while (i < j) {
+			char temp = input[i];
+			input[i] = input[j];
+			input[j] = temp;
+			i++;
+			j--;
+		}
+		obj.setInput(String.valueOf(input));
 	}
 
 	public static void main(String[] args) {
@@ -43,6 +68,12 @@ public class P1_2_ReverseString {
 		System.out.println(s.getInput());
 		s.reverse(s);
 		System.out.println(s.getInput());
+		String newStr = "ReverseIt";
+		P1_2_ReverseString s1 = new P1_2_ReverseString();
+		s1.setInput(newStr);
+		System.out.println(s1.getInput());
+		s.reverseInPlace(s1);
+		System.out.println(s1.getInput());
 
 	}
 }

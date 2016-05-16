@@ -6,6 +6,19 @@ package ctci_5E;
  *              to check if s2 is a rotation of si using only one call to
  *              isSubstring e.g.,"waterbottle"is a rotation of "erbottlewat".
  * 
+ * @solution String the string s1 twice like "waterbottlewaterbottle" and search
+ *           "erbottlewat" as a substring in s1. Also check if the length of
+ *           both s1 and s2 are same. Because the logic will also give true for
+ *           input "erbottlewa" where last t is not given. So the length does
+ *           not match.
+ * 
+ * @Runtime: O(1) or say O(n) where n is the length of the string because the
+ *           isSubstring will also take some time and joining two strings to
+ *           form a string will also take some time.
+ * 
+ *           Space complexity will also be O(n) because copying one string twice
+ *           and forming a new string will occupy double space.
+ * 
  * @author Milind
  *
  */

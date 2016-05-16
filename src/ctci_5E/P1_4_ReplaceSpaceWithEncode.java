@@ -15,6 +15,8 @@ package ctci_5E;
  *              !! In this case start from the end. First count spaces, and
  *              create a new array of the sufficient size. ! Then start copying
  *              the old array into the new array from the last index.
+ *              
+ *              Runtime: O(n)
  * 
  * @author Milind
  *
