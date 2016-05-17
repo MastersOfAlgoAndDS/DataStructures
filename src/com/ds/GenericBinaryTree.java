@@ -37,7 +37,7 @@
  *  Foldable Binary Tree - Given a binary tree, find out if the tree can be folded or not.
  *  isSumTree - A SumTree is a Binary Tree where the value of a node is equal to sum of the nodes present in its left subtree and right subtree. An empty tree is SumTree and sum of an empty tree can be considered as 0. A leaf node is also considered as SumTree.
  *  
-* */
+ * */
 
 package com.ds;
 
@@ -390,29 +390,54 @@ public class GenericBinaryTree<T> {
 
 	/**
 	 * 
-	 * Not optimized yet. Trying to optimize this execution of tree height
-	 * balance checker by trying to avoid the height calculation everytime.
 	 * 
+	 * balance checker by trying to avoid the height calculation everytime but
+	 * do height calculation as you go up the tree.
+	 * 
+	 * This improved algorithm works by checking the height of each subtree as
+	 * we recurse down from the root. On each node, we recursively get the
+	 * heights of the left and right subtrees through the checkHeight method. If
+	 * the subtree is balanced, then check- Height will return the actual height
+	 * of the subtree. If the subtree is not balanced, then checkHeight will
+	 * return -1. We will immediately break and return -1 from the current call.
+	 * 
+	 * @Runtime: O(n)
+	 * @Space: O(logn)
 	 * 
 	 * @param head
 	 * @param height
 	 * @return
 	 */
-	public boolean isTreeHeightBalancedOptimized(GenericBinaryTreeNode head,
-			int[] height) {
-		int[] leftHt = new int[] { 0 }, rightHt = new int[] { 0 };
-		if (head == null)
-			return true;
-		boolean leftBalance = true;
-		leftBalance = isTreeHeightBalanced(head.getLeft());
-		boolean rightBalance = true;
-		rightBalance = isTreeHeightBalanced(head.getRight());
+	public boolean isTreeHeightBalancedOptimized(GenericBinaryTreeNode head) {
+		return checkTreeHeight(head) != -1;
+	}
 
-		height[0] = Math.max(leftHt[0], rightHt[0]) + 1;
-		if ((Math.abs(leftHt[0] - rightHt[0]) <= 1) && leftBalance
-				&& rightBalance)
-			return true;
-		return false;
+	/**
+	 * 
+	 * helper function for isTreeHeightBalancedOptimized
+	 * 
+	 * @param root
+	 * @return
+	 */
+	private int checkTreeHeight(GenericBinaryTreeNode root) {
+		if (root == null)
+			return 0;
+
+		// check if left tree is balanced
+		int leftHeight = checkTreeHeight(root.getLeft());
+		if (leftHeight == -1)
+			return -1;
+
+		// check if right tree is balanced
+		int rightHeight = checkTreeHeight(root.getRight());
+		if (rightHeight == -1)
+			return -1;
+
+		// check if the current root is balanced
+		if (Math.abs(leftHeight - rightHeight) > 1) {
+			return -1;
+		}
+		return Math.max(leftHeight, rightHeight) + 1;
 	}
 
 	/**
@@ -451,7 +476,8 @@ public class GenericBinaryTree<T> {
 	 * Function to print the tree paths from the root to each of the leaves.
 	 * 
 	 * @param head
-	 * @param path [path in string till now]
+	 * @param path
+	 *            [path in string till now]
 	 * @return void
 	 */
 	public void printRootToLeafPaths(GenericBinaryTreeNode<T> head, String path) {
@@ -806,6 +832,7 @@ public class GenericBinaryTree<T> {
 	 * @return void
 	 */
 	public static void main(String[] args) {
+		testIsTreeHeightBalanced();
 	}
 
 	/**
@@ -1099,7 +1126,14 @@ public class GenericBinaryTree<T> {
 		System.out
 				.println("The tree after impairing right child of the left subtree: ");
 		System.out.println(tree);
-		System.out.println(tree.isTreeHeightBalanced(tree.getRoot()));
+		System.out.println(tree.isTreeHeightBalancedOptimized(tree.getRoot()));
+
+		tree = new GenericBinaryTree<Integer>();
+		tree.setRoot(new GenericBinaryTreeNode<Integer>(1));
+		tree.getRoot().setRight(new GenericBinaryTreeNode<Integer>(2));
+		tree.getRoot().getRight()
+				.setRight(new GenericBinaryTreeNode<Integer>(3));
+		System.out.println(tree.isTreeHeightBalancedOptimized(tree.getRoot()));
 	}
 
 }
