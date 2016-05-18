@@ -54,15 +54,15 @@ public class P4_6_SuccessorNode {
 		// Case 2: I am child but I am on the right side of the parent. Then
 		// successor is the parent such that my subtree is on the left of this
 		// parent.
-		GenericBinTreeNodeWParent mayBeParent = node.getParent();
-		while (mayBeParent != null && node != mayBeParent.getLeft()) {
-			node = mayBeParent;
-			mayBeParent = node.getParent();
+		GenericBinTreeNodeWParent maybeSuccessor = node.getParent();
+		while (maybeSuccessor != null && node != maybeSuccessor.getLeft()) {
+			node = maybeSuccessor;
+			maybeSuccessor = node.getParent();
 		}
 
 		// Case 3: I am child but I am left child of my parent, then this parent
 		// directly is the successor
-		return mayBeParent;
+		return maybeSuccessor;
 	}
 
 	public static void main(String[] args) {
