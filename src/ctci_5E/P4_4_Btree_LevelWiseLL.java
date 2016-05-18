@@ -3,7 +3,6 @@ package ctci_5E;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import com.ds.GenericBinaryTree;
 import com.ds.GenericBinaryTreeNode;
 
 /**

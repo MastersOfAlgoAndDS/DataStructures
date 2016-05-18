@@ -42,6 +42,7 @@
 package com.ds;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -826,13 +827,38 @@ public class GenericBinaryTree<T> {
 	}
 
 	/**
+	 * Given a sorted (increasing order) array list with unique integer elements
+	 * we create a binary search tree with minimal height.
+	 * 
+	 * @param list
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public static GenericBinaryTreeNode<Integer> createBSTFromList(
+			ArrayList<Integer> list, int start, int end) {
+		if (list == null || end < start)
+			return null;
+
+		int middle = (start + end) / 2; // getting the middle is the trick.
+		GenericBinaryTreeNode<Integer> root = new GenericBinaryTreeNode<Integer>(
+				list.get(middle));
+		// if (start < middle)
+		root.setLeft(createBSTFromList(list, start, middle - 1));
+		// if (middle < end)
+		root.setRight(createBSTFromList(list, middle + 1, end));
+		return root;
+	}
+
+	/**
 	 * Main Test Client for testing various functions of the tree program
 	 * 
 	 * @param args
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		testIsTreeHeightBalanced();
+		// testIsTreeHeightBalanced();
+		createSampleBST(20);
 	}
 
 	/**
@@ -973,6 +999,49 @@ public class GenericBinaryTree<T> {
 			list.add(array[i]);
 		}
 		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+		return tree;
+	}
+
+	/**
+	 * Function to create a sample Binary Search tree for testing. This is the
+	 * function mostly changed for any test performed.
+	 * 
+	 * @return tree
+	 */
+	public static GenericBinaryTree createSampleBST() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		int size = 7;
+		for (int i = 0; i < size; i++) {
+			list.add(i + 0);
+		}
+		System.out.println(list);
+		GenericBinaryTreeNode<Integer> root = createBSTFromList(list, 0,
+				size - 1);
+		GenericBinaryTree tree = new GenericBinaryTree<Integer>();
+		tree.setRoot(root);
+		return tree;
+	}
+
+	/**
+	 * Function to create a sample Binary Search Tree for testing. This is the
+	 * function mostly changed for any test performed. But this method will
+	 * create a randomized tree with random values every time it is called.
+	 * 
+	 * @return tree
+	 */
+	public static GenericBinaryTree createSampleBST(int n) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		int size = n;
+		for (int i = 0; i < size; i++) {
+			list.add((int) (Math.random() * size * 5));
+		}
+
+		Collections.sort(list);
+		System.out.println(list);
+		GenericBinaryTreeNode<Integer> root = createBSTFromList(list, 0,
+				size - 1);
+		GenericBinaryTree tree = new GenericBinaryTree<Integer>();
+		tree.setRoot(root);
 		return tree;
 	}
 

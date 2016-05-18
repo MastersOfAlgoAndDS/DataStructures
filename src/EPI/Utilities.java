@@ -1,5 +1,6 @@
 package EPI;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -40,6 +41,14 @@ public class Utilities {
 	public static LinkedList<String> getLinkedListFromArray(String[] array) {
 		LinkedList<String> ll = new LinkedList<String>(Arrays.asList(array));
 		return ll;
+	}
+
+	public static ArrayList<Object> getArrayListFromArray(Object[] array) {
+		ArrayList<Object> list = new ArrayList<Object>();
+		for (Object object : array) {
+			list.add(object);
+		}
+		return list;
 	}
 
 	public static void main(String[] args) {
