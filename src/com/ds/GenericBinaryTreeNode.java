@@ -71,4 +71,17 @@ public class GenericBinaryTreeNode<T> {
 		return "[" + val + ", " + left + ", " + right + "]";
 	}
 
+	public static GenericBinaryTreeNode searchNode(GenericBinaryTreeNode root,
+			int nodeValue) {
+		if (root == null)
+			return null;
+		if ((int) root.getVal() == nodeValue)
+			return root;
+		GenericBinaryTreeNode node_in_left = searchNode(root.getLeft(),
+				nodeValue);
+		if (node_in_left == null)
+			return searchNode(root.getRight(), nodeValue);
+		return node_in_left;
+	}
+
 }
