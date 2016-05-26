@@ -4,6 +4,11 @@
  * equal to his strength or less than his strength. Input contains the number of athletes n and their parameters. These
  * inputs can be assumed to be passed as arguments (Integer n and List<Pair<Integer, Integer>> parameterList) appropriate
  * for your language of choice.
+ * 
+ * @Solution: Sort the athletes by increasing order of their masses. 
+ * 			Then iterate over athletes and keep checking strength condition everytime.
+ * 
+ * 
  */
 
 package amazon;
@@ -56,7 +61,7 @@ public class AthleteTower {
 		AthleteTower s = new AthleteTower();
 		list.add(s.new Athlete(3, 4));
 		list.add(s.new Athlete(2, 2));
-		list.add(s.new Athlete(7, 6));
+		list.add(s.new Athlete(7, 7));
 		list.add(s.new Athlete(4, 5));
 		for (Athlete athlete : list) {
 			System.out.println(athlete);
@@ -75,6 +80,7 @@ public class AthleteTower {
 				totalweight += athlete.getMass();
 			}
 		}
+		System.out.println(ans);
 		System.out.println(ans.size());
 	}
 }

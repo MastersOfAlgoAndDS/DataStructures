@@ -24,7 +24,7 @@ class PairCount {
 	}
 
 	public int solution(int[] A) {
-		Arrays.sort(A);
+		Arrays.sort(A); // first sort and then find pairs
 		int currNumber = A[0];
 		int pairCnt = 0;
 		int currNumCnt = 1;

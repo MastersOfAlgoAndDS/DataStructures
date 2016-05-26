@@ -193,7 +193,7 @@ public class SinglyLinkedList {
 				prev = temp;
 				temp = next;
 			}
-			head = prev;
+			// head = prev;
 			this.head = prev;
 		}
 		return head;
@@ -241,7 +241,10 @@ public class SinglyLinkedList {
 		System.out.println();
 
 		System.out.println("Reversing the list with recursion and print ");
+		sll.print(sll.getHead());
 		sll.reverseWithRecursion(sll.getHead());
+		sll.print(sll.getHead());
+		sll.reverseInPlaceIterative(sll.getHead());
 		sll.print(sll.getHead());
 
 	}

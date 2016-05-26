@@ -1,10 +1,11 @@
 /**
- * Problem to determine whether there exists a path from the 0,0 to Goal which
- * is cell with value 9.
+ * Problem to determine whether there exists a path from the 0,0 to Goal (cell with value 9) 
+ * along cells with value 1.
  * 
  * 1. Use recursion
  * 2. If current cell is 1, explore further else return false
- * 3. Use boolean matrix of the same size as input to mark visited cells of value 1 as VISITED. [MEMOIZATION]
+ * 3. Use boolean matrix of the same size as input to mark 
+ * 		visited cells of value 1 as VISITED. [MEMOIZATION]
  * 
  * 
  * 
@@ -28,9 +29,10 @@ public class MazePath {
 		if (maze[x][y] == 0) {
 			return false;
 		}
-		if (boolmaze[x][y] == false) {
+		if (boolmaze[x][y] == false) { // i.e. we found 1, and this path is not
+										// yet explored, then explore it.
 			if (maze[x][y] == 1) {
-				boolmaze[x][y] = true;
+				boolmaze[x][y] = true; // mark the cell as explored.
 			}
 			if (findThePath(x - 1, y) == true)
 				return true;
@@ -41,6 +43,10 @@ public class MazePath {
 			if (findThePath(x, y - 1) == true)
 				return true;
 		}
+
+		// At last even if the value at cell is 1, but corresponding value in
+		// boolmaze is true then that cell is explored and no path was found, so
+		// return false at last.
 		return false;
 	}
 
@@ -55,13 +61,15 @@ public class MazePath {
 		// int[][] matrix = { { 1, 0, 0 }, { 1, 0, 9 }, { 0, 0, 1 } };
 		// int[][] matrix = { { 1, 0, 0 }, { 9, 1, 1 }, { 0, 1, 1 } }; // true
 		// int[][] matrix = { { 1, 0, 1 }, { 0, 0, 1 }, { 1, 9, 1 } }; // false
-		// int[][] matrix = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 9 } }; // true
-		int[][] matrix = { { 1, 1, 1 }, { 1, 0, 0 }, { 1, 0, 9 } }; // false
+		int[][] matrix1 = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 9 } }; // true
+		int[][] matrix2 = { { 1, 1, 1 }, { 1, 0, 0 }, { 1, 0, 9 } }; // false
 
-		m = matrix.length;
-		n = matrix[0].length;
-		maze = matrix;
+		m = matrix1.length;
+		n = matrix1[0].length;
+		maze = matrix1;
 		// findPath(matrix);
-		System.out.println(isPath(matrix));
+		System.out.println(isPath(matrix1));
+		maze = matrix2;
+		System.out.println(isPath(matrix2));
 	}
 }

@@ -21,8 +21,10 @@ public class BinarySearchTree {
 	}
 
 	public GenericBinaryTreeNode search(GenericBinaryTreeNode node, int key) {
+		if (node == null)
+			return null;
 		int nodeVal = (int) node.getVal();
-		if (node == null || nodeVal == key) {
+		if (nodeVal == key) {
 			return node;
 		} else if (key > nodeVal) {
 			return search(node.getRight(), key);
@@ -35,7 +37,7 @@ public class BinarySearchTree {
 	public GenericBinaryTreeNode insert(GenericBinaryTreeNode node, int key) {
 		if (node == null) {
 			return new GenericBinaryTreeNode<Integer>(key);
-		} 
+		}
 		int val = (int) node.getVal();
 		if (key < val) {
 			node.setLeft(insert(node.getLeft(), key));
@@ -44,7 +46,7 @@ public class BinarySearchTree {
 		} else { // key = val
 			System.out.println("cannot insert value since it already exists.");
 		}
-		return node;
+		return node; // return the root of the BST
 	}
 
 	public void printInorder(GenericBinaryTreeNode node) {

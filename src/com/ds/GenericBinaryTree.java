@@ -60,7 +60,7 @@ import java.util.Stack;
  * @param <T>
  */
 public class GenericBinaryTree<T> {
-	private GenericBinaryTreeNode<T> root;
+	protected GenericBinaryTreeNode<T> root;
 
 	public GenericBinaryTreeNode<T> getRoot() {
 		return root;
@@ -75,6 +75,13 @@ public class GenericBinaryTree<T> {
 	 */
 	public GenericBinaryTree() {
 		root = null;
+	}
+
+	/**
+	 * The default constructor
+	 */
+	public GenericBinaryTree(GenericBinaryTreeNode root) {
+		root = root;
 	}
 
 	/**
@@ -760,7 +767,7 @@ public class GenericBinaryTree<T> {
 	}
 
 	public boolean isFoldable(GenericBinaryTree<T> tree) {
-		if (tree.getRoot() == null || tree == null)
+		if (tree == null || tree.getRoot() == null)
 			return true;
 		else
 			return isStructurallyMirror(tree.getRoot().getLeft(), tree
@@ -779,7 +786,7 @@ public class GenericBinaryTree<T> {
 	}
 
 	public boolean isLeaf(GenericBinaryTreeNode<T> node) {
-		if (node.getLeft() == null && node.getRight() == null)
+		if (node != null && node.getLeft() == null && node.getRight() == null)
 			return true;
 		return false;
 	}

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MergeArrayList {
 
@@ -16,6 +17,7 @@ public class MergeArrayList {
 		b.add(9);
 		b.add(11);
 		b.add(21);
+		Collections.sort(b);
 		System.out.println("ArrayList a is " + a);
 		System.out.println("ArrayList b is " + b);
 		System.out.println("Merged is " + merge(a, b));
@@ -25,9 +27,14 @@ public class MergeArrayList {
 			ArrayList<Integer> y) {
 		ArrayList<Integer> temp = new ArrayList<Integer>(x.size() + y.size());
 		int i = 0, j = 0;
-		for (i = 0, j = 0; i < x.size() && j < y.size(); i++, j++) {
-			temp.add(x.get(i));
-			temp.add(y.get(j));
+		while (i < x.size() && j < y.size()) {
+			if (x.get(i) < y.get(j)) {
+				temp.add(x.get(i));
+				i++;
+			} else {
+				temp.add(y.get(j));
+				j++;
+			}
 		}
 		while (i < x.size()) {
 			temp.add(x.get(i));
@@ -40,5 +47,4 @@ public class MergeArrayList {
 		return temp;
 
 	}
-
 }

@@ -57,6 +57,7 @@ public class Problem_5_2_PowerSet {
 			map.put((int) Math.pow(2, keySeq), integer);
 			keySeq++;
 		}
+		System.out.println(map);
 
 		// run the for loop from 0 till 2^size
 		for (int i = 0; i < Math.pow(2, size); i++) {

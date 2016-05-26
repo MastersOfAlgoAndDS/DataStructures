@@ -49,7 +49,7 @@ public class Problem_6_1_Pivot {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 1, 25, 4, 13, 6, 7, 19, 2 };
+		int[] arr = { 1, 25, 4, 19, 6, 7, 13, 2 };
 		for (int i : arr)
 			System.out.print(i + " ");
 		System.out.println();

@@ -90,6 +90,8 @@ public class Problem_5_4_GCD {
 	public static void main(String[] args) {
 		Problem_5_4_GCD p = new Problem_5_4_GCD();
 		System.out.println(p.simpleGCD(16, 32));
+		System.out.println(p.simpleGCD(27, 12));
+		System.out.println(p.simpleGCD(12, 27));
 		System.out.println(p.recursiveGCD(16, 32));
 	}
 

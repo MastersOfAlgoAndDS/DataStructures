@@ -1,5 +1,3 @@
-
-
 public class IntToString {
 
 	public static void main(String[] args) {
@@ -20,8 +18,7 @@ public class IntToString {
 			int a = number % 10;
 			// ascii adjustment
 			a = a + 48;
-			char b = (char) a;
-			ans[i] = b;
+			ans[i] = (char) a;
 			// System.out.println(b);
 			number = number / 10;
 

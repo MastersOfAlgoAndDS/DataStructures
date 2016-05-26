@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * To split the array into 2 parts first containing some counts of given number
- * and second containing equal counts of values not equal to X
+ * X and second containing equal counts of values not equal to X
  * 
  * @author Milind
  *
@@ -48,8 +48,8 @@ class SplitArray {
 
 	public static void main(String[] args) {
 		int[] B = { 5, 5, 1, 7, 2, 3, 5 };
-		// int[] A = { 7, 6, 7, 10, 7, 12, 7, 14, 15 };
-		int[] A = { 7, 7, 7, 7, 7, 7, 7, 7, 7 };
+		int[] A = { 7, 6, 7, 10, 7, 12, 7, 14, 15 };
+		// int[] A = { 7, 7, 7, 7, 7, 7, 7, 7, 7 };
 		SplitArray s = new SplitArray();
 		System.out.println(s.solution(7, A));
 

@@ -30,7 +30,9 @@ public class PrimeFactors {
 		Set<Integer> primefactors = new HashSet<>();
 		long copyOfInput = number;
 		for (int i = 2; i <= copyOfInput; i++) {
-			if (copyOfInput % i == 0) {
+			if (copyOfInput % i == 0) { // if number is divisible by iterator i,
+										// then reduce the number by dividing by
+
 				primefactors.add(i);
 				copyOfInput /= i;
 				i--;

@@ -189,4 +189,38 @@ public class GenericBinaryTreeTest {
 
 	}
 
+	/**
+	 * Test method for
+	 * {@link com.ds.GenericBinaryTree#createBSTFromList(java.util.ArrayList, int, int)}
+	 * .
+	 */
+	@Test
+	public void testCreateBSTFromList() throws Exception {
+		GenericBinaryTree bst = GenericBinaryTree.createSampleBST(20);
+		bst.levelOrderLevelwisePrint(bst.getRoot());
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.ds.GenericBinaryTree#convertBinTreeToChildrenSumProperty(com.ds.GenericBinaryTreeNode)}
+	 * .
+	 */
+	@Test
+	public void testConvertBinTreeToChildrenSumProperty() throws Exception {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(50);
+		list.add(7);
+		list.add(2);
+		list.add(3);
+		list.add(5);
+		list.add(1);
+		list.add(30);
+
+		GenericBinaryTree<Integer> tree = new GenericBinaryTree<Integer>(list);
+		tree.levelOrderLevelwisePrint(tree.getRoot());
+		System.out.println();
+		tree.convertBinTreeToChildrenSumProperty(tree.getRoot());
+		tree.levelOrderLevelwisePrint(tree.getRoot());
+	}
+
 }

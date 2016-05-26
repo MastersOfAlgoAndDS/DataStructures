@@ -1,19 +1,23 @@
 /**
  * @author Milind
- * @Problem: To find the Kth smalles element from 2 sorted arrays.
+ * @Problem: To find the Kth smallest element from 2 sorted arrays.
  *
  * @Solution_1: O(m+n) merge two arrays and then get the kth smallest element at
  *              index k-1;
  * 
  * @Solution_2: O(k) Use the merging algorithm to traverse through the lists and
  *              increment the counter. As the counter reaches k, return the
- *              element from the list at which k was reached.
+ *              element from the list at which k was reached. This is same as
+ *              solution 1, however we are not traversing the complete lists and
+ *              stopping when we find kth element.
  *
  * @Solution_3: O(logm + logn) Use binary search method.
  */
 public class KthSmallestElement {
 
 	/**
+	 * @Solution_2
+	 * 
 	 * @param arr1
 	 * @param arr2
 	 * @param k
@@ -90,11 +94,11 @@ public class KthSmallestElement {
 		int[] arr1 = { 2, 4, 6 };
 		int[] arr2 = { 3, 5, 7 };
 		System.out.println(KthSmallestElementLinear(arr1, arr2, 4));
-		// System.out.println(KthSmallestElementEfficient(arr1, arr2, 2));
-		System.out.println(findKthSmallest(2, arr1, arr2));
+		System.out.println(KthSmallestElementEfficient(arr1, arr2, 4));
+		System.out.println(findKthSmallest(arr1, arr2, 4));
 	}
 
-	public static int findKthSmallest(int k, int[] A, int[] B) {
+	public static int findKthSmallest(int[] A, int[] B, int k) {
 		// handle k bounds
 		if (k < 1 || k > A.length + B.length) {
 			return -1;

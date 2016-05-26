@@ -72,7 +72,7 @@ public class TreeConversion {
 		tree.isChildrenSumPropertyValid(tree.getRoot());
 		convertTree(tree.getRoot());
 		System.out.println("Tree:" + tree);
-		tree.isChildrenSumPropertyValid(tree.getRoot());
+		System.out.println(tree.isChildrenSumPropertyValid(tree.getRoot()));
 
 	}
 

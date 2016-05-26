@@ -22,6 +22,25 @@ public class Fibonacci {
 		}
 	}
 
+	/**
+	 * Here we use cache to store the results on the way to avoid recalculation
+	 * 
+	 * @param n
+	 * @param cache
+	 * @return
+	 */
+	public static int fibRecursiveOptimized(int n, int[] cache) {
+		if (n == 1 || n == 2) {
+			cache[n - 1] = 1;
+			return 1;
+		} else {
+			int fib_n_1 = fibRecursiveOptimized(n - 1, cache);
+			int fib_n_2 = fibRecursiveOptimized(n - 2, cache);
+			cache[n - 1] = fib_n_1 + fib_n_2;
+			return cache[n - 1];
+		}
+	}
+
 	public static void main(String[] args) {
 		int n = 15;
 		fibIterative(n);
@@ -29,5 +48,8 @@ public class Fibonacci {
 			System.out.print(fibRecursive(i) + " ");
 		}
 		System.out.println();
+		for (int i = 1; i <= n; i++) {
+			System.out.print(fibRecursiveOptimized(i, new int[i]) + " ");
+		}
 	}
 }
