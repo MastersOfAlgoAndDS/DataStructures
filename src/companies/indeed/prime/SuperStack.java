@@ -1,4 +1,4 @@
-package indeed.prime;
+package companies.indeed.prime;
 
 public class SuperStack {
 

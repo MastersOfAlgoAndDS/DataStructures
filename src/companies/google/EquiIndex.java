@@ -1,4 +1,4 @@
-package google;
+package companies.google;
 
 /**
  * @Problem: To find EquillibriumIndex. i.e. index in array for which the sum of

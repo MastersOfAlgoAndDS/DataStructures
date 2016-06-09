@@ -1,4 +1,4 @@
-package indeed;
+package companies.indeed;
 
 import java.util.Map.Entry;
 import java.util.Scanner;

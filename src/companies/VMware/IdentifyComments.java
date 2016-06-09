@@ -2,7 +2,7 @@
  * Building a Smart IDE: Identifying comments
  * https://www.hackerrank.com/contests/regex-practice-1/challenges/ide-identifying-comments
  */
-package VMware;
+package companies.VMware;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package shapeways;
+package companies.shapeways;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class ArtistListProblem {
 	public static void main(String[] args) {
-		String fileName = "src/shapeways/Artist_lists_small.txt";
+		String fileName = "src/companies.shapeways/Artist_lists_small.txt";
 
 		try {
 			FileReader fin = new FileReader(fileName);

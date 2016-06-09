@@ -1,4 +1,4 @@
-package LogicMonitor;
+package companies.LogicMonitor;
 
 /**
  * @author Milind

@@ -4,7 +4,7 @@
  * 
  * */
 
-package VMware;
+package companies.VMware;
 
 public class MaxArrayDiff {
 

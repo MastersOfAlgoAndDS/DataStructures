@@ -1,4 +1,4 @@
-package amazon;
+package companies.amazon;
 
 /* Java program to solve Rat in a Maze problem using
  backtracking */

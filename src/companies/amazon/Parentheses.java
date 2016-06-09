@@ -1,6 +1,6 @@
-package amazon;
+package companies.amazon;
 
-//Asked in amazon test of akshay
+//Asked in companies.amazon test of akshay
 
 import java.util.Stack;
 

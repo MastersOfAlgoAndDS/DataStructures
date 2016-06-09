@@ -11,7 +11,7 @@
  * 
  **/
 
-package amazon;
+package companies.amazon;
 
 public class MazePath {
 	static int m;

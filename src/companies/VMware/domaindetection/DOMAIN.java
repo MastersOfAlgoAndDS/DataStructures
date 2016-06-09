@@ -8,7 +8,7 @@
  * 
  * */
 
-package VMware.domaindetection;
+package companies.VMware.domaindetection;
 
 import java.util.ArrayList;
 import java.util.HashSet;

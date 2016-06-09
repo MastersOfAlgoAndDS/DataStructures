@@ -18,7 +18,7 @@
  * 
  * */
 
-package VMware;
+package companies.VMware;
 
 public class RobotCircular {
 	public static enum Direction {

@@ -1,24 +1,42 @@
-package EPI;
+package com.ds;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import com.ds.Node;
-
 public class Utilities {
 
+	/**
+	 * 
+	 * This function converts decimal number to binary
+	 * 
+	 * @Logic: While the input number is greater than zero, keep appending the
+	 *         remainder of number/2.
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public static String decToBin(int n) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		if (n == 0)
 			return "0";
 		while (n > 0) {
-			result = n % 2 + result;
+			result.append(n % 2);
 			n = n / 2;
 		}
-		return result;
+		return result.reverse().toString();
 	}
 
+	/**
+	 * 
+	 * This function converts a binary number input to decimal
+	 * 
+	 * @Logic: Fetch each number starting from LSB and multiply by respective
+	 *         power of 2 and add to the result.
+	 * 
+	 * @param bin
+	 * @return
+	 */
 	public static int binToDec(String bin) {
 		int result = 0;
 		for (int i = bin.length() - 1; i >= 0; i--) {
@@ -27,6 +45,14 @@ public class Utilities {
 		return result;
 	}
 
+	/**
+	 * This function converts a character to integer. Only numbers 0 to 9 are
+	 * converted. Otherwise Not an Integer exception message is given.
+	 * 
+	 * @param c
+	 * @return
+	 * @throws Exception
+	 */
 	public static int getIntValue(char c) throws Exception {
 		if (c >= '0' && c <= '9')
 			return c - 48;
@@ -34,18 +60,39 @@ public class Utilities {
 			throw new Exception("Not an integer");
 	}
 
+	/**
+	 * This function Gives the ASCII value of the given character
+	 * 
+	 * @param c
+	 * @return
+	 */
 	public static int getAsciiValue(char c) {
 		return c;
 	}
 
-	public static LinkedList<String> getLinkedListFromArray(String[] array) {
-		LinkedList<String> ll = new LinkedList<String>(Arrays.asList(array));
+	/**
+	 * This function converts a given array to LinkedList
+	 * 
+	 * @param <T>
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static <T> LinkedList<T> getLinkedListFromArray(T[] array) {
+		LinkedList<T> ll = new LinkedList<T>(Arrays.asList(array));
 		return ll;
 	}
 
-	public static ArrayList<Object> getArrayListFromArray(Object[] array) {
-		ArrayList<Object> list = new ArrayList<Object>();
-		for (Object object : array) {
+	/**
+	 * 
+	 * Function to get ArrayList from array
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static <T> ArrayList<T> getArrayListFromArray(T[] array) {
+		ArrayList<T> list = new ArrayList<T>();
+		for (T object : array) {
 			list.add(object);
 		}
 		return list;
@@ -53,7 +100,7 @@ public class Utilities {
 
 	public static void main(String[] args) {
 		int num = 64;
-		System.out.println(decToBin(124 >> 3));
+		System.out.println(decToBin(7));
 		System.out.println(binToDec("0110010"));
 
 		for (char i = 65; i <= 90; i++) {

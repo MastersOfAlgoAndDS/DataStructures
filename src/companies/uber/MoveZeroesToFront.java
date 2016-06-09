@@ -1,4 +1,4 @@
-package uber;
+package companies.uber;
 
 public class MoveZeroesToFront {
 

@@ -1,4 +1,4 @@
-package servicenow;
+package companies.servicenow;
 
 import java.util.ArrayList;
 import java.util.HashMap;

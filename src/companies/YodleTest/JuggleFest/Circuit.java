@@ -1,4 +1,4 @@
-package YodleTest.JuggleFest;
+package companies.YodleTest.JuggleFest;
 
 import java.util.List;
 

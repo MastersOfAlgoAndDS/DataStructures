@@ -1,3 +1,4 @@
+package com.basicprograms;
 public class Fibonacci {
 	public static void fibIterative(int n) {
 		int fib1 = 1, fib2 = 1;

@@ -1,3 +1,4 @@
+package com.basicprograms;
 /**
  * Google Code Jam 
  * Qualification Round 2015

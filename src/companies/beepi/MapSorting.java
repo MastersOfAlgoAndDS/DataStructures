@@ -1,4 +1,4 @@
-package beepi;
+package companies.beepi;
 
 import java.util.ArrayList;
 import java.util.Collections;

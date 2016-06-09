@@ -1,3 +1,4 @@
+package com.basicprograms;
 import java.util.Scanner;
 /**
  * Write a description of class StarCount here.

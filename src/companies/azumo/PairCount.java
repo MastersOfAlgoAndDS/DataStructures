@@ -1,4 +1,4 @@
-package azumo;
+package companies.azumo;
 
 import java.util.Arrays;
 

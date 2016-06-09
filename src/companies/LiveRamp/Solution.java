@@ -1,4 +1,4 @@
-package LiveRamp;
+package companies.LiveRamp;
 
 import java.util.HashMap;
 import java.util.LinkedList;

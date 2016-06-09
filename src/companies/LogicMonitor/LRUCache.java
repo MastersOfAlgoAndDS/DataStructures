@@ -1,4 +1,4 @@
-package LogicMonitor;
+package companies.LogicMonitor;
 
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;

@@ -1,4 +1,4 @@
-package LogicMonitor;
+package companies.LogicMonitor;
 
 public class LRUNode {
 	int key;

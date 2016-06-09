@@ -1,4 +1,4 @@
-package yelp;
+package companies.yelp;
 
 import java.util.HashMap;
 import java.util.Scanner;

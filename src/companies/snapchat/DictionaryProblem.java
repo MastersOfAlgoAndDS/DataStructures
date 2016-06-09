@@ -1,4 +1,4 @@
-package snapchat;
+package companies.snapchat;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.Set;
  * 
  *           12 words
  * 
- *           chat ever snapchat snap salesperson per person sales son whatsoever
+ *           chat ever companies.snapchat snap salesperson per person sales son whatsoever
  *           what so
  * @Solution: Referred the word break problem was used to find the answer for
  *            this.

@@ -1,4 +1,4 @@
-package YodleTest.YodleTriangle;
+package companies.YodleTest.YodleTriangle;
 
 import java.io.File;
 import java.io.IOException;

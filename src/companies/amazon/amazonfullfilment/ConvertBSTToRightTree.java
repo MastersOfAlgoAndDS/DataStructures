@@ -17,7 +17,7 @@
  * 
  * */
 
-package amazon.amazonfullfilment;
+package companies.amazon.amazonfullfilment;
 
 public class ConvertBSTToRightTree {
 	public static void main(String[] args) {

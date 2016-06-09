@@ -1,3 +1,4 @@
+package com.basicprograms;
 
 public class GenericTreeNode<T> {
 	T data;

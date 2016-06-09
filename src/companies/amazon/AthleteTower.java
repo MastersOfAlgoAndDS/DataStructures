@@ -11,7 +11,7 @@
  * 
  */
 
-package amazon;
+package companies.amazon;
 
 import java.util.ArrayList;
 import java.util.Collections;

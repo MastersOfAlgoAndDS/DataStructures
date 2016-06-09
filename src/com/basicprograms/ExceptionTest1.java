@@ -1,3 +1,4 @@
+package com.basicprograms;
 
 public class ExceptionTest1 extends ExceptionTest0{
 	public static void main(String[] args) {

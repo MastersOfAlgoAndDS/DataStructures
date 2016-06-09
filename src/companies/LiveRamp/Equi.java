@@ -5,7 +5,7 @@
  * Link: http://blog.codility.com/2011/03/solutions-for-task-equi.html
  * */
 
-package LiveRamp;
+package companies.LiveRamp;
 
 // you can also use imports, for example:
 
