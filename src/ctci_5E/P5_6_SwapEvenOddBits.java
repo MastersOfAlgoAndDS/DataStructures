@@ -1,6 +1,6 @@
 package ctci_5E;
 
-import EPI.Utilities;
+import com.ds.Utilities;
 
 /**
  * 
