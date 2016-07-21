@@ -1,10 +1,9 @@
 package com.basicprograms;
-import java.util.Comparator;
 
-public class test {
+public class ArrayOpers {
 	public int x[];
 
-	public test(int x[]) {
+	public ArrayOpers(int x[]) {
 		setx(x);
 	}
 
@@ -78,7 +77,7 @@ public class test {
 
 		int[] ia = { 1, 2, 3, 4, 5, 6 };
 
-		test intTest = new test(ia);
+		ArrayOpers intTest = new ArrayOpers(ia);
 
 		System.out.println(intTest.findTotal());
 

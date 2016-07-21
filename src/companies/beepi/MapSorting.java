@@ -43,10 +43,16 @@ public class MapSorting {
 			}
 		}
 
+		HashMap<String, Integer> outputMap = new HashMap<>();
 		ArrayList<Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>();
 		for (Entry<String, Integer> entry : map.entrySet()) {
-			System.out.println(entry.getKey() + ": " + entry.getValue());
+			// System.out.println(entry.getKey() + ": " + entry.getValue());
 			list.add(entry);
+			map.put(entry.getKey(), entry.getValue());
+		}
+
+		for (Entry<String, Integer> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue());
 		}
 		System.out.println();
 
