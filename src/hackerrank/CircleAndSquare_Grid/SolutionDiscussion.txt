@@ -1,5 +1,7 @@
 The crux to solve this problem is knowing somethings like mathematical formulae.
 
+TODO this problem
+
 1. Know how to calculate distance between 2 points - square root of ((x1-x2)^2/(y1-y2)^2)
 By this you can calculate distance between points given for both circle and square prolems.
 2. Know calculation of how to find other 2 points of a square given 2 end points of 1 diagonal.
