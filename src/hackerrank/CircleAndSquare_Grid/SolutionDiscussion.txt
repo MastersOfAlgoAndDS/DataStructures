@@ -1,0 +1,29 @@
+The crux to solve this problem is knowing somethings like mathematical formulae.
+
+1. Know how to calculate distance between 2 points - square root of ((x1-x2)^2/(y1-y2)^2)
+By this you can calculate distance between points given for both circle and square prolems.
+2. Know calculation of how to find other 2 points of a square given 2 end points of 1 diagonal.
+https://www.quora.com/Given-two-diagonally-opposite-points-of-a-square-how-can-I-find-out-the-other-two-points-in-terms-of-the-coordinates-of-the-known-points
+
+3. Calculate area of triange given 3 vertices coordinates. - Use some link to see how to find that.
+
+Circle problem: 
+1. Given center point and radius.
+	Start by finding the square max inside which the circle is present and then run the check on each point in this square to see if it lies inside the circle or outside.
+	To find the max and min X and max and min Y is simple - Radius plus the Xc(center) and Radius minus the Xc(center)
+	Similarly find max and min Y.
+	Then find the intersection points of the maxXminY, maxXmaxY, minXminY, minXmaxY.
+	Then for each point within this range of 2D grid, check whether the distance from center is greater than radius or less than radius.
+	If greater than radius, then point is outside circle, otherwise point is inside circle.
+
+Square problem
+1. Given the 2 end points of a diagonal.
+	First find the other 2 end points or vertices of the square on the other diagonal.
+	Use the formula in the link for that.
+	Then find the range of maxX, minX, maxY, minY similar to circle problem.
+	Then for each point within this large square, check whether the point lies inside the square or outside the square.
+	For this you can use the formula to find area of a triangle given 3 vertices of a triangle.
+	The logic after that is any point P is within the square if the summation of the area of 4 triangles formed by the 2 adjacent vertices of square is equal to the area of the square.
+	If the summation of area of triangles is equal to the area of square, the point lies inside the smaller square. Otherwise the point is outside the smaller square.
+
+
