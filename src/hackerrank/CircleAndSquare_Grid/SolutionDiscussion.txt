@@ -8,6 +8,8 @@ By this you can calculate distance between points given for both circle and squa
 https://www.quora.com/Given-two-diagonally-opposite-points-of-a-square-how-can-I-find-out-the-other-two-points-in-terms-of-the-coordinates-of-the-known-points
 
 3. Calculate area of triange given 3 vertices coordinates. - Use some link to see how to find that.
+http://math.stackexchange.com/questions/190111/how-to-check-if-a-point-is-inside-a-rectangle
+
 
 Circle problem: 
 1. Given center point and radius.
