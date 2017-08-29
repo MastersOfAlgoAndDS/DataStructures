@@ -1,4 +1,5 @@
 package com.basicprograms;
+
 /**
  * @author Milind
  * @Problem: To find the Kth smallest element from 2 sorted arrays.
@@ -53,12 +54,15 @@ public class KthSmallestElement {
 	}
 
 	public static int KthSmallestElementEfficient(int[] A, int[] B, int k) {
+		// Check if either of the array is empty. Return kth element from the
+		// other array.
 		if (A.length == 0) {
 			return B[k - 1];
 		} else if (B.length == 0) {
 			return A[k - 1];
 		}
 
+		// case of k = max possible last element in both the arrays combined.
 		int lastA = A[A.length - 1];
 		if (A.length + B.length == k) {
 			return Math.max(lastA, B[B.length - 1]);
